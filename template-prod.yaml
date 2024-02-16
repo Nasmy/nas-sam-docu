@@ -1,0 +1,662 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Docudive Backend Functions
+
+Parameters:
+  Stage:
+    Type: String
+    Default: prod
+  DBUsername:
+    Type: String
+    Default: "ddadminkdn"
+    NoEcho: true
+  DBPassword:
+    Type: String
+    Default: "4b4o4i*ZwE*j%2VgCgS2"
+    NoEcho: true
+  DBEndpoint:
+    Type: String
+    Default: "docudive-backend-postgresdbinstance-i09m9opuah4u.cjkgya1modqe.us-east-2.rds.amazonaws.com"
+    NoEcho: true
+  DBPort:
+    Type: Number
+    Default: 5432
+    NoEcho: true
+  SMTPServer:
+    Type: String
+    Default: "email-smtp.us-east-2.amazonaws.com"
+    NoEcho: true
+  SMTPPort:
+    Type: Number
+    Default: 587
+    NoEcho: true
+  SMTPUsername:
+    Type: String
+    Default: "AKIAWUUXCKEQ2EXHDGQS"
+    NoEcho: true
+  SMTPPassword:
+    Type: String
+    Default: "BI4QQPZfdZ0TvH6z4zVSYHGfqL+jLWoauLE2zMT9MLR8"
+    NoEcho: true
+  OpenApiKey:
+    Type: String
+    Default: "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"
+    NoEcho: true
+
+
+Globals:
+  Function:
+    Timeout: 30
+    Environment:
+      Variables:
+        version: "1.0"
+        database_endpoint: !Ref DBEndpoint
+        database_port: !Ref DBPort
+        database_username: !Ref DBUsername
+        database_password: !Ref DBPassword
+        database_name: !Sub 'docudive-${Stage}'
+
+Resources:
+  DocumentsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${AWS::StackName}-${Stage}-dd-documents'
+
+  DocumentsInputBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${AWS::StackName}-${Stage}-dd-input-files'
+      NotificationConfiguration:
+        EventBridgeConfiguration:
+          EventBridgeEnabled: true
+
+  PDFImageBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${AWS::StackName}-${Stage}-dd-docudive-input-images'
+      NotificationConfiguration:
+        EventBridgeConfiguration:
+          EventBridgeEnabled: true
+
+  FilesDigestBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${AWS::StackName}-${Stage}-dd-files-digest-bucket'
+      NotificationConfiguration:
+        EventBridgeConfiguration:
+          EventBridgeEnabled: true
+
+  CustomObjectBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${AWS::StackName}-${Stage}-dd-custom-object-bucket'
+      NotificationConfiguration:
+        EventBridgeConfiguration:
+          EventBridgeEnabled: true
+
+  ChatHistoryBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${AWS::StackName}-${Stage}-dd-chat-history-bucket'
+      NotificationConfiguration:
+        EventBridgeConfiguration:
+          EventBridgeEnabled: true
+
+  ChatContextBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${AWS::StackName}-${Stage}-dd-chat-context-bucket'
+      NotificationConfiguration:
+        EventBridgeConfiguration:
+          EventBridgeEnabled: true
+
+  AuthorizerLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-AuthorizerLambda'
+      CodeUri: functions/authorizer
+      Handler: handler.handler
+      Runtime: python3.8
+
+  AuthorizerLambdaRolePolicy:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service: "apigateway.amazonaws.com"
+            Action:
+              - "sts:AssumeRole"
+      Policies:
+        - PolicyName: InvokeAuthorizerLambdaPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              Action:
+                - "lambda:InvokeFunction"
+              Effect: Allow
+              Resource:
+                - !GetAtt AuthorizerLambda.Arn
+    
+  DocudiveApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: !Ref Stage
+      Name: !Sub '${AWS::StackName}-${Stage}-docudive-api'
+      Auth:
+        DefaultAuthorizer: LambdaRequestAuthorizer
+        Authorizers:
+          LambdaRequestAuthorizer:
+            AuthorizerPayloadFormatVersion: 2.0
+            EnableSimpleResponses: true
+            FunctionArn: !GetAtt AuthorizerLambda.Arn
+            FunctionInvokeRole: !GetAtt AuthorizerLambdaRolePolicy.Arn
+            # Identity:
+            #   ReauthorizeEvery: 300
+              # Headers:
+              #   - Authorization
+
+  CommonLambdaLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+        LayerName: !Sub '${AWS::StackName}-${Stage}-app-common'
+        ContentUri: functions/layers
+        CompatibleRuntimes:
+          - python3.8
+        RetentionPolicy: Delete
+    Metadata:
+        BuildMethod: python3.8
+
+  SQLModels:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-SQLModels'
+      CodeUri: functions/models
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Events:
+        Proxy:
+          Type: HttpApi
+          Properties:
+            Path: /api/db/create
+            Method: post
+            ApiId: !Ref DocudiveApi
+
+  SignupFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-SignupFunction'
+      CodeUri: functions/signup
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref DocumentsBucket
+      Environment:
+        Variables:
+          bucket: !Ref DocumentsBucket
+          smtp_server: !Ref SMTPServer
+          smtp_port: !Ref SMTPPort
+          smtp_username: !Ref SMTPUsername
+          smtp_password: !Ref SMTPPassword
+          verification_url: ""
+      Events:
+        Proxy:
+          Type: HttpApi
+          Properties:
+            Path: /api/signup
+            Method: post
+            ApiId: !Ref DocudiveApi
+
+  VerifyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-VerifyFunction'
+      CodeUri: functions/verify
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Environment:
+        Variables:
+          bucket: !Ref DocumentsBucket
+      Events:
+        Proxy:
+          Type: HttpApi
+          Properties:
+            Path: /api/verify
+            Method: get
+            ApiId: !Ref DocudiveApi
+
+  TokenFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-TokenFunction'
+      CodeUri: functions/token
+      Handler: handler.handler
+      Runtime: python3.8
+      Timeout: 120
+      MemorySize: 512
+      Layers:
+        - !Ref CommonLambdaLayer
+      Events:
+        Proxy:
+          Type: HttpApi
+          Properties:
+            Path: /api/token
+            Method: post
+            ApiId: !Ref DocudiveApi
+
+  UploadFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-UploadFunction'
+      CodeUri: functions/upload
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref DocumentsInputBucket
+      Environment:
+        Variables:
+          bucket: !Ref DocumentsInputBucket
+      Events:
+        Proxy:
+          Type: HttpApi
+          Properties:
+            Path: /api/upload
+            Method: post
+            ApiId: !Ref DocudiveApi
+
+  UploadMultipartFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-UploadMultipartFunction'
+      CodeUri: functions/upload_multipart
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref DocumentsInputBucket
+      Environment:
+        Variables:
+          bucket: !Ref DocumentsInputBucket
+      Events:
+        Proxy:
+          Type: HttpApi
+          Properties:
+            Path: /api/upload-multipart
+            Method: post
+            ApiId: !Ref DocudiveApi
+
+  ListFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-ListFunction'
+      CodeUri: functions/list
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Environment:
+        Variables:
+          bucket: !Ref DocumentsInputBucket
+      Events:
+        Proxy:
+          Type: HttpApi
+          Properties:
+            Path: /api/list
+            Method: get
+            ApiId: !Ref DocudiveApi
+
+  DownloadFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-DownloadFunction'
+      CodeUri: functions/download
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref DocumentsInputBucket
+      Environment:
+        Variables:
+          bucket: !Ref DocumentsInputBucket
+      Events:
+        Proxy:
+          Type: HttpApi
+          Properties:
+            Path: /api/download
+            Method: get
+            ApiId: !Ref DocudiveApi
+
+  AnnotationsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-AnnotationsFunction'
+      CodeUri: functions/annotations
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          bucket: !Ref FilesDigestBucket
+      Events:
+        Proxy:
+          Type: HttpApi
+          Properties:
+            Path: /api/annotations
+            Method: get
+            ApiId: !Ref DocudiveApi
+
+  ChatHistoryFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-ChatHistoryFunction'
+      CodeUri: functions/chat_history
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref ChatHistoryBucket
+        - S3CrudPolicy:
+            BucketName: !Ref ChatContextBucket
+      Environment:
+        Variables:
+          chat_history_bucket: !Ref ChatHistoryBucket
+          chat_context_bucket: !Ref ChatContextBucket
+      Events:
+        Proxy:
+          Type: HttpApi
+          Properties:
+            Path: /api/chat-history
+            Method: get
+            ApiId: !Ref DocudiveApi
+
+  OCRFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: PDFImageBucket
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-OCRFunction'
+      ImageUri: 456657096993.dkr.ecr.us-east-2.amazonaws.com/docudive-prod:v1
+      PackageType: Image
+      Timeout: 120
+      MemorySize: 2048
+      ImageConfig:
+        Command: ["handler.handler"]
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref PDFImageBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+      Environment:
+        Variables:
+          images_bucket: !Ref PDFImageBucket
+          ocr_output_bucket: !Ref FilesDigestBucket
+          predict_bucket_name: !Ref CustomObjectBucket
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref PDFImageBucket
+#    Metadata:
+#      Dockerfile: Dockerfile
+#      DockerContext: ./functions/ocr
+#      DockerTag: v1
+
+  ScrapeFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: DocumentsInputBucket
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-ScrapeFunction'
+      CodeUri: functions/scrape
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref DocumentsInputBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref PDFImageBucket
+      Environment:
+        Variables:
+          input_bucket: !Ref DocumentsInputBucket
+          predict_bucket_name: !Ref CustomObjectBucket
+          scrape_output_bucket: !Ref FilesDigestBucket
+          image_output_bucket: !Ref PDFImageBucket
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref DocumentsInputBucket
+
+  PromptQuestionsFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: CustomObjectBucket
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-PromptQuestionsFunction'
+      CodeUri: functions/prompts_questions
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref CustomObjectBucket
+          output_bucket: !Ref FilesDigestBucket
+          openai_api_key: !Ref OpenApiKey
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref CustomObjectBucket
+
+  PromptHeadingsFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: CustomObjectBucket
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-PromptHeadingsFunction'
+      CodeUri: functions/prompts_headings
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref CustomObjectBucket
+          output_bucket: !Ref FilesDigestBucket
+          openai_api_key: !Ref OpenApiKey
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref CustomObjectBucket
+
+  PromptSummaryFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: CustomObjectBucket
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-PromptSummaryFunction'
+      CodeUri: functions/prompts_summary
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref CustomObjectBucket
+          output_bucket: !Ref FilesDigestBucket
+          openai_api_key: !Ref OpenApiKey
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref CustomObjectBucket
+
+  PromptTimelineFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: CustomObjectBucket
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-PromptTimelineFunction'
+      CodeUri: functions/prompts_timeline
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref CustomObjectBucket
+          output_bucket: !Ref FilesDigestBucket
+          openai_api_key: !Ref OpenApiKey
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref CustomObjectBucket
+
+  TextExtractFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: CustomObjectBucket
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-TextExtractFunction'
+      CodeUri: functions/text_extract
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref CustomObjectBucket
+          output_bucket: !Ref FilesDigestBucket
+          openai_api_key: !Ref OpenApiKey
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref CustomObjectBucket
+
+  ChatFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-${Stage}-ChatFunction'
+      CodeUri: functions/chat
+      Handler: handler.handler
+      Runtime: python3.8
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref ChatHistoryBucket
+        - S3CrudPolicy:
+            BucketName: !Ref ChatContextBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          files_digest_bucket: !Ref FilesDigestBucket
+          chat_context_bucket: !Ref ChatContextBucket
+          chat_history_bucket: !Ref ChatHistoryBucket
+          openai_api_key: !Ref OpenApiKey
+      Events:
+        Proxy:
+          Type: HttpApi
+          Properties:
+            Path: /api/chat
+            Method: post
+            ApiId: !Ref DocudiveApi
+
+Outputs:
+  DocudiveEndpoint:
+    Value: !Sub "https://${DocudiveApi}.execute-api.${AWS::Region}.amazonaws.com"

@@ -1,0 +1,878 @@
+Harvard Business School
+9-796-128
+March 4, 1996
+African Communications Group
+In February 1996, Monique Maddy, president and chief executive officer of the African
+Communications Group (ACG), and Côme Laguë, chief operating officer, completed a review of
+ACG’s projects in Tanzania. After more than three years of planning, ACG was about to install a pay-
+phone system in Tanzania’s largest city, Dar es Salaam. Tanzania had the highest backlog in Africa
+for telephone services. ACG’s system would be based on wireless radio technology. Callers would
+prepay for service by purchasing cards that would activate ACG’s pay phones. ACG also planned to
+offer paging and voice-mail services to Tanzania’s burgeoning business community.
+Maddy and Laguë formed ACG after graduating from the Harvard Business School in 1993.
+They believed that Africa was the last major geographic market yet to experience significant growth
+in the communications sector. Maddy and Laguë envisioned that their firm would eventually provide
+a wide range of media and communications services across the continent. Tanzania had been chosen
+as ACG’s entry point for its relatively stable political environment and its overwhelming need for
+additional telephone service. After three months of on-site research in 1993, Maddy and a team of six
+HBS students identified a pay-phone network as the most promising opportunity. Maddy and Laguë
+then developed a business plan, obtained financing, purchased operating licenses, and contracted
+with equipment suppliers. Despite their success to date, ACG faced significant challenges in early
+1996. Regulators in Tanzania and other African countries were issuing telecommunications licenses to
+a number of companies, and private enterprise was growing rapidly. Maddy and Laguë knew they
+would have to move quickly if they were to achieve their goal of a continent-wide system.
+ACG Card Phone and Paging Services
+In the mid-1990s, telecommunications in Tanzania was considered a luxury rather than a
+utility. As in most other African countries, private investment in telecommunications had been
+minimal and most service was delivered by a state agency. Years of neglect resulted in a sparse
+terrestrial network with congestion, high fault rates, and obsolete equipment. At the end of 1992,
+Tanzania had approximately 78,000 telephone lines for a population of about 27 million people. Some
+80% of these lines were concentrated in Dar es Salaam, where about 7% of the population lived. In
+Dar es Salaam, one telephone line had been installed per hundred residents. In rural areas, one line
+was available per two thousand residents on average. Many towns and villages did not have access
+to telecommunications services at all.
+According to the Tanzanian telecommunications authority, 153,000 potential subscribers had
+applied for private telephone service but had not yet received it. Applicants waited from 7 to 10 years
+for service hook-ups. “Unofficial” demand from individuals who had not applied for service was
+thought to be equally high and growing rapidly. By the end of 1996, the demand for private
+telephone service—both official and unofficial—was forecast at nearly 500,000 potential subscribers.
+Research Associate Dale O. Coxe prepared this case under the supervision of Assistant Professor Anita McGahan as the
+basis for class discussion rather than to illustrate either effective or ineffective handling of an administrative situation. Julia
+Kou provided additional research assistance.
+Copyright © 1996 by the President and Fellows of Harvard College. To order copies or request permission to
+reproduce materials, call 1-800-545-7685 or write Harvard Business School Publishing, Boston, MA 02163. No
+part of this publication may be reproduced, stored in a retrieval system, used in a spreadsheet, or transmitted in
+any form or by any means—electronic, mechanical, photocopying, recording, or otherwise—without the
+permission of Harvard Business School.
+1
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.796-128
+African Communications Group
+Although a planned US$220 million in infrastructure improvements would double the number of
+available lines by the end of 1997, demand for private telephone lines would not be satisfied.
+The infrastructure that supported the country’s private telephone lines was antiquated and
+poorly maintained. Line problems and broken parts meant that many subcriber lines either did not
+work or worked intermittently. Some private telephone subscribers offered their phones to the public
+for calls at rates up to 2,000% above their costs. The success rate on a call averaged between 25% and
+45%. In most areas, the caller had to wait several minutes before receiving a dial tone; once a dial tone
+was obtained, it could take 40 minutes to reach other cities within Africa and 20 minutes to connect
+with Europe. In addition to private telephones, approximately 300 coin-operated pay phones were
+located across Tanzania. Most were defective and needed to be replaced. The country’s high inflation
+rate also meant many working pay phones were configured to accept coins that were no longer in
+circulation.
+Card-Operated Pay Phone
+The ACG pay-phone system had four basic elements: card-operated phones, a radio system
+for transmitting calls, a central platform at ACG headquarters for routing calls, and a connection
+between the central platform and the Tanzania Telecommunications Company Limited (TTCL). TTCL
+operated the country’s basic wireline telephone system. A typical call from an ACG pay phone would
+be transmitted via copper cable to a nearby outstation. Each outstation could be connected with up to
+10 pay phones. The outstation would transmit the call via radio signal to ACG’s headquarters in Dar
+es Salaam. The central platform would then route the call to TTCL, where it would be directed to a
+local, long-distance, or international destination. The system was innovative because it did not
+require copper wire between outstations and ACG’s central platform. (See Exhibit 1.) The central
+platform contained all card information and allowed ACG personnel to continuously manage and
+monitor the phone system from the central office.
+ACG pay phones were activated by inserting a card that had been pre-programmed to allow
+the holder to make phone calls lasting a specific number of minutes. These cards could be purchased
+in a variety of values from retail establishments that were located near phone booths. Retailers
+purchased cards from ACG at an average discount of 14% off face values. Cards were available with
+face values of US$0.87, US$1.74, US$3.47, US$8.68, and US$34.72 which corresponded to values of
+500, 1,000, 2,000, 5,000 and 20,000 Tanzanian shillings. 1 ACG managers believed that the kind of call
+a customer wished to make would govern the kind of card purchased. Generally, 500 and 1,000 cards
+would be used for local calls; 2,000 and 5,000 cards for long distance; and 20,000 cards for
+international calls.
+The newly purchased card was sealed in a wrapper to indicate that it was unused.
+Instructions on card use—how to insert the card, lift the hand set, and listen for instructions—were
+printed on the wrapper in both Kiswahili and English, the two predominant languages in Tanzania. 2
+The card information and the destination number were transmitted from the pay phone by wireless
+radio to ACG’s central station. There, a computer analyzed the card to determine its validity and
+value. Once the analysis was completed, the caller received a voice prompt, first in Kiswahili and
+then in English, to dial the desired number.
+After the number was dialed, the central station’s computer analyzed the number to
+determine its destination, the price of the call, and the length of time the caller could talk given the
+value on the card. A voice prompt provided the customer with this information. If there was
+insufficient value on the card to make the call, the caller was informed. If there was sufficient value,
+the call proceeded. Once a card’s value was exhausted, the holder would throw it away.
+1 In January 1996, US $1.00 = approximately 576 Tanzanian shillings.
+2 Approximately 30% of Tanzania’s population spoke English as its first language or language of choice.
+2
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.African Communications Group
+796-128
+Paging
+ACG’s management believed that the wireless radio system would easily support paging and
+voice-mail services at very low incremental cost. Paging and voice mail would have great appeal in
+Tanzania because they would allow quick communication to parties that did not subscribe to private
+phone service. Voice mail would allow a mailbox subscriber to receive messages and to leave
+messages for other mailbox subscribers. For an additional fee, a voice mailbox would also be linked
+to a pager that signaled the subscriber when a message was received.
+ACG’s management envisioned that subscribers would send and retrieve messages through
+ACG’s pay phones. The extra hardware required to operate the paging and voice-mail systems
+would be housed in ACG’s central office. Initially, ACG expected to use a stand-alone billing system
+to collect subscriber fees on pagers. It estimated that paging and voice mail could double pay-phone
+usage. Eventually, the central platform for the pay-phone system would also be used to manage the
+paging and voice-mail systems.
+Customers
+In 1992, there were an estimated 4.7 million households in Tanzania. The population had
+grown at an annual rate of 3% between 1968 and 1988. Growth was projected to continue in this
+range. Dar es Salaam was located on the country’s eastern coast. Its location made it the primary port
+for landlocked countries in central Africa. Overall, however, Tanzania’s urbanization was low, with
+only 19% of the nation’s 27 million inhabitants living in towns and 7% of the population living in Dar
+es Salaam.
+Tanzania’s economy was primarily agricultural. In 1994, over 50% of its GDP was produced
+in the agricultural sector (see Exhibit 2). Approximately 80% of the population depended on
+agriculture, fisheries and related sectors for its livelihood. Estimated GDP per capita for 1995 was less
+than US$139. The country’s 90% literacy rate and 51-year average life expectancy were high
+compared to other sub-saharan countries.
+Tanzania’s infrastructure was uniformly poor. In addition to inadequate telephone service,
+electricity and water services were irregular and unpredictable. Many primary roads were either
+unpaved or in poor condition and travel was difficult: in mid-1995, it took three days to travel from
+Dar es Salaam to Mwanza, Tanzania’s second largest city, located 751 miles away.
+Much of Tanzania’s commerce was conducted in person. People traveled to make and to
+confirm appointments, to order supplies, to learn whether products were available, and to
+communicate with family members. A woman ordering a dress, for example, would have to visit the
+dressmaker as many as five times before receiving the product. The first and second trips would be
+required to schedule and complete a fitting, the third trip to approve the fabric after it had been
+received by the dressmaker, and the fourth and fifth trips to obtain the product. Extra trips were
+required because the dressmaker was not home or was behind schedule, and had no way of notifying
+the customer to delay her visit.
+Within cities, the majority of telephone calls were made by business people. About 70% of
+telecommunications revenue was received from business subscribers, 20% by government
+organizations, and 10% from residential subscribers. Businesses used telephones to maintain contact
+with branch offices and to receive information from travelling employees. Businesses also used
+phones to communicate with customers and suppliers. (See Exhibits 2 and 3 for information on
+Tanzanian commerce.) The shortage of private, residential phone service meant that business
+telephone misuse was common. To minimize misuse, many businesses restricted phones to local
+calls. Employees were required to use pay phones for all types of long-distance calls.
+Telephone subscriptions were more common among businesses in the agricultural and
+transportation sectors than in the retail sector. Most retailers dealing in food and household items did
+not have telephones. Retail shops, known as dukas, were densely clustered along urban and rural
+streets. The dukas were small make-shift open-air stalls made of wood and tin. Although each duka
+3
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.796-128
+African Communications Group
+sold only a few products, they were a major source of commercial activity in aggregate. ACG
+managers believed that card phone, paging, and voice-mail services would provide these small
+establishments and their customers with more efficient ways of doing business.
+Banks had telephones but did not permit customers to use them. Since the Tanzanian
+economy was essentially a cash economy—credit cards and cheques were rarely accepted—banking
+customers often deposited or withdrew large amounts of cash. It was customary for a business
+courier who carried cash to inform his client that he had reached a bank safely or that he was leaving
+the bank with money. ACG planned to place phones in banks and commercial centers to satisfy this
+demand.
+Most transport companies had little contact with drivers once goods were picked up at urban
+depots. The cost of radios was significant and only a few companies could afford to use them. A
+widespread network of pay phones throughout Tanzania would allow truckers to confirm that
+deliveries had reached their destinations.
+In 1996, airports, hospitals, ports, and educational institutions did not have public pay
+phones. These locations were high traffic areas for both residential and business callers, and ACG’s
+management believed that demand at such facilities would be robust.
+Most residential calls were placed to locations within Tanzania. It was common for one
+family member to migrate to Dar es Salaam for work while the rest of the family lived in a village at a
+subsistence level. Since the city worker often provided income for an entire family, there was demand
+for communication links between urban and rural areas. Many villages, however, had either no
+phone or only a small number of phones. News between family members was conveyed through
+prearranged calls or personal visits.
+Demand for pay phones would also arise among some middle-and high-income customers
+who wanted to make international calls to Europe, Asia, or the United States. People in
+transit—tourists, expatriates, business travelers—also would use the pay-phone system to make
+international calls. Eighty percent of Tanzania’s international travelers connected through Dar es
+Salaam.
+A study of pay-phone usage in Dar es Salaam showed that approximately 150 three-minute
+calls were made each day at each of the 60 working phones already operated by companies other
+than ACG. The total amount of money spent each day on calls per phone was approximately US$100-
+$150. A poll of customers indicated that 65% were using pay phones because they did not have access
+to another working phone. Sixty-three percent of customers surveyed were in business occupations,
+20% were students or teachers (defined as non-business customers), and 17% were other non-
+business customers. Some 71% of pay-phone users were residents of Dar es Salaam; 12% were
+tourists; and 17% were other non-residents. The average amount spent per week on public pay
+phone calls was US$10.00 per week for business customers and US$6.00 per week for non-business
+customers, with business customers making an average of 14 calls per week from pay phones and
+non-business customers making 12 calls per week. 3
+The Telecommunications Industry
+Like some of its neighbors, Tanzania operated under a socialist system of government from
+the mid-1960’s to the mid-1980’s. During this period, the state nationalized and dominated most
+sectors of the economy, including banking, insurance, trade, and telecommunications. Many large
+agricultural estates were nationalized when the government embarked on a process of “villagization”
+or “ujama” to relocate large portions of the population to rural areas. GDP grew approximately 5%
+per year and inflation grew 10% from the mid-1960s until the late 1970s. In 1978, war with Idi Amin’s
+Uganda and a simultaneous rise in oil prices rapidly consumed Tanzania’s limited supply of hard
+currency and devastated the economy. Between 1980 and 1987, per capita GNP decreased at an
+3 African Communications Group survey of pay-phone users in Dar es Salaam.
+4
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.African Communications Group
+796-128
+average annual rate of 1.8% while inflation exceeded 23%. Production of major cash crops declined,
+official development assistance fell dramatically, and private capital investment dropped to near
+zero. By 1990, Tanzania ranked as one of the poorest countries in the world, with GDP per capita of
+US$105.
+In the mid-1980s, Tanzania sought help from both the International Monetary Fund and the
+World Bank. Under the resulting Economic Recovery Program, Tanzania liberalized import
+restrictions, freed producer prices and interest rates, devalued the Tanzanian shilling, and reduced
+state involvement in industry. In 1990, the government implemented a second set of reforms called
+the Economic and Social Action Program (ESAP). ESAP attached priority to infrastructure
+development, with particular emphasis on transportation and telecommunications. In 1990 the
+government also enacted the National Investment Act, which provided investors with “investment
+guarantees, application procedures, and incentives.” Investments approved by the Act’s Investment
+Promotion Center (IPC) qualified for five-year “tax holidays,” waivers of import duty and sales tax
+for equipment used in the business, and the right to retain at least 50% of foreign exchange earnings
+in external accounts. The Banking and Financial Institutions Act (1991) created a legal framework for
+competitive banking and other financial services.
+In January 1992, the government enacted legislation aimed at restructuring state agencies: the
+telecommunications authority and other commercial agencies were to be privatized. To attract
+foreign investment in the newly privatized companies, the Foreign Exchange Act of 1992 removed
+foreign exchange controls for individuals and companies doing business in Tanzania. The Bureau of
+Exchange could buy and sell at market rates; individuals could establish foreign currency accounts at
+any bank without central bank clearance; and foreign shareholders could export or transfer share
+certificates to new subsidiaries without advising the central bank. Tanzania also joined both the
+Multilateral Investment Guarantee Agency (MIGA) and the International Center for Settlement of
+Investment Disputes. 4 Although Tanzania made substantial progress in economic reform, at the close
+of 1995 it still remained one of Africa’s largest state economies.
+Telecommunications Infrastructure
+The Tanzania Posts and Telecommunications Corporation (TPTC) was a state-owned
+enterprise established in 1977 after the break-up of its predecessor organization. It was staffed by a
+huge bureacracy and held a monopoly on mail and telecommunications services until the early 1990s.
+Of TPTC’s 5,000 staff members, less than 2% were graduate engineers. TPTC did not offer paging,
+fax, cellular, or data-network services. In the early 1990s, it faced only modest competition. One
+private radio-call service, with a base of 105 subscribers, had stations at Dar es Salaam, Mwanza, and
+Arusha. A private paging service, consisting of one transmitter and 30 receivers, was located at
+KCMC Hospital in Dar es Salaam. Sound broadcasting in Tanzania was provided by one private
+organization and by two government-owned organizations: Radio Tanzania and The Voice of
+Tanzania and Zanzibar. By the close of 1995, however, at least three television stations were
+broadcasting in Tanzania. There were also several private calling offices, two high-end cellular phone
+services, and a local Tanzanian company with 10 card-operated pay phones.
+The scarcity of foreign exchange and private capital investment during the 1970s and 1980s
+affected the government’s ability to replace, repair, and maintain the country’s telecommunication
+infrastructure. Between 1985 and 1987, the government invested an average of $12 million in its
+telecommunications sector, an amount equivalent to only 0.3% of its GDP. This level was low by
+international standards and lower than that of most other Southern African Development
+Community (SADC) countries. 5 As of September 1992, the TPTC had identified over US$180 million
+priority projects, but had less than US$50 million to spend on them. In addition, charges of
+inefficiency and corruption scarred TPTC’s reputation for responsible spending.
+4 MIGA protected private investors against certain risks in developing countries. These risks included losses from
+currency transfers, expropriation, war, and civil disturbance. MIGA also advised developing countries on foreign
+investments and provided a forum for dialogue on investment issues between investors and governments.
+5 Other members of SADC included Angola, Botswana, Lesotho, Malawi, Mozambique, Swaziland, Zambia, and
+Zimbabwe.
+5
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.796-128
+African Communications Group
+Following Tanzania’s commitment to liberalize its economy, a US$220 million, five-year loan
+for telecommunications restructuring was obtained from Denmark, Sweden, Japan, the European
+Union, the World Bank, and the African Development Bank. The project, which was monitored by the
+World Bank, included the repair of more than 12,500 telephone lines and the installation of digital
+telephone exchanges, high-capacity transmission systems, and global switches. Industry observers
+believed that when these projects were completed, Tanzania’s telecommunication infrastructure
+would be significantly improved.
+At the close of 1993, TPTC officially split into two separate companies: the Tanzania Posts
+Company (TPC) and the Tanzania Telecommunications Company Limited (TTCL). The Director of
+the TTCL reported to the Ministry of Transport and Communications. TTCL’s responsibilities
+included planning, managing, and developing domestic and international public telecommunications
+services. It also provided dedicated networks for the police, military, railways, and civil aviation.
+Like its predecessor, however, few of TTCL’s more than 4,000 employees were professionals. It
+employed approximately 50 engineers and 1,300 technicians. Remaining employees were operations
+and support staff. Inefficiency and corruption continued to be serious issues for the company.
+Industry observers expected TTCL to be privatized in 1996.
+The Tanzania Communications Commission (TCC), established in 1994, provided a “policy
+and regulatory framework” for the communications sector in Tanzania. By the end of 1995, it had
+issued 2 licenses for cellular services, 5 licenses for paging (including one to ACG), and some 20
+licenses for pay-phone services (including one to ACG).
+Suppliers
+ACG dealt with suppliers in a number of different markets for the equipment necessary to
+operate its system. Prices charged by suppliers of telecommunications equipment varied greatly
+depending on the intensity of competition, interest in a particular market, and geographic location of
+the country to which equipment was shipped. Suppliers generally charged more for equipment
+shipped to Africa—routinely adding a 50% surcharge—because few competitors supplied that
+market. 6 Service providers with main offices in the United States, however, qualified for U.S. prices,
+even when equipment was shipped to Africa.
+Because the telecommunications market in many African countries had only recently opened
+to private investment, buyers of equipment were eager to negotiate regional exclusivity agreements
+with suppliers. Some equipment suppliers favored the agreements because they gave buyers an
+incentive to serve as their advocates in new markets. A few suppliers, such as Motorola and AT&T,
+hired agents in Tanzania and other countries to sell their equipment. Others entered into partnerships
+with local firms. For example, Millicom had entered into a joint venture with TTCL and another
+Tanzanian company which sold Motorola equipment. The joint venture, called Mobitel, sold cellular
+telephone service in Tanzania. Mobitel’s customers were required to purchase cellular phones made
+by Motorola.
+ACG selected the equipment for its card-operated pay-phone network from a variety of
+suppliers. Systems from AT&T, Landis & Gyr Communications, Schlumberger, Alcatel, and other
+manufacturers were evaluated, but the high cost of phone cards and a lack of flexibility made many
+of these technologies unattractive. ACG managers chose a Texas-based company called Intellicall as a
+principal equipment supplier. The company would manufacture ACG’s pay phones and its central
+platform. A Quebec-based company called SR Telecom would provide the radio transmission
+equipment necessary to connect pay phones with the central platform. Equipment from these two
+suppliers would give ACG the lowest-cost card-phone system in Tanzania. ACG had also contracted
+with a number of other companies for booths, plastic cards and other supplies. These additional
+contracts reflected competitive terms in commodity markets.
+6 Many major telecommunications equipment and services providers and suppliers were focused on emerging
+markets in Asia, South America, and Eastern Europe.
+6
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.African Communications Group
+796-128
+Intellicall provided equipment to companies in North America, Latin America, and Asia. The
+firm had a reputation as a technology leader in calling networks. Sales had increased from $10.9
+million in 1985 to over $85 million in 1994. ACG chose Intellicall’s card phones for their versatility:
+the phones could be configured to accept prepaid cards or credit and ATM cards. Cards could be
+validated by either magnetic strips or PIN numbers. The phones also could be connected to regular
+lines or adapted for cellular systems, and configured to use AC or DC power. The durability of the
+units allowed them to be placed in any indoor or outdoor location. ACG’s management believed that
+the Intellicall system was unique: its centralized computer technology permitted ACG personnel to
+monitor the system from headquarters, a feature not offered by other manufacturers. The upper limit
+on the platform’s capacity exceeded ACG’s most agressive scenarios for expansion in Tanzania.
+ACG was exploring the possibility of a long-term exclusivity agreement with Intellicall for
+several reasons. The unique operating characteristics of the Intellicall platform made it incompatible
+with pay phones made by other manufacturers. Intellicall also saw benefits to a long-term agreement
+with ACG. To date, Intellicall’s products had been tailored predominantly for Western markets. To
+meet its growth objectives, Intellicall was eager to obtain access to new markets. ACG’s configuration
+of pay phones with a wireless radio system was a new concept that could be adapted to other
+markets. The two companies had signed an agreement that stipulated contingencies on price
+increases, payment schedules, and equipment ownership and responsibilities.
+SR Telecom was one of two leaders in the market for analog-to-digital, microwave radio
+systems for transmitting signals from a single point (e.g., ACG’s radio tower) to multiple points (e.g.,
+ACG outstations). The company sold equipment to companies in North America, Europe, Asia, Latin
+America, and Africa. It had sales of more than US$100 million in 1994 and held approximately 50% of
+world market share in wireless radio equipment. SR Telecom operated large-scale production
+facilities and had not customized its equipment for ACG. Its wireless radio system for transmitting
+phone calls included the central tower, outstations, and a central station linked to the Intellicall
+central platform. The wireless system allowed ACG to operate on only one connection to TTCL’s
+network rather than on connections for every phone. The result was that ACG negotiated only one
+license and one deposit for service with TTCL rather than separate licenses and deposits for each
+phone. The single point of connection also allowed ACG to monitor the line against misuse.
+The wireless radio equipment was the most costly segment of the card-operated pay phone
+system. Favorable lease-to-buy terms, however, had been negotiated for equipment. At an outstation
+price of US$17,043, ACG had to attach 5 pay phones to each outstation to make the installation cost-
+effective. Each outstation could support up to 10 phones. In rural areas, the SR Telecom solution
+would not be as favorable as it was for Dar es Salaam because rural usage would be insufficient to
+support 5 phones. ACG therefore planned its roll-out for Dar es Salaam and several other urban
+areas.
+Although paging was initially planned as an add-on service, ACG had already selected
+Glenayre Electronics as its paging equipment supplier. Like Intellicall, Glenayre saw advantages to a
+long-term agreement with ACG: a marriage of pay phone and paging technologies would allow
+Glenayre to market paging to a larger segment of the market. Glenayre and Intellicall had agreed to
+work with ACG managers to develop an interface between their systems.
+Service Distributors
+For many years, TTCL and its predecessor, TPTC, were sole distributors of Tanzania’s
+telecommunication services. As the country moved to privatize the telecommunications industry,
+new service providers had entered the market, and more were expected to follow. Financial resources
+and management expertise varied significantly among both bidders and licensees. Initially, AT&T
+and other large companies had not applied for licenses. One industry observer suggested that
+concerns about cost effectiveness and commitments to other developing markets would keep these
+companies out of Africa for several years.
+Service distributors had to obtain separate licenses for the right to operate equipment and for
+a link to the central phone network controlled by TTCL. Most licenses were obtained from the
+Tanzania Communications Commission (TCC) but the license for pay-phone service was issued by
+7
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.796-128
+African Communications Group
+TTCL. 7 The process of submitting a proposal, winning a contract, and obtaining licenses was lengthy.
+(Exhibit 4 provides an example of the licensing process.)
+Pay Phone Service xxx At the end of 1995, approximately 20 licenses had been issued to prospective
+pay-phone operators but only a few companies actually offered the service. Several small companies
+operated calling offices at single sites in Dar es Salaam. JCL, a small Tanzanian competitor, owned a
+network of 10 card-operated pay phones. TTCL had announced early in the deregulation process that
+it planned to exit the pay-phone business. In early 1996, however, the company advertised a tender
+for a joint venture pay-phone system. Industry observers believed that it would be mid-1996 before
+TTCL analyzed the responses and completed the selection process.
+Each pay-phone provider in operation had established a separate physical connection to
+TTCL’s network for each pay phone. The result was that phone locations had been constrained by
+TTCL’s exchange locations. Separate licenses had been required for each phone. The direct links
+between the phones and TTCL meant that pay-phone owners could not track usage through a
+computerized system. The pay-phone operator obtained revenue from the coin box or from sales of
+phone cards, and incurred operating costs in the form of bills from TTCL. ACG had learned that
+TTCL’s bills sometimes included charges for calls that had not been made from the phones. As a
+consequence, some pay-phone operators hired monitors to track usage. Discrepancies were identified
+through a comparison of monitors’ records with TTCL’s bills. Industry observers suspected that
+some pay-phone operators had made special payments to TTCL employees in exchange for
+assurances that bills would not be prone to error.
+The card-phone technology chosen by JCL relied on a hole punching system that operated on
+the card as it was used in a JCL phone. The cards were sold in two values: 1,500 shillings (US$2.63)
+and 3,000 shillings (US$5.21). ACG management believed that JCL’s operating margins were about
+50% on its lower-value cards, and 60%-75% on its high-value cards. JCL’s technology limited the
+value that could be stored on a card to less than the amount required for international calls.
+One advantage of JCL’s card-phone system was that it operated on a much lower capital
+investment than ACG’s wireless system. However, JCL’s low level of investment meant that the
+company did not qualify for Investment Promotion Center benefits, which included tax and duty
+exemptions. ACG estimated that the foregone benefits added 75% to the cost of JCL’s pay phones. 8
+Cellular Phone Service xxx By the end of 1995, two licenses had been issued for cellular services in
+Tanzania. Mobitel, a joint venture between TTCL and Luxembourg-based Millicom International
+Cellular S.A., began operating in Dar es Salaam in October 1994 with a network that covered Dar es
+Salaam and Zanzibar. 9 The company targeted a small high-income niche market and had a base of
+approximately 350 customers after offering service for nearly a year. Mobitel expected to increase the
+number of subscribers to 5,000 over five years. Tritel, a Tanzanian/Malaysian venture that began
+operating in late 1995, also targeted a subscriber base of 5,000.
+The costs associated with cell-phone service were high. Mobitel’s initial capital investment in
+its cellular grid was estimated at US$7.5 million and customer fees were approximately US$1,800 for
+a phone, US$40.00 for monthly service, and US$0.40 per minute of use. The entry of Tritel into the
+market was expected to result in somewhat lower fees.
+Mobitel’s license required it to operate 20-30 pay phones on its cellular system. Industry
+observers believed that Mobitel would only meet the minimum requirement and would select a
+technology that supported a wide range of calling features. Mobitel had acquired cellular licenses in
+7 Although service distributors—particularly distributors of pay phone services—were competitors of TTCL,
+they also provided the agency with badly needed revenue that could be used for infrastructure upgrades.
+8 The minimum qualifying investment level was $500,000.
+9 Zanzibar was an island off the coast of Tanzania. In 1964, Zanzibar and Pemba, another island, had merged
+with Tanganyika to become Tanzania.
+8
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.African Communications Group
+796-128
+other African countries. Within Tanzania, the company planned to expand its network to several
+other cities, including Arusha and Mwanza.
+African Communications Group
+ACG, Inc., was organized as a corporate holding company headquartered in Cambridge,
+Massachusetts. ACG Telesystems Limited, operator of the card-phone venture in Tanzania, was
+located in Dar es Salaam. A separate local subsidiary, ACG Paging Systems, would be established for
+paging. 10 While ACG Telesystems operated within the general framework of the parent company’s
+policies and systems, it had separate human-resource policies that reflected local laws. ACG’s
+shareholders included the management team, businesses, private investors, and venture capitalists.
+Operations
+ACG’s long-term strategy was to exploit significant economies of scale and scope through
+multiple ventures in Africa. The Tanzanian pay-phone network would serve as a foundation not only
+for paging and voice-mail, but also for data communications, private networks, and other
+communications and media services.
+Wireless Card-Operated Pay PhonesxxxACG planned to develop a network of 1,000 card phones
+in the major cities of Tanzania. By the end of 1996, it would install 400 phones in Dar es Salaam. By
+the end of 1998, it would extend the network by installing 200 phones in each of three other
+Tanzanian cities.
+Operating expenses for the pay-phone system would include costs for cards and their
+packaging; commissions paid to retailers; charges from TTCL; and overhead that included salaries,
+maintenance costs, and marketing costs. Capital costs for each new phone site would be about
+US$5,100. This figure included the cost of the phone itself at US$1,200, the phone booth housing at
+US$500, and one-fifth of an outstation at US$3,400. These costs would be lower if the market
+supported more than 5 phones per outstation.
+ACG would also incur additional fixed costs associated with radio transmission and its
+central platform. The central tower was located on top of the University of Dar es Salaam’s tallest
+building—100 meters above sea level and 6 kilometers outside the central city. The site provided
+excellent coverage of both the city and its outlying area. Additional space at the site could be used to
+support data network services.
+Total capital costs for the first 200 pay phones, the radio transmission system, and the central
+platform were forecast at US$3.5 million. Operating cash flows from the card-phone venture were
+expected to be positive after the first six months of operation. Exhibit 5 describes three pay-back
+scenarios. ACG conservatively forecast daily usage at one-third the rate on existing phones.
+Paging/Virtual Phone Service xxx In late 1995, ACG learned that it had been awarded one of five
+licenses issued by the TCC for paging services. Users would be charged US$20 to US$150 for the
+pager itself, and US$20 per month for service. This monthly fee was slightly higher than the US$15-
+18 monthly fee charged by TTCL for basic phone service. For an extra $5.00 per month, an ACG
+paging subcriber could rent a voice mailbox. ACG anticipated a base of 10,000 subscribers in Dar es
+Salaam.
+10 Establishing a separate local subsidiary was a condition TCC had required for the paging license.
+9
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.796-128
+African Communications Group
+Marketing and Sales
+In 1994, ACG analyzed options for locating its pay phones. Criteria used to identify the first
+200 sites included traffic density, security, lighting, physical conditions, telephone availability, and
+proximity to retail establishments where cards could be sold. Among locations that met these criteria
+were the airport, train and bus facilities, hotels, shopping areas, office complexes, hospitals,
+educational facilities, and clusters of dukas. Another two hundred sites were identified for the next
+phase of expansion.
+Once locations had been identified, ACG’s marketing group investigated property ownership
+at each site. Many of the properties were owned by the National Housing Authority or by other state
+corporations such as the Tanzania Harbor Authority, the Postal Commission, and the Railway
+Corporation. Finding officials to approve the requests was a lengthy process. Some owners requested
+annual rent payments. ACG management believed that low space requirements for phone booths
+meant that rents would be low. Power connections were available at all sites and the company
+planned to minimize the effects of power interruptions by installing battery-operated back-up power
+at each location. The presence of nearby businesses was expected to inhibit vandalism.
+ACG planned a large multi-media campaign for the pay-phone launch. Print, radio, and
+television advertising would be used to build awareness. ACG’s sales force would demonstrate
+phone use and assist customers at phone booths with call procedures. To help customers associate
+product quality and convenience with the ACG name, a colorful logo would be displayed
+prominently on each phone booth and phone card. All promotional materials were developed in the
+United States by a professional marketing group and sent by air freight to Tanzania. An American
+marketing director had been relocated to Tanzania to oversee the marketing and advertising
+program.
+Table 1 shows the rates that ACG planned to charge for calls. ACG believed that the quality,
+dependability, and convenience of its product made the system attractive enough to command a
+premium over TTCL. TTCL operated its phone system at a loss.
+Table 1 Rates of Local Competitors in Tanzania by Calling Distance (US$ per minute)
+0-30 km
+TTCL (coin)
+JCL (card)
+ACG Telesystems (card)
+Binis (call office)
+HostG (call office)
+Inter-Telecoms (call office)
+Kremola (call office)
+Kisutu Stand (call office)
+Post Office (call office)
+Speed Link (call office)
+.06
+.21
+.17
+.52
+.52
+.35
+.52
+.35
+.52
+.52
+30-150 km
+.31
+.75
+.87
+1.04
+1.39
+1.74
+1.56
+.52
+1.30
+1.56
+S our ce: AC G Telesyst em s
+ACG’s prices reflected a markup of US$0.035 per pulse unit over the base rate that TTCL
+charged ACG for local calls. 11 The company anticipated that TTCL’s rates would increase when
+TTCL became private. Although a regulatory commission monitored TTCL’s price increases, the
+margin that ACG Telesystems added to each call was not subject to regulatory approval. ACG
+planned to maintain its absolute margin by passing TTCL price increases through to consumers.
+Indeed, as the volume of calls increased, ACG hoped to increase its margin by negotiating a better
+11 Pulse units were a measurement used by TTCL to determine call charges. The pulse rate varied depending on
+whether a call destination was local, long-distance, or international.
+10
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.African Communications Group
+796-128
+rate from TTCL. If ACG was successful in this renegotiation, it planned to lower prices and target
+lower-income customers.
+ACG planned to print prices on its cards just before sale to retailers. When necessary, per-
+minute charges could quickly be changed in the central-office computer. This system gave ACG the
+flexibility to respond to Tanzania’s inflation rate, which ran between 20% and 30% a year. It also gave
+ACG the ability to react to changes in competitors’ prices. ACG was protected against Tanzanian
+inflation because revenues were converted into U.S. currency before bills were received from
+TTCL—generally a two to three month delay from the time charges were incurred.
+Servicing
+There were few skilled technicians in Tanzania trained to western standards. As a result,
+ACG would have to invest considerable resources in training programs. The company also had taken
+steps to reduce exposure to service problems. Maddy and Laguë had selected durable equipment to
+avoid damage from vandalism and weather. Although phones in the field would be connected to
+outstations by copper wire, a material often stolen for jewelry-making, ACG planned to place
+outstations within a half a kilometer of phones and to bury the cable connection wherever possible.
+The central platform was continously managed and monitored from headquarters. If calls were
+blocked or a phone became inoperable, the platform would receive an immediate report. A repair
+team would be dispatched within an hour in most cases. In the event of vandalism at specific
+locations, phones would be moved to alternate sites.
+Technology suppliers would provide ACG Telesystems with training services and after-sales
+support. Suppliers and ACG’s management team would train repair crews. Replacement parts would
+be stocked so that problems could be quickly resolved. Although suppliers believed that the life of
+equipment was seven or more years, ACG hoped to maintain high quality and low service costs by
+replacing phones approximately five years after installation. This replacement program would also
+allow the company to take advantage of technological advances.
+Administration
+ACG recruited an experienced expatriate team to oversee its projects. Senior management
+included a Chief Technology Officer, a Managing Director, Director of Finance, Director of Marketing
+and Sales, Engineering Design Manager, and Engineering Operations Manager (see Exhibit 6).
+Maddy had recruited seasoned managers from telecommunications projects around the world to
+senior posts. Several owned equity options in either ACG or its subsidiary. The entire team except
+Maddy and Laguë were based in Tanzania. Maddy and Laguë coordinated the procurement of
+investment capital, legal and accounting services, information systems, and other resources from
+Cambridge.
+ACG Telesystems planned to hire 80 employees by the end of 1996, including technicians,
+clerical, support, and sales staff. Although the senior management team was composed of expatriates,
+the remaining staff would be Tanzanian. Many prospects had already been identified, including
+managers from within the local telecommunications industry, University of Dar es Salaam graduates,
+and professional association members. An employee manual based on Tanzanian labor regulations
+had been developed by ACG and reviewed by a team of local human resource experts, and job
+descriptions had been prepared. All recruits would take part in a training program that covered
+corporate procedures as well as computer and job-specific skills.
+Financing
+ACG Telesystems had attracted US$3.5 million in debt and equity to fund working capital
+and equipment purchases. No single shareholder held a majority stake in ACG. The company
+expected to be profitable by its second year of operations (see Exhibit 7). Although cash flow from
+initial card-phone operations would be positive after six months, the proceeds would be used to
+finance the acquisition of additional equipment for expansion of the pay-phone network within
+11
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.796-128
+African Communications Group
+Tanzania. Thus, the financial success of the first 200 phone installations would determine timing of
+the next phase of the roll-out. ACG’s investment and employment plans qualified the pay-phone
+venture for eight years of tax exemptions. 12 Following this “tax holiday,” Tanzania’s tax rate of 35%
+on profits, 10% on dividends, and 35-75% on equipment purchases would apply. All of ACG
+Telesystems’ profits were fully convertible to American dollars.
+Options for ACG
+The speed with which telecommunications markets were opening throughout Africa meant
+that ACG’s management needed to determine the best combination of opportunities in Tanzania and
+elsewhere on the continent. Extending the pay-phone network beyond the four largest cities in
+Tanzania was an option. Population densities were much lower than in the country’s larger urban
+areas, however. Expanding the network would require over US$ 1 million in equipment and
+infrastructure in each new regional area. ACG expected to fund expansion with internally generated
+cash flows from the card-phone venture. Another option was to concentrate on services, such as data
+communications, that could be added to the pay-phone network in Dar es Salaam.
+ACG management also considered expanding to a large city in a new country. Uganda and
+Zimbabwe were particularly promising. Uganda shared a border with Tanzania. Although the
+country had experienced more than 20 years of political instability following independence in 1962,
+its government had stabilized in the late 1980s. Like Tanzania, the Ugandan economy was dominated
+by agriculture, with about 50% of its GDP produced in that sector. (Exhibit 8 compares statistics for
+Uganda, Zimbabwe, and Tanzania.) At the end of 1995, Uganda had a population of over 19 million,
+only 11% of which lived in urban areas. About 774,000 people lived in Kampala, the country’s largest
+city. The next largest city, Jinja, had a population of 65,000. Uganda’s telecommunications
+infrastructure was similar to TTCL’s in Tanzania.
+Zimbabwe had been politically stable since 1980, when its black majority had gained power.
+The country operated under a democratic system of government. Economic activity included a
+manufacturing sector that contributed 25% to GDP. The country also held a variety of mineral
+resources. Agriculture generated less than 15% of GDP. In 1992, the population of Zimbabwe was
+10.7 million, over 27% of which lived in urban areas. Harare, the largest city, had a population of
+nearly 1.2 million, while Bulawayo, the next largest city, had a population of more than 600,000.
+Zimbabwe’s telecommunications infrastructure had been improved in recent years with a fiber-optic
+digital network. In 1994, the country’s telecommunications agency had been denationalized and a
+private consortium was developing a cellular phone network. A regional communications network,
+using a high-capacity microwave link was also under construction.
+12 The Investment Promotion Center granted ACG Telesystems a five year tax exemption on profits and three
+years of duty and tax exemptions during network implementation.
+12
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.796-128
+Exhibit 1
+Schematic Representation of ACG Pay-Phone System
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.
+-13-796-128
+Exhibit 2
+African Communications Group
+Tanzanian Gross Domestic Product
+(Billions of Tanzanian Shillings in 1990 Prices)
+Sector
+Agriculture, forestry, fishing and hunting
+Mining and quarrying
+Manufacturing
+Electricity and water
+Construction
+Wholesale and retail trade; hotels and restaurants
+Transport and communication
+Finance, insurance, real estate, and business services
+Public administration and other services
+Imputed bank service charge
+GDP
+1977
+1980
+1983
+1986
+1989
+11.1 16.6 32.7 84.2 201.1
+(43.3%) (44.4%) (53.7%) (58.9%) (62.1%)
+0.2 0.3 0.2 0.5 1.1
+(0.9%) (0.9%) (0.4%) (0.4%) (0.3%)
+3.3 4.1 4.9 8.6 30.3
+(12.8%) (10.9%) (8.0%) (6.2%) (9.1%)
+0.3 0.4 0.5 1.5 4.8
+(1.0%) (1.1%) (0.8%) (1.6%) (1.4%)
+1.1 1.5 1.3 3.1 5.9
+(4.3%) (4.0%) (2.1%) (1.7%) (1.8%)
+3.4 4.7 8.1 19.5 53.6
+(13.3%) (12.6%) (13.4%) (13.8%) (16.1%)
+1.8 3.0 3.5 7.8 23.3
+(7.0%) (8.1%) (5.7%) (6.5%) (7.0%)
+2.4 3.7 5.3 8.1 20.6
+(9.4%) (10.0%) (8.6%) (6.2%) (6.2%)
+2.6 4.0 7.4 10.2 22.4
+(10.1%) (10.6%) (9.5%) (6.3%) (6.7%)
+-0.5 -1.0 -1.3 -2.5 -18.0
+(-2.1%) (-2.6%) (-2.2%) (-1.6%) (-5.4%)
+25.7 37.5 62.6 140.9 351.2
+(100%) (100%) (100%) (100%) (100%)
+Source: National Accounts of Tanzania, Bureau of Statistics
+14
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.African Communications Group
+Exhibit 3
+796-128
+Tanzanian Imports and Exports
+(a) Balance of Trade (Millions of U.S. Dollars)
+1981 1983 1986 1989
+Imports 1,079 875 1,155 1,380
+Exports 570 347 355 425
+Balance of Trade -509 -528 -800 -956
+Source: Tanzanian Ministry of Finance
+(b) Composition of Trade and Trading Partners, c. 1989 (Percent by Value)
+IMPORTS
+EXPORTS
+Composition
+Machinery and transportation equipment
+Building Materials
+Petroleum products
+Other industrial goods
+Consumer goods
+Composition
+26.1%
+15.5%
+17.1%
+33.2%
+8.1%
+Origins
+United Kingdom
+Japan
+Germany
+Italy
+Netherlands
+Other
+Manufactures
+Coffee
+Cotton
+Petroleum products
+Minerals
+40.4%
+23.2%
+22.7%
+6.8%
+6.8%
+Destinations
+17.3%
+12.5%
+11.8%
+7.8%
+5.1%
+54.5%
+Germany
+United Kingdom
+India
+Netherlands
+Italy
+Other
+14.8%
+10.8%
+6.7%
+6.1%
+5.1%
+56.5%
+Source: Economist Intelligence Unit Report on Tanzania cited in Tanzanian Government Reports
+15
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.796-128
+Exhibit 4
+African Communications Group
+Paging License Application Process
+Date
+Event
+August 1994 Tanzania Communications Commission (TCC) announced it would issue
+licenses for paging service.
+August/September 1994 African Communications Group (ACG) managers designed research for a
+market survey of data communication and paging needs.
+October/November 1994 ACG personnel executed market survey.
+November 1994 ACG submitted its feasibility proposal to TCC
+March 1995 ACG was notified that it had been short-listed, along with 9 other
+companies, to submit an application for a license.
+August 1995 TCC announced it would accept submissions for licensing (submissions
+limited to 200 pages).
+September 20, 1995 ACG delivered its submission package to TCC.
+November 1995 ACG was awarded one of 5 licenses
+November/December 1995 ACG negotiated terms of its license.
+March 1996 ACG was issued the license.
+June 1996 ACG planned to launch the paging service.
+16
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.African Communications Group
+Exhibit 5
+796-128
+Card-Operated Pay Phone Payback Analysis
+Low Demand
+Scenario
+Number of 3 minute calls per phone each day
+Average margin per call 1
+Operating days/year 2
+Annual revenues per phone
+Cost per card
+Cards consumed per phone each year 3
+High Demand
+Scenario
+Base Case
+30 45 60
+$0.40 $0.50 $0.60
+325 350 365
+$3,900 $7,875 $13,140
+$0.20 $0.20 $0.20
+975 1,770 2,630
+Total cost of cards per phone in each year $195 $354 $526
+Commissions 4 $546 $1,102 $1,840
+Annual contribution margin per phone $3,159 $6,419 $10,774
+Equipment costs $5,100 $5,100 $5,100
+19.4 9.5 5.7
+Payback (months)
+1 Margin varies with mix of local, long distance, and international traffic.
+2 Operating days per year depends primarily on the reliability of the TTCL network interconnection to ACG’s
+network.
+3 Average calls per card depends on the mix of card face values sold.
+4 Commissions are an average of 14% of revenues.
+17
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.796-128
+Exhibit 6
+ACG Telesystems, Organization Chart
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.
+-18-African Communications Group
+Exhibit 7
+796-128
+African Communications Group, Selected Financial Projections (US$ Thousands)
+Year 1
+Year 2
+Year 3
+Year 4
+Year 5
+Income Statement
+Net Revenues
+$2,033 $6,217
+$8,629
+$9,595
+$9,808
+Expenses
+Card Costs
+99 280 365 399 402
+Commissions 289 863 1,160 1,264 1,292
+Depreciation
+Salaries and Organizational
+Startup
+General and Administrative 199 946 1,390 1,540 1,545
+1,139 753 848 931 957
+1,035 798 898 986 1,025
+Total Expenses 2,761 3,640 4,661 5,120 5,221
+Net Income (728) 2,577 3,968 4,475 4,587
+Year 1
+Year 2
+Year 3
+Year 4
+Year 5
+Balance Sheet
+Assets
+Cash 82 319 439 597 566
+Card Inventory 27 93 104 114 115
+150 200 250 250 250
+0 3,250 5,004 4,964 3,424
+1,824 1,980 990 0 0
+725 420 210 0 0
+250 300 150 0 0
+199 946 1,390 1,540 1,545
+Spare Parts Inventory
+Fixed Assets
+Beginning Balance
+Additions
+Phones, Booths,
+Outstations
+Wireless Equipment
+Central Platform
+Depreciation
+Net Fixed Assets
+Total Assets
+3,050 5,004 4,964 3,424 1,879
+3,309 5,616 5,757 4,385 2,810
+80 104 144 160 163
+Liabilities & Equity
+Unearned Revenue
+Accounts Payable TTCL
+506 473 385 387 395
+Debt 1,450 1,450 1,000 0 0
+Common Stock 2,000 2,000 2,000 2,000 2,000
+Retained Earnings (727) 1,589 2,228 1,838 252
+Total Liabilities & Equity 3,309 5,616 5,757 4,385 2,810
+19
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.796-128
+Exhibit 8
+African Communications Group
+Statistics for Tanzania, Uganda, and Zimbabwe, c. 1992-1994
+Tanzania Uganda Zimbabwe
+27.0 19.4 10.7
+GDP per capita ($US) $120 $134 $488
+Total GDP ($US bils) $3.2 $2.6 $5.2
+Population
+Inflation (%)
+20-30% 10% 25-30%
+81,300 28,200 127,100
+Telephone Density (# of people
+per telephone line) 323 611 84
+Telephone Waiting List as % of
+Installed Subscriber Base 165%
+# of Telephone Lines
+(e)
+100%
+70%
+(e) estimate
+Sources: Casewriter estimates; Economist Intelligence Unit EIU Country Profile; International
+Telecommunications Union (ITU) statistics.
+20
+This document is authorized for use only in Associate Professor Brandon Lee's EMBA Class of 2024 M4 Business Strategy at Melbourne Business School from Aug 2023 to Jan 2024.

@@ -1,0 +1,4 @@
+boto3
+loguru
+python-multipart
+streaming-form-data

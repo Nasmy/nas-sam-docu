@@ -1,0 +1,1916 @@
+LCH SA
+CDS Clearing Procedures
+Section 3 - Collateral and Cash Payment
+13 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+CONTENTS
+SECTION 3 - COLLATERAL AND CASH PAYMENT
+3.1 TYPES OF COLLATERAL ...................................................................................................... 3
+3.2 MARGIN BALANCE AND CLIENT COLLATERAL BUFFER ............................................ 3
+3.3 ACCOUNT STRUCTURE ........................................................................................................ 4
+3.4 TRANSFER OF COLLATERAL .............................................................................................. 6
+3.5 ELIGIBLE CURRENCIES ........................................................................................................ 7
+3.6 SUBSTITUTION OF ELIGIBLE CURRENCIES .................................................................... 7
+3.7 EURO DENOMINATED CASH COLLATERAL .................................................................... 8
+3.8 NON-EURO DENOMINATED CASH COLLATERAL ........................................................ 17
+3.9 ELIGIBLE COLLATERAL ..................................................................................................... 25
+3.10 ELIGIBLE COLLATERAL TRANSFERRED WITH FULL TITLE ..................................... 27
+3.11 LCH SA’S RIGHTS IN RESPECT OF COLLATERAL TRANSFERRED WITH FULL
+TITLE............... ........................................................................................................................ 30
+3.12 CORPORATE EVENTS OCCURRING IN RESPECT OF ELIGIBLE COLLATERAL
+TRANSFERRED WITH FULL TITLE ................................................................................... 32
+3.13 ELIGIBLE COLLATERAL TRANSFERRED TO LCH SA’S PLEDGED ACCOUNTS AT
+EUROCLEAR BANK ............................................................................................................. 33
+3.14 US T-BILLS TRANSFERRED TO LCH SA’S DEPOSITORY ACCOUNT AT BNYM US35
+3.15 ELIGIBLE COLLATERAL TRANSFER PURSUANT TO THE PLEDGE AGREEMENT 35
+3.16 TRANSFER OF CLIENT PLEDGED ELIGIBLE COLLATERAL FOLLOWING AN
+EVENT OF DEFAULT ........................................................................................................... 38
+3.17 TRANSFER OF US T-BILLS ON BEHALF OF FCM CLIENTS ......................................... 39
+3.18 CASH PAYMENTS ................................................................................................................ 41
+LCH SA ©2017
+2
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+Capitalised terms used in this Collateral and Cash Payment Procedures and not otherwise defined
+herein shall have the meaning given pursuant to the remainder of the CDS Clearing Documentation,
+as such term is defined in the document entitled "CDS Clearing Rule Book" published by LCH SA, as
+amended from time to time and including, for the avoidance of doubt, in the case of FCM Clearing
+Members, the FCM CDS Clearing Regulations.
+For the purpose of this Section 3, any failure, unavailability, impairment, defect, interruption, delay
+or improper functioning of any technical system, access, connection, solution, specification,
+equipment, communication network or other resource used by LCH SA and/or a Clearing Member, as
+applicable, to calculate, instruct, process, communicate and more generally perform its obligation
+under this Section 3, shall be deemed to constitute an “exceptional circumstance” which shall not
+give rise to a LCH Default and shall be promptly notified by LCH SA to the relevant Clearing Member.
+3.1
+TYPES OF COLLATERAL
+A Clearing Member’s obligation to provide Collateral should be fulfilled in accordance with
+the following table and the remainder of this Section 3 of the Procedures.
+Purpose of transfer
+Collateral type
+Payment of Margins (other than Variation
+Margin) Cash Collateral and/or Eligible Collateral
+Maintenance of House Excess Collateral and
+Client Excess Collateral Cash Collateral and/or Eligible Collateral
+Maintenance of Client Collateral Buffer Euro denominated Cash Collateral
+Payment of Contribution and Additional
+Contribution Amount Euro denominated Cash Collateral
+It should be noted that, notwithstanding the above table any Margin Shortfall must be
+covered by an automatic debit of Euro denominated Cash Collateral.
+3.2
+MARGIN BALANCE AND CLIENT COLLATERAL BUFFER
+The price of Eligible Currencies (other than Euro) and Eligible Collateral (the “Applicable
+Price”), which is taken into account for the purposes of calculating the Margin Balance for
+each Margin Account of a Clearing Member, or in the case of a CCM Gross Omnibus
+Segregated Account Structure, for all the CCM Client Margin Accounts attached to that CCM
+Gross Omnibus Segregated Account Structure, and the Client Collateral Buffer, is determined
+by LCH SA at 14:00 and 22:00 CET on each Business Day on the basis of the latest market
+prices (as published by Reuters, Interactive Data or such other provider as is notified in a
+Clearing Notice).
+LCH SA will calculate: (i) the Margin Balance for each Margin Account of a Clearing Member,
+or in the case of a CCM Gross Omnibus Segregated Account Structure, for all the CCM Client
+Margin Accounts attached to that CCM Gross Omnibus Segregated Account Structure; and (ii)
+the Client Collateral Buffer each Business Day (prior to 07:45 CET and whenever a position
+corresponding to the relevant trade leg of an Eligible Intraday Transaction is pre-registered in
+LCH SA ©2017
+3
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+the relevant Clearing Member’s Account Structure, in accordance with Section 3.1.7 of the
+CDS Clearing Rule Book), by determining:
+i) the value of all Collateral recorded in the relevant Collateral Account on the basis of
+the Applicable Price; or
+ii) in respect of the FCM Margin Balance for each FCM Client Margin Account of an FCM
+Clearing Member, the Legally Segregated Value recorded in the relevant FCM Client
+Financial Account on the basis of the Applicable Price, in accordance with Section 2.2
+(f) of the Procedures.
+LCH SA will recalculate the: (i) Margin Balance for each Margin Account of a Clearing
+Member, or in the case of a CCM Gross Omnibus Segregated Account Structure, for all the
+CCM Client Margin Accounts attached to that CCM Gross Omnibus Segregated Account
+Structure; and (ii) Client Collateral Buffer, following each Collateral Call.
+Where Pledged Eligible Collateral is recorded in a Clearing Member’s Collateral Account, LCH
+SA shall use the most recent Collateral Holding Report received from Euroclear Bank, in
+accordance with Paragraph 5.13(f) of Section 5 of the Procedures, to determine what
+Pledged Eligible Collateral should be taken into account for the purposes of calculating the
+Margin Balance in respect of a particular Account Structure in accordance with this
+Paragraph 3.2.
+Where Eligible Collateral consisting of U.S. Treasury Bills (the “US T-Bills”) is recorded in a
+FCM Clearing Member’s FCM Client Collateral Account, LCH SA shall use the most recent
+collateral holding report received from Bank of New York Mellon (“BNYM US”), in
+accordance with Paragraph 5.13(f) of Section 5 of the Procedures, to determine what US T-
+Bills should be taken into account for the purposes of calculating the FCM Client Margin
+Balance in respect of each of its FCM Client Margin Account(s) in accordance with this
+Paragraph 3.2.
+3.3
+ACCOUNT STRUCTURE
+(a)
+Collateral Accounts in respect of a CCM
+In the books of LCH SA, each CCM has:
+i)
+one CCM House Collateral Account in which:
+(x)
+(I) Collateral provided to cover its CCM House Margin Requirement
+and (II) CCM House Excess Collateral which can be used to novate House
+Trade Legs of Eligible Intraday Transactions, is recorded; and
+(y)
+Collateral provided by such CCM as Client Collateral Buffer is
+recorded;
+ii)
+LCH SA ©2017
+a CCM Client Collateral Account in respect of each CCM Client Account
+Structure and in which (x) Collateral provided to cover the relevant CCM
+Client Margin Requirement(s) and (y) CCM Client Excess Collateral which can
+be used to novate the relevant Client Trade Legs of Eligible Intraday
+Transactions, is recorded;
+4
+Published on 11 December 2017CDS Clearing Procedures
+iv)
+Collateral and Cash Payment
+a CCM Unallocated Client Collateral Account in which CCM Unallocated
+Client Collateral is recorded.
+In accordance with Article 5.2.1.1 of the CDS Clearing Rule Book, CCMs are permitted
+to offer a CCM Individual Segregated Account Structure, a CCM Gross Omnibus
+Segregated Account Structure and/or a CCM Net Omnibus Segregated Account
+Structure to CCM Clients.
+Where:
+i) a CCM Individual Segregated Account Structure is offered, the relevant
+CCM Client Collateral Account will record (x) the value and denomination of
+Cash Collateral and (y) the precise Eligible Collateral provided by the CCM
+in respect of that CCM Individual Segregated Account Client;
+ii) a CCM Gross Omnibus Segregated Account Structure is offered, the
+relevant CCM Client Collateral Account will record (x) the value and
+denomination of Cash Collateral and (y) the precise Eligible Collateral
+provided by the CCM in respect of that CCM Gross Omnibus Client Set; and
+iii) a CCM Net Omnibus Segregated Account Structure is offered, the relevant
+CCM Client Collateral Account will record (x) the value and denomination of
+Cash Collateral and (y) the precise Eligible Collateral provided by the CCM
+in respect of that CCM Net Omnibus Client Set.
+To the extent a CCM transfers additional Euro-denominated Cash Collateral, non-Euro
+denominated Cash Collateral or Eligible Collateral to LCH SA, such CCM must identify
+which CCM Client Collateral Account Collateral it is provided for in accordance with
+Paragraphs 3.7 to 3.10 below.
+(b)
+Collateral Accounts in respect of an FCM Clearing Member
+In the books of LCH SA, each FCM Clearing Member has:
+LCH SA ©2017
+i) one FCM House Collateral Account in which (x) Collateral provided to cover
+its FCM House Margin Requirement and (y) FCM House Excess Collateral
+which can be used to novate House Trade Legs of Eligible Intraday
+Transactions, is recorded; and
+ii) one FCM Client Collateral Account to record the Collateral held by LCH SA for
+the benefit of such FCM Clearing Member’s FCM Clients, the aggregate value
+of such Collateral being divided amongst, and recorded in:
+(x) the FCM Client Financial Account(s);
+(y) the FCM Buffer Financial Account; and
+(z) the FCM Unallocated Client Collateral Financial Account,
+5
+Published on 11 December 2017CDS Clearing Procedures
+(c)
+Collateral and Cash Payment
+Segregation of Contribution Balance
+The Cash Collateral transferred by a Clearing Member to satisfy its Contribution
+Requirement is not recorded in any of the Collateral Accounts.
+The Contribution Balance is segregated from (x) the Margin Balance for each Margin
+Account; (y) the Client Collateral Buffer; and (z) the CCM Unallocated Client
+Collateral, by crediting the Cash Collateral comprising the Contribution Balance to a
+dedicated LCH SA TARGET2 Account.
+3.4
+TRANSFER OF COLLATERAL
+The type and nature of the Collateral as well as the positions being secured will determine
+how a Clearing Member is required to transfer Collateral to LCH SA:
+(a)
+(b)
+(c)
+LCH SA ©2017
+Euro denominated Cash Collateral:
+i) may be transferred by any Clearing Member to be recorded in any of its
+Collateral Accounts; and
+ii) must be transferred to LCH SA TARGET2 Accounts (as such term is defined in
+Paragraph 3.7(a)) in accordance with the procedure set out in Paragraph 3.7.
+Non-Euro denominated Cash Collateral:
+i) may be transferred by any Clearing Member to be recorded in any of its
+Collateral Accounts; and
+ii) must be credited to accounts opened in the name of LCH SA with Euroclear
+Bank in accordance with the procedure set out in Paragraph 3.8 (f).
+USD denominated Cash Collateral:
+i) may be transferred by a Clearing Member to be recorded in any of its
+Collateral Accounts; and
+ii) must be credited:
+(x) if USD denominated Cash Collateral is transferred to be recorded in
+its House Collateral Account, or in the case of a CCM, in any of its
+CCM Client Collateral Accounts, to accounts opened in the name of
+LCH SA with Euroclear Bank in accordance with the procedure set out
+in Paragraph 3.8 (f); or
+(y) if USD denominated Cash Collateral is transferred to be recorded in
+the FCM Client Collateral Account of an FCM Clearing Member, to an
+account opened in the name of LCH SA with BNYM US in accordance
+with the procedure set out in Paragraph 3.8 (g).
+6
+Published on 11 December 2017CDS Clearing Procedures
+(d)
+3.5
+Collateral and Cash Payment
+Subject to the special provisions for US T-Bills transferred by an FCM Clearing
+Member on behalf of FCM Clients set out in Paragraph 3.4 (e) below, Eligible
+Collateral must be provided:
+i) by way of full title transfer to be recorded in its House Collateral Account,
+and in the case of a CCM only, in any of its CCM Client Collateral Accounts, in
+which case the relevant securities will be transferred to LCH SA, its
+nominated custodian or Central Securities Depository by instruction through
+Euroclear Bank or ESES (Euroclear France) in accordance with the procedure
+set out in Paragraph 3.10; or
+ii) by way of security interest under the Pledge Agreement to be recorded in its
+House Collateral Account, and in the case of a CCM only, in any of its CCM
+Client Collateral Accounts, in which case relevant securities will be
+transferred to the relevant LCH SA pledged account(s) opened in the books
+of Euroclear Bank by instruction through Euroclear Bank, in accordance with
+the procedure set out in Paragraph 3.15.
+(e) US T-Bills transferred by an FCM Clearing Member on behalf of FCM Clients must be
+provided by way of security interest to be recorded in its FCM Client Collateral
+Account, in which case relevant US T-Bills will be deposited in LCH SA’s relevant
+segregated depository account opened in the books of BNYM US in accordance with
+the procedure set out in Paragraph 3.17.
+(f) LCH SA will hold all Collateral transferred on behalf of FCM Clients in accordance
+with the requirements set out in the FCM CDS Clearing Regulations.
+ELIGIBLE CURRENCIES
+The following currencies are Eligible Currencies:
+(a) Euro;
+(b) GBP; and
+(c) USD.
+LCH SA may amend this list in accordance with Article 4.2.6.1 and Article 4.4.2.3 of the CDS
+Clearing Rule Book.
+3.6
+SUBSTITUTION OF ELIGIBLE CURRENCIES
+If an Eligible Currency is substituted by another currency, the conversion of the replaced
+currency to the substitute currency shall be effected on the basis of the Applicable Price and
+taking into account market practice and/or industry determinations at LCH SA’s reasonable
+discretion. The results of any calculations to be made under this Paragraph 3.6 shall be
+rounded up to the fourth decimal place. If the fifth decimal is equal to or more than five, the
+fourth decimal shall be rounded up, and if the fifth decimal is less than five, the fourth
+decimal shall be rounded down, respectively.
+LCH SA ©2017
+7
+Published on 11 December 2017CDS Clearing Procedures
+3.7
+Collateral and Cash Payment
+EURO DENOMINATED CASH COLLATERAL
+(a)
+LCH SA TARGET2 Accounts
+LCH SA performs its Collateral Calls by using the following three TARGET2 Accounts
+opened in its name:
+i) a TARGET2 Account used to make Collateral Calls in relation to the House
+Margin Requirement, the House Excess Collateral Threshold and in respect
+of a CCM only, the CCM Client Collateral Buffer Threshold (the “LCH House
+TARGET2 Account”); and
+ii) with respect to Clients of a Clearing Member:
+(x) a TARGET2 Account used to make Collateral Calls in relation to the
+Client Margin Requirement(s) of each CCM (the “LCH CCM Client
+TARGET2 Account”); or
+(y) a TARGET2 Account used to make Collateral Calls in relation to the
+Client Margin Requirement(s) and FCM Client Collateral Buffer
+Threshold of each FCM Clearing Member (the “LCH FCM Client
+TARGET2 Account”), which for the avoidance of doubt forms part of
+the LCH Cleared Swaps Client Segregated Depository Account for
+purposes of the FCM CDS Clearing Regulations,
+together referred to as the “LCH Client TARGET2 Accounts” and individually
+as a “LCH Client TARGET2 Account”.
+The LCH House TARGET2 Account and the LCH Client TARGET2 Accounts shall be
+together referred to as the “LCH TARGET2 Accounts”.
+(b)
+Clearing Member TARGET2 Accounts
+A CCM has no obligation to hold two TARGET2 Accounts (or arrange its Payment
+Agent holding a TARGET2 Account (the “TARGET2 Payment Agent”) to hold two cash
+account(s)) for the purposes of the Collateral Calls in respect of (i) its CCM House
+Margin Requirement, CCM House Excess Collateral Threshold and CCM Client
+Collateral Buffer Threshold and (ii) its Client Margin Requirement(s). It may either:
+i) hold one TARGET2 Account (or one cash account of its TARGET2 Payment
+Agent), in which case such TARGET2 Account will be used for the debits
+and credits made out of both the LCH Client TARGET2 Account and the LCH
+House TARGET2 Account; or
+ii) hold two TARGET2 Accounts (or two cash accounts of its TARGET2 Payment
+Agent), in which case one TARGET2 account will be used for the debits and
+credits made out of the LCH Client TARGET2 Account and the other will be
+used for the debits and credits made out of the LCH House TARGET2
+Account.
+An FCM Clearing Member has an obligation to hold two TARGET2 Accounts (or
+arrange its TARGET2 Payment Agent to hold two cash account(s)) for the purposes of
+LCH SA ©2017
+8
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+the Collateral Calls in respect of (i) its FCM House Margin Requirement and FCM
+House Excess Collateral Threshold and (ii) its Client Margin Requirement(s) and FCM
+Client Collateral Buffer Threshold (which for the avoidance of doubt forms part of
+the FCM Cleared Swaps Client Segregated Depository Accounts for purposes of the
+FCM CDS Clearing Regulations). Therefore, an FCM Clearing Member will hold two
+TARGET2 Accounts (or two cash accounts of its TARGET2 Payment Agent), in which
+case one TARGET2 account will be used for the debits and credits made out of the
+LCH FCM Client TARGET2 Account and the other will be used for the debits and
+credits made out of the LCH House TARGET2 Account.
+If a Clearing Member wishes to add a new TARGET2 Account or replace an existing
+TARGET2 Account with another for the purposes of the Collateral Calls, it may do so
+by providing LCH SA with the details of the relevant TARGET2 Account with at least
+15 days’ prior notice.
+(c)
+Timing of Collateral Calls
+Where a Clearing Member is required to transfer Euro denominated Cash Collateral
+at a Collateral Call, LCH SA will automatically debit such Clearing Member’s relevant
+TARGET2 Account(s) (or the relevant cash account(s) of its TARGET2 Payment Agent)
+on the basis of its Power of Attorney and credit the relevant LCH TARGET2 Account
+with the corresponding amounts.
+Where a Clearing Member is due to receive Euro denominated Cash Collateral, LCH
+SA will automatically credit such Clearing Member’s TARGET2 Account(s) (or the
+relevant cash account(s) of its TARGET2 Payment Agent) with the relevant amounts.
+The debits or credits on each Clearing Member’s TARGET2 Account(s) (or the
+relevant cash account(s) of its TARGET2 Payment Agent) will occur in accordance
+with the following time slots:
+LCH SA ©2017
+i) initial slot: 08:00-08:55 CET (used for the purposes of the Morning Call) (the
+“Initial Slot”);
+ii) post-initial slot: 9:30-9:45 CET (used for the purposes of making Cash
+Payments and returning Euro denominated Cash Collateral to Clearing
+Member(s))(the “Post-Initial Slot”);
+iii) first intraday slot: 11:25-11:50 CET (used for the purposes of the First
+Intraday Call) (the “First Intraday Slot”);
+iv) additional specific collateral slot: 12:25-12:55 CET (used for the purposes of
+Collateral substitution upon a Clearing Member’s request) (the “Additional
+Specific Collateral Slot”);
+v) second intraday slot: 15:25-15:55 CET (used for the purposes of the Second
+Intraday Call) (the “Second Intraday Slot”); or
+vi) any other slot available to LCH SA in exceptional circumstances (the
+“Exceptional Slot”);
+9
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+Once the Euro denominated Cash Collateral has been debited by LCH SA it will
+immediately form part of the Margin Balance for the relevant Margin Account, or in
+the case of a CCM Gross Omnibus Segregated Account Structure, for all the CCM
+Client Margin Accounts attached to that CCM Gross Omnibus Segregated Account
+Structure, and/or the Client Collateral Buffer or the Contribution Balance, as
+applicable.
+(d)
+Netting of payments made through TARGET2
+LCH will make such debits or credits as the case may be in respect of the relevant
+CCM House Margin Account, CCM Client Margin Account(s), FCM House Margin
+Account and FCM Client Margin Account(s) as calculated in accordance with this sub-
+section 3.7(d). If any CCM or FCM Clearing Member does not make a requisite
+payment at the Initial Slot, LCH SA shall recalculate any amounts due to be paid at
+the Post-Initial Slot. Notwithstanding the foregoing, and for the avoidance of doubt,
+where the whole or part of any credit offsets a corresponding debit in any other
+currency which is still outstanding at the time of the Post-Initial Slot then such debit
+shall be taken into account for the calculation of the requisite amounts to be paid at
+Post-Initial Slot.
+i)
+Aggregation of payments made in respect of the House Account Structure
+of a Clearing Member
+(x)
+In relation to the Initial Slot in respect of the House Account
+Structure of a Clearing Member, LCH SA will aggregate:
+(A) Euro denominated Cash Payments (being the House
+Variation Margin Requirement plus any other Euro
+denominated Cash Payments due in respect of the House
+Account Structure); and
+(B) Euro denominated Cash Collateral transfers (being the
+House Margin Shortfall, the House Excess Collateral
+Shortfall, the Contribution Shortfall and in respect of a
+Clearing Member that is a CCM: the CCM Client Collateral
+Buffer Shortfall),
+which are due to be made by that Clearing Member to LCH SA
+through TARGET2;
+(y)
+In relation to the Post-Initial Slot in respect of the House Account
+Structure of a Clearing Member, LCH SA will aggregate:
+(A) Euro denominated Cash Payments due to be made; and
+(B) Euro denominated Cash Collateral due to be returned,
+by LCH SA to that Clearing Member through TARGET2; and
+LCH SA ©2017
+10
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+(z)
+ii)
+In relation to the First Intraday Slot, Second Intraday Slot and any
+Exceptional Slot, in respect of the House Account Structure of a
+Clearing Member, LCH SA will aggregate:
+(A) Euro denominated Cash Payments (being the House
+Variation Margin Requirement plus any other Cash
+Payments due in respect of the House Account Structure)
+and Euro denominated Cash Collateral transfers (being
+the House Margin Shortfall, the House Excess Collateral
+Shortfall, the Contribution Shortfall and in respect of a
+Clearing Member that is a CCM: the CCM Client Collateral
+Buffer Shortfall), which are due to be made by that
+Clearing Member to LCH SA through TARGET2; and
+(B) Euro denominated Cash Payments due to be made, and
+Euro denominated Cash Collateral due to be returned, by
+LCH SA to that Clearing Member through TARGET2.
+Aggregation of payments made in respect of the CCM Client Account
+Structure of a CCM
+(x)
+In relation to the Initial Slot, in respect of the CCM Client Account
+Structure of a CCM, LCH SA will aggregate:
+(A) Euro denominated Cash Payments (being the Client
+Variation Margin Requirement(s) plus any other Euro
+denominated Cash Payments due in respect of each CCM
+Client Margin Account of that CCM Client Account
+Structure); and
+(B) Euro denominated Cash Collateral transfers (being the
+Total Client Margin Shortfall),
+which are due to be made by that CCM to LCH SA through
+TARGET2;
+(y)
+In relation to the Post-Initial Slot in respect of the CCM Client
+Account Structure of a CCM, LCH SA will aggregate:
+(A) Euro denominated Cash Payments due to be made; and
+(B) Euro denominated Cash Collateral due to be returned,
+by LCH SA to that CCM through TARGET2; and
+(z)
+In relation to the First Intraday Slot, Second Intraday Slot and any
+Exceptional Slot, in respect of the CCM Client Account Structure
+of a CCM, LCH SA will aggregate:
+(A)
+LCH SA ©2017
+Euro denominated Cash Payments (being the Client
+Variation Margin Requirement(s) plus any other Cash
+Payments due in respect of that CCM Client Account
+11
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+Structure) and Euro denominated Cash Collateral transfers
+(being the Total Client Margin Shortfall ) which are due to
+be made by that CCM to LCH SA through TARGET2; and
+(B)
+iii)
+Euro denominated Cash Payments due to be made, and
+Euro denominated Cash Collateral due to be returned, by
+LCH SA to that CCM through TARGET2.
+Aggregation of payments made in respect of the FCM Client Account
+Structure of an FCM Clearing Member
+(x)
+In relation to the Initial Slot in respect of the FCM Client Account
+Structure of an FCM Clearing Member, LCH SA will aggregate:
+(A) Euro denominated Cash Payments due in respect of the
+FCM Client Account Structure (being the Client Variation
+Margin Requirement(s) plus any other Euro denominated
+Cash Payments due in respect of that FCM Client Account
+Structure); and
+(B) Euro denominated Cash Collateral transfers (being the
+Total Client Margin Shortfall and the FCM Client Buffer
+Collateral Shortfall in respect of such FCM Client Account
+Structure),
+which are due to be made by that FCM Clearing Member to LCH
+SA through TARGET2;
+(y)
+In relation to the Post-Initial Slot in respect if the FCM Client
+Account Structure of an FCM Clearing Member, LCH SA will
+aggregate:
+(A) Euro denominated Cash Payments due to be made (being
+the Client Variation Margin Requirement(s) plus any other
+Euro denominated Cash Payments due in respect of that
+FCM Client Account Structure); and
+(B) Euro denominated Cash Collateral due to be returned,
+by LCH SA to that FCM Clearing Member through TARGET2; and
+(z)
+In relation to the First Intraday Slot, Second Intraday Slot and any
+Exceptional Slot, in respect of the FCM Client Account Structure of
+an FCM Clearing Member, LCH SA will aggregate:
+(A)
+LCH SA ©2017
+Euro denominated Cash Payments due in respect of the
+FCM Client Account Structure (being any Cash Payments
+due in respect of the FCM Client Account Structure, but
+other than the Client Variation Margin Requirement(s))
+and Euro denominated Cash Collateral transfers (being
+the Total Client Margin Shortfall and the FCM Client Buffer
+Collateral Shortfall in respect of such FCM Client Account
+12
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+Structure) which are due to be made by that FCM Clearing
+Member to LCH SA through TARGET2; and
+(B)
+Euro denominated Cash Payments due to be made (being
+any Cash Payments due in respect of the FCM Client
+Account Structure, but other than the Client Variation
+Margin Requirement(s)), and Euro denominated Cash
+Collateral due to be returned, by LCH SA to that FCM
+Clearing Member through TARGET2.
+In relation to the First Intraday Slot, Second Intraday Slot and any Exceptional Slot,
+with the exception of the Client Variation Margin Requirement(s) of an FCM Clearing
+Member (as set out in Paragraph 3.7(e)(iv)(z) above) which shall never be netted
+with other amounts for the purposes of making a payment through TARGET2, if the
+aggregate amount that would be payable by one party (in respect either of the
+House Account Structure, any CCM Client Account Structure or any FCM Client
+Account Structure of a Clearing Member) exceeds the amount that would otherwise
+have been payable by the other party (in respect of such House Account Structure,
+CCM Client Account Structure or FCM Client Account Structure), then the obligations
+of each party pursuant to this Paragraph 3.7 and Paragraph 3.18 below shall be
+automatically satisfied and discharged on payment by the party by whom the larger
+aggregate amount would have been payable to the other party of the excess of the
+larger aggregate amount over the smaller aggregate amount.
+Notwithstanding the payment netting contemplated by this Paragraph 3.7(e), LCH SA
+shall ensure that its books and records properly reflect the transfer of Euro-
+denominated Cash Collateral and payment of Cash Payments, made in respect of the
+relevant Margin Account(s), on a gross basis.
+(e)
+Interest
+LCH SA pays interest on Euro denominated Cash Collateral.
+The applicable interest rate is published by LCH SA on the Website.
+(f)
+Transfer of Euro denominated Cash Collateral
+On a given Business Day (“Day”) (before 17:15 CET)
+If:
+LCH SA ©2017
+(i) a Clearing Member wishes to transfer Euro denominated Cash Collateral to
+be recorded in its House Collateral Account and in the case of a CCM, in any
+of its CCM Client Collateral Accounts (other than in the case that a Clearing
+Member is called to transfer Euro denominated Cash Collateral to LCH SA to
+satisfy the Required Collateral Amount pursuant to a Collateral Call, in
+accordance with Article 4.2.3.2 of the CDS Clearing Rule Book); or
+(ii) a Clearing Member wishes to transfer Euro denominated Cash Collateral to
+be recorded in any of its Collateral Accounts for the purpose of substituting
+such Euro denominated Cash Collateral for any Collateral recorded in its
+Collateral Accounts,
+13
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+it shall notify LCH SA by submitting the relevant form by any means as specified in a
+Clearing Notice. The Clearing Member must specify to which Collateral Account(s)
+such Euro denominated Cash Collateral should be recorded. The process that a
+Clearing Member and LCH SA must follow to process the return of substituted
+Collateral to the Clearing Member is set out in paragraph 3.8(h) (for non-Euro
+denominated Cash Collateral), 3.8(i) (for USD denominated Cash Collateral), 3.10(c)
+(for Eligible Collateral transferred with full title), 3.15(b) (for Pledged Eligible
+Collateral) and 3.17(b) (for US T-Bills transferred on behalf of FCM Clients), as
+applicable.
+In respect of a CCM only, if such CCM notifies to LCH SA that Euro denominated Cash
+Collateral will be transferred to the LCH CCM Client TARGET2 Account but the CCM
+does not specify to which CCM Client Collateral Account(s) some or all of such
+amounts should be recorded, LCH will proceed with the debit of the CCM’s relevant
+TARGET2 Account (or the relevant cash account of its TARGET2 Payment Agent) but
+will treat any amounts which have not been specifically identified as being for a
+particular CCM Client Collateral Account as CCM Unallocated Client Collateral and
+record such amounts in the CCM Unallocated Client Collateral Account.
+A Clearing Member must notify LCH SA as set out above by no later than 10:45 CET
+in order for a Clearing Member’s request to be processed and the Euro denominated
+Cash Collateral called at the First Intraday Slot on the same day. A Clearing Member
+must notify LCH SA as set out above between 10:45 and 17:15 CET in order for a
+Clearing Member’s request to be processed and the Euro denominated Cash
+Collateral called at the next TARGET2 time slot, including any Exceptional Slot. It is
+the Clearing Member’s responsibility to ensure the due receipt by LCH SA of the
+relevant notification. Accordingly, the Clearing Member should confirm its request
+no later than 17:15 CET by a phone call to LCH SA’s collateral management team on
+(+33) (0)1 70 37 66 86/66 37/65 35, although a failure to do so shall not invalidate
+any request actually received by LCH SA.
+On Day at the relevant TARGET2 time slot:
+LCH SA will debit the Clearing Member’s relevant TARGET2 Account(s) (or the
+relevant cash account(s) of its TARGET2 Payment Agent) with the amount of Euro
+denominated Cash Collateral notified by the Clearing Member.
+On Day at any time, a Clearing Member may transfer Euro denominated Cash
+Collateral by:
+i) notifying LCH SA through the relevant form by any means as specified in a
+Clearing Notice. The Clearing Member must specify to which Collateral
+Account(s) such Euro denominated Cash Collateral should be recorded, and
+ii) crediting LCH TARGET 2 Account before 18:00 CET.
+Transfer of Euro denominated Cash Collateral at any time later than the First Intraday
+Slot will be subject to a cap as defined by LCH SA and made available on its website.
+LCH SA ©2017
+14
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+In respect of each Clearing Member, following the transfer of Euro denominated
+Cash Collateral:
+(g)
+i) the Cash Collateral will be recorded in its House Collateral Account the
+relevant Client Collateral Account(s) and/or its CCM Unallocated Client
+Collateral Account, as applicable; and
+ii) to the extent Cash Collateral has been credited to its CCM Unallocated Client
+Collateral Account, such CCM must inform LCH SA by no later than the End of
+Real Time on Day how the CCM Unallocated Client Collateral should be
+recorded within its CCM Client Collateral Account(s). Where the CCM does
+not provide LCH SA with this information within this timeframe, the CCM
+Unallocated Client Collateral shall be returned to the CCM’s relevant
+TARGET2 Account (or the relevant cash account(s) of its TARGET2 Payment
+Agent).
+Return of Euro denominated Cash Collateral
+i)
+In respect of a Clearing Member’s House Collateral Account
+1- A Clearing Member may request LCH SA to automatically credit Euro
+denominated Cash Collateral recorded in its House Collateral Account to the
+Clearing Member’s TARGET2 Account (or the relevant cash account of its
+TARGET2 Payment Agent) provided the amount to be credited would not
+result in:
+(x) the House Margin Requirement exceeding the Margin Balance for the
+House Margin Account; and
+(y) in respect of a Clearing Member that is a CCM: the CCM Client
+Collateral Buffer falling below its CCM Client Collateral Buffer
+Threshold.
+LCH SA will credit the relevant amount of such excess Euro denominated
+Cash Collateral at the next Post-Initial Slot.
+A Clearing Member must notify LCH SA of its request to have Euro
+denominated Cash Collateral automatically credited to the Clearing
+Member’s TARGET2 Account (or the relevant cash account of its TARGET2
+Payment Agent) by submitting the relevant form by any means as specified
+in a Clearing Notice by no later than 16:00 CET on a Business Day in order
+for the Clearing Member’s request to be processed on the next following
+Business Day.
+Once a Clearing Member has notified LCH SA of its request to have Euro
+denominated Cash Collateral automatically credited, LCH SA will apply it,
+until such time as LCH SA has been otherwise instructed by the relevant
+Clearing Member.
+2- A Clearing Member may request, on an ad hoc basis, LCH SA to return
+Euro denominated Cash Collateral recorded in its House Collateral Account
+to the Clearing Member’s TARGET2 Account (or the relevant cash account
+LCH SA ©2017
+15
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+of its TARGET2 Payment Agent) provided the amount to be returned would
+not result in:
+(x) the House Margin Requirement exceeding the Margin Balance for
+the House Margin Account; and
+(y) in respect of a Clearing Member that is a CCM: the CCM Client
+Collateral Buffer falling below its CCM Client Collateral Buffer
+Threshold,
+as determined at the time when the request is received and processed by
+LCH SA. Where this would be the case, the Clearing Member's request will
+be rejected.
+Following receipt of a request in accordance with this Paragraph 3.7(g) i), 2,
+LCH SA will credit the relevant amount of Euro denominated Cash Collateral
+to the relevant TARGET2 Account of the Clearing Member (or the relevant
+cash account of its TARGET2 Payment Agent) at the next Post-Initial Slot, or
+any TARGET2 time slot in which a Variation Margin payment is due to be
+performed.
+3- Where a CCM wishes to have Euro denominated Cash Collateral
+recorded as CCM Client Collateral Buffer in its CCM House Collateral
+Account returned to its TARGET2 Account (or the relevant cash account of
+its TARGET2 Payment Agent), it shall first reduce its CCM Client Collateral
+Buffer Threshold by sending the relevant form to LCH SA in accordance with
+Section 2 of the Procedures. LCH SA will then recalculate the CCM Margin
+Balance for that CCM House Margin Account so that any CCM Client
+Collateral Buffer that is in excess of the CCM Client Collateral Buffer
+Threshold will be treated as CCM House Excess Collateral, allowing the CCM
+to request LCH SA to return that CCM House Excess Collateral in accordance
+with sub-paragraph 1 or sub-paragraph 2 of this Paragraph 3.7(g) i).
+ii)
+In respect of a CCM’s Client Collateral Account(s)
+A CCM may request LCH SA to return Euro denominated Cash Collateral
+recorded in any of its CCM Client Collateral Accounts provided the amount to
+be returned would not result in:
+(x) the relevant CCM Client Margin Requirement(s), plus
+(y) the CCM Allocated Client Collateral Buffer, if any,
+exceeding the Margin Balance for the relevant CCM Client Account Structure,
+as determined at the time when the request is received and processed by
+LCH SA. Where this would be the case, the Clearing Member's request will be
+rejected.
+Following receipt of a request in accordance with this Paragraph 3.7(g) ii),
+LCH SA will credit the relevant amount of Euro denominated Cash Collateral
+to the relevant TARGET2 Account of the Clearing Member (or the relevant
+cash account of its TARGET2 Payment Agent) at the next Post-Initial Slot, or
+LCH SA ©2017
+16
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+any TARGET2 time slot in which a Variation Margin payment is due to be
+performed.
+iv)
+In respect of an FCM Unallocated Client Collateral Financial Account
+The FCM Clearing Member may also request LCH SA to return some or all
+FCM Unallocated Client Excess Collateral in the form of Euro denominated
+Cash Collateral provided that the requested amount does not exceed the
+FCM Unallocated Client Excess Collateral recorded in its FCM Client Collateral
+Account. Where this would be the case, the FCM Clearing Member's request
+will be rejected.
+LCH SA will credit the relevant amount of Euro denominated Cash Collateral
+to the relevant TARGET2 Account of the FCM Clearing Member (or the
+relevant cash account of its TARGET2 Payment Agent) at the next Post-Initial
+Slot, or any TARGET2 time slot in which a Variation Margin payment is due to
+be performed.
+By exception to the time limits for notification as set out in paragraphs 3.7 (f) and
+(g), in case of atypical market conditions (i.e. periods of time with reduced activity
+and lowered liquidity), including but not limited to the end of the year period (i.e.
+the period starting from 22 December of each year to 2 January of the following
+year), LCH SA may inform by any means the Clearing Members that notifications of
+movement (transfer or return) of Euro denominated Cash Collateral, for value on
+Day, must be received by LCH SA on Day minus five before 16.00 CET. Such
+information will contain the implementation measure of the extension of the
+notification period.
+(h)
+Transfer of Euro denominated Cash Collateral to satisfy a Contribution Shortfall
+Where a Clearing Member is required to transfer Euro denominated Cash Collateral
+to LCH SA to satisfy a Contribution Shortfall, in accordance with Article 4.4.1.7 of the
+CDS Clearing Rule Book, it shall make arrangements to credit the LCH House TARGET2
+Account with the required amount of Euro denominated Cash Collateral.
+3.8
+NON-EURO DENOMINATED CASH COLLATERAL
+(a)
+Multi-currency accounts held by LCH SA
+LCH SA holds non-Euro Cash Collateral provided by Clearing Members in the
+following three multi-currency accounts opened in the books of an eligible
+commercial bank selected in accordance with Paragraph 3.8(c) below:
+i) a multi-currency account used to credit non-Euro Cash Collateral which is
+transferred by a Clearing Member to be recorded in its House Collateral
+Account (the “LCH House Non-Euro Account”); and
+ii) with respect to Clients of a Clearing Member:
+(x)
+LCH SA ©2017
+a multi-currency account used to credit non-Euro Cash Collateral which
+is transferred by a CCM to be recorded in its CCM Client Collateral
+Account(s) (the “LCH CCM Client Non-Euro Account”); or
+17
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+(y)
+a multi-currency account used to credit non-Euro, non-USD Cash
+Collateral which is transferred by an FCM Clearing Member to be
+recorded in its FCM Client Collateral Account (the “LCH FCM Client
+Non-Euro Account”), which for the avoidance of doubt forms part of
+the LCH Cleared Swaps Client Segregated Depository Account for
+purposes of the FCM CDS Clearing Regulations,
+together referred to as the “LCH Client Non-Euro Accounts” and
+individually as a “LCH Client Non-Euro Account”.
+The LCH House Non-Euro Account and the LCH Client Non-Euro Accounts shall be
+together referred to as the “LCH Non-Euro Accounts”.
+LCH SA may invest non-Euro Cash Collateral in accordance with Paragraph 3.11(b).
+(b)
+USD cash account held by LCH SA
+LCH SA holds USD Cash Collateral provided by FCM Clearing Members on behalf of
+their FCM Clients in an USD cash account:
+i) opened in the books of BNYM US; and
+ii) used to credit USD Cash Collateral which is transferred by FCM Clearing
+Members to be recorded in their FCM Client Collateral Account (the “LCH
+FCM Client USD Account”), which for the avoidance of doubt forms part of
+the LCH Cleared Swaps Client Segregated Depository Account for purposes
+of the FCM CDS Clearing Regulations.
+LCH SA may invest USD Cash Collateral in accordance with Paragraph 3.11(b) and
+the FCM CDS Clearing Regulations.
+(c)
+Eligible commercial banks
+LCH SA will hold:
+i) non-Euro Cash Collateral, where LCH SA does not invest it in accordance with
+Paragraph 3.11(a), in the LCH Non-Euro Accounts; and
+ii) USD Cash Collateral provided by FCM Clearing Members on behalf of their
+FCM Clients, where LCH SA does not invest it in accordance with Paragraph
+3.11(b) and the FCM CDS Clearing Regulations, in the LCH FCM Client USD
+Account
+opened in the books of any commercial bank which has been selected in accordance
+with the LCH.Clearnet Group Limited risk collateral policy (the “LCH Group Risk
+Collateral Policy”).
+LCH SA ©2017
+18
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+The LCH Group Risk Collateral Policy sets out, amongst other things, the principles
+that LCH SA must adhere to when arranging for the custody of Cash Collateral and is
+kept under review by the Risk Committee. One of those principles is that LCH SA may
+select a commercial bank to act as custodian for Cash Collateral, subject to it
+meeting the following criteria:
+ an average credit rating of at least A-, or a guarantee from a sovereign
+government or parent company with an average credit rating of at least A-.
+Where there is a subsequent downgrade of the bank's credit rating,
+reference will be made to the LCH Group Risk Collateral Policy and the Risk
+Committee's policy; and
+ has demonstrable operational suitability (confirmed by LCH SA’s own due
+diligence).
+On the basis of these criteria, LCH SA has selected:
+i) Euroclear Bank to act as depository of non-Euro denominated Cash Collateral
+provided by Clearing Members; and
+ii) BNYM US to act as depository of USD Cash Collateral provided by FCM
+Clearing Members on behalf of their FCM Clients,
+together referred to as the “Eligible Commercial Banks” and individually as an
+“Eligible Commercial Bank”.
+(d)
+FX conversion and discounts
+Whenever LCH SA is required to convert non-Euro denominated Cash Collateral,
+transferred by a Clearing Member, to Euros such conversion shall be effected on the
+basis of the Applicable Price. LCH SA shall additionally be entitled to apply discounts
+to such non-Euro denominated Cash Collateral, at its discretion, as published on the
+Website.
+(e)
+Interest
+LCH SA pays interest on non-Euro denominated Cash Collateral and USD Cash
+Collateral deposited in the Eligible Commercial Banks.
+The applicable interest rate is published by LCH SA on the Website.
+(f)
+Transfer of non-Euro denominated Cash Collateral (other than USD denominated
+Cash Collateral to be recorded in the LCH FCM Client USD Account)
+On Day minus one
+If:
+(i)
+LCH SA ©2017
+a Clearing Member wishes to transfer additional non-Euro denominated
+Cash Collateral to be recorded in its House Collateral Account and, in the
+case of a CCM, in any of its CCM Client Collateral Accounts; or
+19
+Published on 11 December 2017CDS Clearing Procedures
+(ii)
+Collateral and Cash Payment
+a Clearing Member wishes to transfer non-Euro denominated Cash Collateral
+to be recorded in any of its Collateral Accounts for the purpose of
+substituting such non-Euro denominated Cash Collateral for any Collateral
+recorded in its Collateral Accounts,
+it shall notify LCH SA by submitting the relevant form by any means as specified in a
+Clearing Notice. The Clearing Member must specify in such form to which Collateral
+Account(s) the non-Euro denominated Collateral should be recorded. The process
+that a Clearing Member and LCH SA must follow to process the return of substituted
+Collateral to the Clearing Member is set out in paragraph 3.7(g) (for Euro
+denominated Cash Collateral), 3.8(i) (for USD denominated Cash Collateral), 3.10(c)
+(for Eligible Collateral transferred with full title), 3.15(b) (for Pledged Eligible
+Collateral) or 3.17(b) (for US T-Bills), as applicable.
+In respect of a CCM only, if such CCM notifies to LCH SA that non-Euro denominated
+Cash Collateral will be transferred to the LCH Client Non-Euro Account but the CCM
+does not specify to which CCM Client Collateral Account(s) some or all of such
+amounts should be recorded, LCH SA will treat such amounts which have not been
+specifically identified as being for a particular CCM Client Collateral Account as CCM
+Unallocated Client Collateral and record such amounts in the CCM Unallocated Client
+Collateral Account when they are received.
+The Clearing Member must notify LCH SA as set out above by no later than 16:45
+CET on Day minus one in order for the Clearing Member’s request to be processed
+on the next following Business Day and to enable the transfer of non-Euro
+denominated Cash Collateral to occur on Day. It is the Clearing Member’s
+responsibility to ensure the due receipt by LCH SA of the relevant notification.
+Accordingly, the Clearing Member should confirm its request no later than 16:45 CET
+by a phone call to LCH SA’s collateral management team on (+33) (0)1 70 37 66 86/66
+37/65 35, although a failure to do so shall not invalidate any request actually
+received by LCH SA.
+On Day
+The Clearing Member transfers the amount of the non-Euro denominated Cash
+Collateral notified to LCH SA on Day minus one to the relevant LCH Non-Euro
+Account opened with the Eligible Commercial Bank.
+If non-Euro denominated Cash Collateral is received:
+LCH SA ©2017
+i) before 10:30 CET on Day, such non-Euro denominated Cash Collateral (other
+than CCM Unallocated Client Collateral) will form part of the Margin Balance
+and be taken into account for the purposes of the First Intraday Call on Day;
+ii) at or after 10:30 CET but prior to 11:45 CET on Day, such non-Euro
+denominated Cash Collateral (other than CCM Unallocated Client Collateral)
+will form part of the relevant Margin Balance and be taken into account for
+the purposes of calculations in relation to a Collateral substitution request
+which is to be effected using the Additional Specific Collateral Slot;
+iii) at or after 11:45 CET but prior to 14:30 CET on Day, such non-Euro
+denominated Cash Collateral (other than CCM Unallocated Client Collateral)
+20
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+will form part of the relevant Margin Balance and be taken into account for
+the purposes of the Second Intraday Call on Day;
+iv)
+at or after 14:30 CET on Day, such non-Euro denominated Cash Collateral
+(other than CCM Unallocated Client Collateral) will form part of the relevant
+Margin Balance and be taken into account for the purposes of the Morning
+Call on the next following Business Day.
+In respect of a CCM only, to the extent Cash Collateral has been credited to its CCM
+Unallocated Client Collateral Account, the CCM must inform LCH SA by no later than
+16:00 CET on Day how the CCM Unallocated Client Collateral should be recorded
+within its CCM Client Collateral Account(s). Where the CCM does not provide LCH SA
+with this information within this timeframe, the CCM Unallocated Client Collateral
+shall be returned to the relevant account of the CCM.
+(g)
+Transfer of USD denominated Cash Collateral to be recorded in the LCH FCM Client
+USD Account
+On Day minus one (before 17:00 CET)
+If an FCM Clearing Member wishes to transfer USD denominated Cash Collateral to
+be recorded in its FCM Client Collateral Account for the purpose of substituting such
+USD denominated Cash Collateral for any Collateral recorded in its FCM Client
+Collateral Account, it shall notify LCH SA by submitting the relevant form by any
+means as specified in a Clearing Notice. The process that an FCM Clearing Member
+and LCH SA must follow to process the return of substituted Collateral to the FCM
+Clearing Member is set out in paragraph 3.7(g) (for Euro denominated Cash
+Collateral), 3.8(h) (for non-Euro denominated Cash Collateral) or 3.17(b) (for US T-
+Bills transferred on behalf of FCM Clients), as applicable.
+The form Clearing Member must notify LCH SA by no later than 17:00 CET on a
+Business Day (“Day minus one”) in order for the FCM Clearing Member’s request to
+be processed and to enable the transfer to occur no later than 18:00 CET on a
+Business Day (“Day minus one”). It is the FCM Clearing Member’s responsibility to
+ensure the due receipt by LCH SA of the relevant notification. Accordingly, the FCM
+Clearing Member should confirm its request no later than 17:00 CET by a phone call
+to LCH SA’s collateral management team on (+33) (0)1 70 37 66 86/66 37/65 35,
+although a failure to do so shall not invalidate any request actually received by LCH
+SA.
+On Day minus one (before 18:00 CET)
+A FCM Clearing Member transfers the amount of the USD denominated Cash
+Collateral, notified on Day minus one before 17:00 CET, to LCH SA’s relevant LCH FCM
+Client USD Account opened with the Eligible Commercial Bank.
+If USD denominated Cash Collateral is received before 18:00 CET on Day minus one,
+such USD denominated Cash Collateral will be taken into account in the relevant
+FCM Margin Balance used for the Morning Margin Call on Day.
+LCH SA ©2017
+21
+Published on 11 December 2017CDS Clearing Procedures
+(h)
+Collateral and Cash Payment
+Return of non-Euro denominated Cash Collateral (other than USD denominated Cash
+Collateral to be recorded in the LCH FCM Client USD Account)
+On Day minus one
+A Clearing Member must notify LCH SA of its request to have non-Euro denominated
+Cash Collateral returned to it by submitting the relevant form by any means as
+specified in a Clearing Notice. A Clearing Member must specify, on this form, the
+account to which the non-Euro denominated Cash Collateral should be returned.
+The Clearing Member must notify LCH SA as set out above by no later than 16:00
+CET on a Day minus one in order for the Clearing Member’s request to be processed
+on the next following Business Day and to allow LCH SA to give instructions (in the
+circumstances described below) to make the transfer on Day during the Additional
+Specific Collateral Slot. It is the Clearing Member’s responsibility to ensure the due
+receipt by LCH SA of the relevant notification. Accordingly, the Clearing Member
+should confirm its request by 16:00 CET by a phone call to LCH SA’s Treasury
+Operations team on +33 1 70 37 66 86/66 37/65 35, although a failure to do so shall
+not invalidate any request actually received by LCH SA.
+Any request received by LCH SA pursuant to this Paragraph 3.8(h) shall be deemed
+firm and irrevocable.
+On Day
+
+In respect of a Clearing Member’s House Collateral Account and Client Collateral
+Account(s)
+Following the First Intraday Slot and, in any event, by 12:00 CET at the latest,
+LCH SA will re-calculate the value of the non-Euro denominated Cash Collateral
+to be returned to the Clearing Member (the “Non-Euro Cash Collateral Value”)
+and:
+1- provided LCH SA holds sufficient Collateral (other than that which is to
+be returned) to cover the Margin Requirement for the relevant Margin
+Account and the Non-Euro Cash Collateral Value does not exceed the
+amount of non-Euro denominated Cash Collateral previously provided to
+LCH SA through a Collateral Call, LCH SA will process the return of the
+non-Euro denominated Cash Collateral to the Clearing Member in
+accordance with the remaining provisions of this Paragraph 3.8(h); or
+2- if LCH SA does not hold sufficient Collateral (other than that which is to
+be returned) to cover the Margin Requirement for the relevant Margin
+Account, LCH SA will debit an amount of Euro-denominated Cash
+Collateral equal to the Non-Euro Cash Collateral Value from the relevant
+TARGET2 Account of the Clearing Member (or the relevant cash account
+of its TARGET2 Payment Agent) during the Additional Specific Collateral
+Slot. Provided an amount of Euro-denominated Cash Collateral equal to
+the Non-Euro Cash Collateral Value is received by LCH SA, LCH SA will
+process the return of the non-Euro denominated Cash Collateral to the
+LCH SA ©2017
+22
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+Clearing Member in accordance with the remaining provisions of this
+Paragraph 3.8(h).
+
+In respect of an FCM Unallocated Client Collateral Financial Account
+Following the First Intraday Slot and, in any event, by 12:00 CET at the latest,
+LCH SA will re-calculate the Non-Euro Cash Collateral Value of the requested
+amount of FCM Unallocated Client Excess Collateral recorded in the FCM
+Unallocated Client Collateral Financial Account to be returned and will process a
+return of the Non-Euro Cash Collateral Value in accordance with the remaining
+provisions of this Paragraph 3.8(h).
+
+Return of the Non-Euro Cash Collateral Value
+In the event that LCH SA is required to, but has not been able to, debit an
+amount of Euro-denominated Cash Collateral equal to the Non-Euro Cash
+Collateral Value from the Clearing Member’s TARGET2 Account(s) or the relevant
+cash accounts of its TARGET2 Payment Agent), the Clearing Member’s request to
+have non-Euro denominated Cash Collateral returned to it will be deemed void
+and LCH SA shall retain the non-Euro denominated Cash Collateral which the
+Clearing Member requested to be returned. LCH SA’s inability to debit Euro-
+denominated Cash Collateral equal to the Eligible Collateral Value intra-day
+through TARGET2 shall not constitute a Payment Failure in respect of the
+Clearing Member.
+Save in the circumstances described above, LCH SA will give instructions to the
+Eligible Commercial Bank to credit the relevant account(s) of the Clearing Member
+(as notified in the form on Day minus one) with the non-Euro denominated Cash
+Collateral between 13:00 and 15:00 CET.
+(i)
+Return of USD denominated Cash Collateral recorded in the LCH FCM Client USD
+Account
+On Day
+An FCM Clearing Member must notify LCH SA of its request to have USD
+denominated Cash Collateral recorded in the LCH FCM Client USD Account returned
+to it by submitting the relevant form by any means as specified in a Clearing Notice.
+An FCM Clearing Member must specify, on this form, the FCM Cleared Swaps Client
+Segregated Depository Account to which the USD denominated Cash Collateral
+should be returned.
+The FCM Clearing Member must notify LCH SA by no later than 17:00 CET on a
+Business Day (“Day ”) in order for the FCM Clearing Member’s request to be
+processed on the same Business Day (“Day”) and to allow LCH SA to give instructions
+(in the circumstances described below) to make the transfer on Day. It is the FCM
+Clearing Member’s responsibility to ensure the due receipt by LCH SA of the relevant
+notification. Accordingly, the FCM Clearing Member should confirm its request by
+17:00 CET by a phone call to LCH SA’s Treasury Operations team on +33 1 70 37 66
+86/66 37/65 35, although a failure to do so shall not invalidate any request actually
+received by LCH SA.
+LCH SA ©2017
+23
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+Any request received by LCH SA pursuant to this Paragraph 3.8(i) shall be deemed
+firm and irrevocable.
+On Day
+
+In respect of an FCM Clearing Member’s FCM Client Collateral Account
+By 17:00 CET at the latest, LCH SA will re-calculate the value of the USD
+denominated Cash Collateral to be returned to the FCM Clearing Member (the
+“USD Cash Collateral Value”) and if:
+1. LCH SA holds sufficient Collateral (other than that which is to be
+returned) to cover the FCM Client Margin Requirement for the relevant
+FCM Client Margin Account, LCH SA will process the return of the USD
+denominated Cash Collateral to the FCM Clearing Member (up to the
+amount of USD denominated Cash Collateral provided originally by the
+FCM Clearing Member) before 18:00 CET; or
+2. LCH SA does not hold sufficient Collateral (other than that which is to be
+returned) to cover the FCM Client Margin Requirement for the relevant
+FCM Client Margin Account, LCH SA will reject FCM Clearing Member
+request to have USD denominated cash collateral returned to it.
+If FCM Clearing Member’s relevant FCM Margin Requirements are covered with
+sufficient alternative collateral (other than that which is to be returned), LCH SA
+will give instructions to the Eligible Commercial Bank to credit the FCM Clearing
+Member’s relevant account(s) (as notified in the form on Day) with the USD
+denominated Cash Collateral immediately.
+Such instructions will, in any event, be made on the same Business Day (“Day”)
+at 18:00 CET, i.e. in advance of the relevant commercial bank’s currency cut-off
+time (except in exceptional circumstances, as determined by LCH SA in an
+objective and commercially reasonable manner).
+
+In respect of an FCM Unallocated Client Collateral Financial Account Client
+Collateral Account
+By 17:00 CET at the latest, LCH SA will re-calculate the USD Cash Collateral Value
+of the requested amount of FCM Unallocated Client Excess Collateral recorded
+in the FCM Unallocated Client Collateral Financial Account and will process a
+return of the USD Cash Collateral Value in accordance with the remaining
+provisions of this Paragraph 3.8(i).
+By exception to the time limits for notification as set out in paragraphs 3.8 (f), (g), (h) and
+(i), in case of atypical market conditions (i.e. periods of time with reduced activity and
+lowered liquidity), including but not limited to the end of the year period (i.e. the period
+starting from 22 December of each year to 2 January of the following year) LCH SA may
+inform by any means the Clearing Members that notifications of movement (transfer or
+return) of non-Euro Cash Collateral, for value on Day, must be received by LCH SA on Day
+minus five before 16.00 CET. Such information will contain the implementation measures
+of the extension of the notification period.
+LCH SA ©2017
+24
+Published on 11 December 2017CDS Clearing Procedures
+3.9
+Collateral and Cash Payment
+ELIGIBLE COLLATERAL
+A list of the securities that constitute Eligible Collateral, together with applicable haircuts, is
+set out on the Website at http://www.lch.com/risk-collateral-management/collateral-
+management/acceptable-collateral.
+LCH SA may amend this list in accordance with Article 4.2.7.1 of the CDS Clearing Rule Book
+and this Paragraph 3.9.
+For risk management purposes, LCH SA does not permit a Clearing Member to transfer “self-
+issued securities” as Eligible Collateral (i.e. securities issued by such Clearing Member or by
+any of its Affiliates).
+(a)
+Withholding tax
+Each Clearing Member should ensure that the Eligible Collateral submitted to LCH
+SA's accounts with custodians or Central Securities Depositories or transferred to
+LCH SA’s pledged account at Euroclear Bank pursuant to a collateral arrangement, or
+BNYM US pursuant to a security arrangement, is not subject to withholding tax.
+If the Eligible Collateral is subject to withholding tax and a Clearing Member does not
+request the return of Eligible Collateral prior to the relevant record date of the
+securities to enable the Clearing Member to receive the gross coupon or dividend,
+any coupon or dividend will be paid to the Clearing Member by LCH SA net of
+withholding tax.
+(b)
+FX conversion and discounts
+A discount shall be applied to the value of Eligible Collateral transferred by a Clearing
+Member. The amount of the discount shall be notified on the Website. Such
+discounts may be modified at any time and at the sole discretion of LCH SA.
+Whenever LCH SA is required to convert non-Euro denominated Eligible Collateral,
+transferred by a Clearing Member, to Euros such conversion shall be effected on the
+basis of the Applicable Price.
+(c)
+Events affecting the eligibility of Eligible Collateral
+Where a security which constitutes Eligible Collateral is affected by one of the
+following events (each, a “Collateral Event” and together, the “Collateral Events”):
+i) a suspension from trading of such security by an exchange, or
+ii) the public announcement of a take-over bid, public exchange offer, split or
+reverse split involving the entity issuing such security,
+LCH SA will publish a Clearing Notice on the Website notifying Clearing Members
+that such security will no longer constitute Eligible Collateral. The Clearing Notice will
+specify the effective date, which shall be no later than 2 Business Days following the
+date of the Collateral Event, as of which the securities will no longer constitute
+Eligible Collateral.
+LCH SA ©2017
+25
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+Where a Clearing Member has transferred such securities to LCH SA with full title or
+to LCH SA’s pledged account(s) at Euroclear Bank, or to LCH SA’s segregated
+depository account(s) at BNYM US, such Clearing Member should request a return of
+the securities in accordance with Paragraph 3.10(c), 3.15 (b) or 3.17 (b), as
+appropriate, and transfer alternative Collateral to LCH SA in accordance with this
+Section 3 to satisfy any of its Margin Requirements and its obligation in respect of its
+House Excess Collateral Threshold.
+Where the Clearing Member does not request a return of the securities and/or
+transfer alternative Collateral to LCH SA prior to the effective date specified in the
+Clearing Notice published in accordance with this Paragraph 3.9(c), LCH SA will
+calculate the Margin Balance of the Clearing Member’s House Collateral Account and
+each of its affected Client Collateral Accounts, in accordance with Paragraph 3.2, on
+the effective date specified in such Clearing Notice, excluding the suspended
+securities. As a result of this calculation LCH SA shall determine whether or not there
+is a Margin Shortfall for any Margin Account or in the case of a CCM Gross Omnibus
+Segregated Account Structure, for all the CCM Client Margin Accounts attached to
+that CCM Gross Omnibus Segregated Account Structure, of the Clearing Member.
+Where there is a Margin Shortfall this will be detailed in the AC0103E Report which is
+sent to the Clearing Member in accordance with Paragraph 5.13(b) of Section 5 of
+the Procedures and LCH SA shall be taken into account for the purposes of
+calculating the Required Collateral Amount for the purposes of the Morning Call on
+the next Business Day.
+For the avoidance of doubt, LCH SA shall retain the suspended securities until such
+time as the Clearing Member requests their return in accordance with this Paragraph
+3.9(c) but they shall not be taken into account for the purposes of calculating any
+Margin Balance of the Clearing Member on subsequent Business Days.
+(d)
+Transfer of Eligible Collateral (other than US T-Bills transferred by an FCM Clearing
+Member on behalf of FCM Clients)
+Subject to the requirement applicable to US T-Bills transferred by an FCM Clearing
+Member on behalf of FCM Clients as set out in Paragraph 3.9 (e) below, a Clearing
+Member can transfer Eligible Collateral to LCH SA, either:
+(e)
+i) with full title, in accordance with Paragraph 3.10 to be recorded in its House
+Collateral Account and the case of a CCM only, in any of its CCM Client
+Collateral Accounts; or
+ii) by way of security interest whereby the Eligible Collateral would be
+transferred to the relevant LCH SA pledged account at Euroclear Bank and
+held pursuant to a Belgian law pledge in accordance with Paragraph 3.15 and
+to be recorded in its House Collateral Account and in the case of a CCM only,
+in any of its CCM Client Collateral Accounts.
+Transfer of US T-Bills provided by an FCM Clearing Member on behalf of FCM Clients
+If an FCM Clearing Member wishes to transfer US T-Bills on behalf of FCM Clients, it
+shall be transferred by way of security interest and recorded in LCH SA’s segregated
+depository account held at BNYM US in accordance with Paragraph 3.14.
+LCH SA ©2017
+26
+Published on 11 December 2017CDS Clearing Procedures
+3.10
+Collateral and Cash Payment
+ELIGIBLE COLLATERAL TRANSFERRED WITH FULL TITLE
+(a)
+Securities accounts
+LCH SA holds Eligible Collateral transferred to it with full title in the following sets of
+accounts opened in the books of Euroclear Bank and Euroclear France:
+i) a security account in each of Euroclear Bank and Euroclear France used to
+credit Eligible Collateral which is transferred by Clearing Members to be
+recorded in their House Collateral Account (the “LCH House Securities
+Account”); and
+ii) a security account in each of Euroclear Bank and Euroclear France used to
+credit Eligible Collateral which is transferred by Clearing Members to be
+recorded in any of their Client Collateral Accounts (the “LCH Client Securities
+Account”).
+The LCH House Securities Account and the LCH Client Securities Account shall be
+together referred to as the “LCH Securities Accounts”.
+LCH SA may invest Eligible Collateral provided to LCH SA with full title in accordance
+with Paragraph 3.11(b).
+(b)
+Transfer of Eligible Collateral
+On Day
+If:
+(i) a Clearing Member wishes to transfer additional Eligible Collateral with full
+title to be recorded in its House Collateral Account, and in the case of a CCM,
+in any of its CCM Client Collateral Accounts; or
+(ii) a Clearing Member wishes to transfer Eligible Collateral with full title to be
+recorded in its House Collateral Account, and in the case of a CCM, in its CCM
+Client Collateral Account, for the purpose of substituting such Eligible
+Collateral for any Collateral recorded in its Collateral Accounts,
+it shall notify LCH SA of its request to transfer such Eligible Collateral with LCH SA by
+submitting the relevant form by any means as specified in a Clearing Notice. The
+process that a Clearing Member and LCH SA must follow to process the return of
+substituted Collateral to the Clearing Member is set out in paragraph 3.7(g) (for Euro
+denominated Cash Collateral), 3.8(h) (for non-Euro denominated Cash Collateral),
+3.8(i) (for USD denominated Cash Collateral), 3.15(b) (for Pledged Eligible Collateral)
+or 3.17(b) (for US T-Bills transferred on behalf of FCM Clients), as applicable.
+In respect of a CCM only, if such CCM notifies to LCH SA that Eligible Collateral will be
+transferred to the LCH Client Securities Account but the CCM does not specify to
+which CCM Client Collateral Account(s) some or all such Eligible Collateral should be
+recorded, LCH SA will not accept the request to transfer such Eligible Collateral.
+LCH SA ©2017
+27
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+The Clearing Member must notify LCH SA as set out above by no later than 17:15
+CET on a Business Day (“Day”) in order for the Clearing Member’s request to be
+processed on Day and to enable the transfer to occur on Day. It is the Clearing
+Member’s responsibility to ensure the due receipt by LCH SA of the relevant
+notification. Accordingly, the Clearing Member should confirm the request by 17:15
+CET by a phone call to LCH SA’s collateral management team on (+33) (0)1 70 37 66
+86/66 37/65 35, although a failure to do so shall not invalidate any request actually
+received by LCH SA.
+On Day
+A Clearing Member must submit instructions (Franco or Sell Free of payment) via
+Euroclear Bank or ESES (Euroclear France), as applicable, and LCH SA must submit
+instructions (Buy free of payment) if Clearing Member uses Sell free of payment, for
+matching through Euroclear Bank or ESES (Euroclear France).
+If LCH SA receives the confirmation of settlement from Euroclear Bank or ESES
+(Euroclear France):
+(c)
+i) before 10:30 CET on Day, the Eligible Collateral will form part of the relevant
+Margin Balance and be taken into account for the purposes of the First
+Intraday Call on Day;
+ii) at or after 10:30 CET but prior to 11:45 CET on Day, the Eligible Collateral will
+form part of the relevant Margin Balance and be taken into account for the
+purposes of calculations in relation to a Collateral substitution request which
+is to be effected using Additional Specific Collateral Slot;
+iv) at or after 11:45 CET but prior to 14:30 CET on Day, the Eligible Collateral will
+form part of the relevant Margin Balance and be taken into account for the
+purposes of the Second Intraday Call on Day;
+v) at or after 14:30 CET but prior to 17:15 CET on Day, the Eligible Collateral will
+form part of the relevant Margin Balance and be taken into account solely for
+the purposes of novating Intraday Transactions;
+v) at or after 17:15 CET on Day, the Eligible Collateral will form part of the
+relevant Margin Balance and be taken into account for the purposes of the
+Morning Call on the next following Business Day.
+Return of Eligible Collateral
+On Day minus one
+A Clearing Member must notify LCH SA of a request to have Eligible Collateral
+returned to it by submitting the relevant form by any means as specified in a
+Clearing Notice.
+The Clearing Member must notify LCH SA by no later than 16:00 CET on a Business
+Day (“Day minus one”) in order for the Clearing Member’s request to be processed
+on the next following Business Day (“Day”) and to allow LCH SA to give instructions
+(in the circumstances described below) to make the transfer to occur on Day during
+LCH SA ©2017
+28
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+the Additional Specific Collateral Slot. It is the Clearing Member’s responsibility to
+ensure the due receipt by LCH SA of the relevant notification. Accordingly, the
+Clearing Member should confirm the request by 16:00 CET by a phone call to LCH
+SA’s collateral management team on +33 1 70 37 66 86/66 37/65 35, although a
+failure to do so shall not invalidate any request actually received by LCH SA.
+Any request received by LCH SA pursuant to this process shall be deemed firm and
+irrevocable.
+On Day
+Following the First Intraday Slot and, in any event, by 12:00 CET at the latest, LCH SA
+will re-calculate the value of the Eligible Collateral to be returned (the “Eligible
+Collateral Value”) and if:
+1- LCH SA holds sufficient Collateral (other than that which is to be
+returned) to cover the Margin Requirement for the relevant Margin
+Account, LCH SA will process the return of the Eligible Collateral on
+request of the Clearing Member in accordance with the remaining
+provisions of this Paragraph 3.10(c); or
+2-
+LCH SA does not hold Collateral (other than that which is to be returned)
+to cover the Margin Requirement for the relevant Margin Account, LCH
+SA will debit an amount of Euro-denominated Cash Collateral equal to
+the Eligible Collateral Value from the relevant TARGET2 Account(s) of the
+Clearing Member (or the relevant cash accounts of its TARGET2 Payment
+Agent) during the Additional Specific Collateral Slot. Provided an amount
+of Euro-denominated Cash Collateral equal to the Eligible Collateral
+Value is received by LCH SA, LCH SA will process the return of the Eligible
+Collateral to the Clearing Member in accordance with the remaining
+provisions of this Paragraph 3.10(c).
+In the event that LCH SA is required to, but has not been able to, debit an amount of
+Euro-denominated Cash Collateral equal to the Eligible Collateral Value from the
+Clearing Member’s TARGET2 Account(s) or the relevant cash accounts of its TARGET2
+Payment Agent), the Clearing Member’s request to have Eligible Collateral returned
+to it will be deemed void and LCH SA shall retain the Eligible Collateral which the
+Clearing Member requested to be returned. LCH SA’s inability to debit Euro-
+denominated Cash Collateral equal to the Eligible Collateral Value intra-day through
+TARGET2 shall not constitute a Payment Failure in respect of the Clearing Member.
+Save in the circumstances described above, LCH SA will send instructions (Sell Free of
+Payment) submitted via Euroclear Bank or ESES (Euroclear France) and the Clearing
+Member shall submit instructions (Buy Free of Payment), for matching through
+Euroclear Bank or ESES (Euroclear France) between 13:00 and 15:00 CET.
+Such instructions will, in any event, be sent on Day in advance of the relevant Central
+Securities Depository/International Central Securities Depository cut-off time (except
+in exceptional circumstances, as determined in an objective and commercially
+reasonable manner).
+LCH SA ©2017
+29
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+By exception to the time limits for notification as set out in paragraphs 3.10 (b) and (c), in
+case of atypical market conditions (i.e. periods of time with reduced activity and lowered
+liquidity), including but not limited to the end of the year period (i.e. the period starting
+from 22 December of each year to 2 January of the following year) LCH SA may inform by
+any means the Clearing Members that notifications of movement (transfer or return) of
+Eligible Collateral transferred with full title, for value on Day, must be received by LCH SA
+on Day minus five before 16.00 CET. Such information will contain the implementation
+measure of the extension of the notification period.
+3.11
+LCH SA’S RIGHTS IN RESPECT OF COLLATERAL TRANSFERRED WITH FULL
+TITLE
+(a)
+Full title
+Collateral (except Pledged Eligible Collateral and US T-Bills recorded in LCH SA’s
+segregated depository account at BNYM US) shall be transferred to LCH SA with full
+title.
+(b)
+Use of Collateral
+LCH SA may use Collateral (except Pledged Eligible Collateral and US T-Bills recorded
+in LCH SA’s segregated depository account at BNYM US) in accordance with the
+principles set out in the LCH Group Risk Collateral Policy and all applicable legal and
+regulatory provisions governing Collateral applicable to LCH SA acting as a clearing
+house and/or a securities settlement system.
+LCH SA shall, in its sole discretion, invest Cash Collateral in liquid principal protected
+assets, as detailed on the collateral management section of the Website, and in
+accordance with the principles set out in the LCH Group Risk Collateral Policy.
+(c)
+French law restrictions on use
+Collateral that is transferred with full title to LCH SA shall be subject to all applicable
+legal and regulatory provisions governing Collateral provided to a clearing house and
+securities settlement systems, including, without limitation, Article L. 330-2, and L.
+440-7 and L. 440-8 of the French Monetary and Financial Code.
+Under Articles L. 440-7 and L. 440-8 of the French Monetary and Financial Code:
+LCH SA ©2017
+i) without prejudice to Paragraph 3.11(b), Collateral transferred for the
+purpose of meeting a Clearing Member’s Margin Requirements shall only be
+used by LCH SA in the event that amounts are due in the context of the
+liquidation of such Clearing Member’s Cleared Transactions (where it is a
+Defaulting Clearing Member) in accordance with Article 4.3.3.1 of the CDS
+Clearing Rule Book and/or in the event that any other sums are owed by the
+relevant Clearing Member to LCH SA; and
+ii) no creditor of either a Clearing Member or LCH SA, no representative of a
+Clearing Member and no insolvency official (mandataire judiciaire)
+appointed under French insolvency proceedings (under Book VI of the
+French Commercial Code) may claim any right over the Collateral transferred
+for the purpose of meeting a Clearing Member’s Margin Requirements (even
+30
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+in the context of an LCH Insolvency Proceeding or insolvency proceedings
+opened outside of France which are equivalent or similar to those set out in
+Book VI of the French Commercial Code).
+Under Article L. 330-2 of the French Monetary and Financial Code:
+i) without prejudice to Paragraph 3.11(b), Collateral transferred by a Clearing
+Member shall be used by LCH SA in accordance with the CDS Clearing Rules;
+and
+ii) no creditor of either a Clearing Member or LCH SA may claim any right over
+the Collateral transferred by a Clearing Member (even in the context of an
+LCH Insolvency Proceeding, insolvency proceedings opened outside France
+which are equivalent to those set out in Book VI of the French Commercial
+Code, civil enforcement proceedings or the exercise of an opposition right
+(droit d'opposition)).
+In the event of any conflict between the provisions of Article L. 211-38, whereby
+Collateral may be enforced in accordance with the provisions of the Financial
+Collateral Directive as transposed into French law, and the provisions of Articles L.
+440-7 and L. 440-8, the provisions of Articles L. 440-7 and L. 440-8 shall prevail.
+(d)
+Governing law
+Pursuant to Article 9(2) of the Settlement Finality Directive, the validity and
+enforceability of a guarantee on book entry securities is assessed according to the
+law of the Member State where the account, in which the rights with respect to the
+relevant securities are recorded, is located.
+Accordingly, when Eligible Collateral is posted to one of the relevant LCH SA’s
+accounts located in France, Belgium or Portugal, the related securities are
+transferred to LCH SA with full title, in accordance with applicable law as follows:
+LCH SA ©2017
+i) France: Articles L. 440-7 and L. 330-2 of the French Monetary and Financial
+Code; or
+ii) Belgium: Article 12 of the Belgian law dated 15 December 2004 “relative aux
+sûretés financières et portant des dispositions fiscales diverses en matière de
+conventions constitutives de sûreté et de prêts portant sur des instruments
+financiers”; or
+iii) Portugal: Article 261 n°4 of the Portuguese Securities Code.
+31
+Published on 11 December 2017CDS Clearing Procedures
+3.12
+Collateral and Cash Payment
+CORPORATE EVENTS OCCURRING IN RESPECT OF ELIGIBLE COLLATERAL
+TRANSFERRED WITH FULL TITLE
+(a)
+Coupons and dividends
+Dividends will be remitted to the Clearing Member in one of the following ways at
+the option of the Clearing Member:
+i) share dividends will be remitted to the Clearing Member's accounts with a
+depository as notified to LCH SA for this purpose; or
+ii) cash dividends and coupons will be credited to the relevant TARGET2
+Account(s) of the Clearing Member (or the relevant cash account(s) of the
+Clearing Member’s TARGET2 Payment Agent) or the Clearing Member’s
+accounts with a central bank as notified to LCH SA for this purpose.
+A minimum of 1 Business Day before the relevant record date, LCH SA will contact
+Clearing Members by telephone to the telephone number specified by the Clearing
+Member in its application for membership of the CDS Clearing Service to ask which
+of the above options the Clearing Member prefers. If a Clearing Member does not
+express a preference, or if LCH SA has insufficient time to process a Clearing
+Member’s preference, the dividend or coupon will be credited (in accordance with
+Paragraph 3.7(b)) to the relevant TARGET2 Account(s) of the Clearing Member (or
+the relevant cash account(s) of the Clearing Member’s TARGET2 Payment Agent).
+Dividends and coupons will only be remitted or credited to the Clearing Member’s
+account(s) once LCH SA has received the relevant dividends and coupons. Dividends
+and coupons are remitted on the same day if received before 16:00 CET, or the next
+Business Day if received after 16:00 CET.
+(b)
+Subscription or allotment rights
+Where a subscription or allotment right can be detached from a security provided as
+Eligible Collateral it will be remitted to the Clearing Member's account with the
+relevant depository as soon as LCH SA has received the relevant right. The
+remittance will be performed in Euroclear Bank or Euroclear France on the same day
+if the right is received before 16:00 CET, or the next Business Day if received after
+16:00 CET.
+(c)
+Maturity
+If a security provided as Eligible Collateral is due to mature and a Clearing Member
+wishes it to be returned, then a Clearing Member should request the return of that
+security before the relevant maturity date in accordance with Paragraph 3.10.
+Where a security provided as Eligible Collateral matures, LCH SA will credit (in
+accordance with Paragraph 3.7(b)) the Clearing Member’s TARGET2 Accounts (or the
+relevant cash accounts of such Clearing Member’s TARGET2 Payment Agent) on the
+same day if funds are received before 16:00 CET, or will credit the Clearing Member’s
+TARGET2 Accounts (or the relevant cash accounts of such Clearing Member’s
+TARGET2 Payment Agent) on the next day if the funds are received after 16:00 CET.
+LCH SA ©2017
+32
+Published on 11 December 2017CDS Clearing Procedures
+3.13
+Collateral and Cash Payment
+ELIGIBLE COLLATERAL TRANSFERRED TO LCH SA’S PLEDGED ACCOUNTS
+AT EUROCLEAR BANK
+A Clearing Member may provide Eligible Collateral by way of a collateral arrangement taking
+the form of a Pledge Agreement put in place in accordance with this Paragraph 3.13.
+(a)
+Collateral arrangement in the form of a Pledge Agreement
+The Pledge Agreement shall be implemented as follows:
+i) A Clearing Member wishing to post Eligible Collateral pursuant to the
+collateral arrangement will be required to enter into a Pledge Agreement
+with LCH SA which is governed by Belgian law (in particular the Belgian Royal
+Decree n° 62 of 10 November 1967 concerning the custody and clearing of
+fungible financial instruments (as coordinated in 2004) and the Law of 15
+December 2004 on financial collateral implementing the Directive
+2002/47/EC on financial collateral arrangements);
+ii) LCH SA and the Clearing Member will be required to enter into standard
+form documentation with Euroclear Bank, taking the form of the Single
+Pledgor Pledged Account Terms and Conditions ("SPPA") and the Terms and
+Conditions Governing Use of Euroclear;
+iii) Under the SPPA, Euroclear Bank agrees to act as pledge holder in accordance
+with the terms set out in the SPPA;
+iv) LCH SA and each Clearing Member willing to post Pledged Eligible Collateral
+under the Pledge Agreement will open the following separate special
+pledged accounts in Euroclear Bank's books:
+(x) a pledged account which shall be used to register Pledged Eligible
+Collateral recorded in the House Collateral Account of such Clearing
+Member (the “House Pledged Account”), and
+(y) in the case of a CCM, a pledged account which shall be used to
+register Pledged Eligible Collateral recorded in its CCM Client
+Collateral Account(s) (the “Client Pledged Account”).
+The House Pledged Account and the Client Pledged Account shall be
+together referred to as the “Pledged Accounts”.
+(b)
+Pledged Accounts
+The Pledged Accounts shall be held in the name of LCH SA as pledgee. However, the
+title in the Pledged Eligible Collateral shall not be transferred to LCH SA (see Article 2
+in fine and Article 13 of the Royal Decree 62 - the pledgee only acts as a “custodian”
+and does not become the owner of the securities (ownership stays with the pledgor
+(see in particular Article 2079 of the Belgian civil code)).
+LCH SA ©2017
+33
+Published on 11 December 2017CDS Clearing Procedures
+(c)
+Collateral and Cash Payment
+Use of Pledged Eligible Collateral
+Subject to Paragraphs 3.13(d) and 3.13(e), LCH SA shall be prevented from using for
+any purpose, re-hypothecating or transferring Pledged Eligible Collateral which is
+pledged to LCH SA pursuant to the collateral arrangement described in this
+Paragraph 3.13.
+(d)
+Perfection and enforceability
+Provided that LCH SA provides Euroclear Bank with a copy of the Default Notice
+issued by LCH SA in accordance with Article 4.3.1.3 of the CDS Clearing Rule Book,
+LCH SA shall be able to perfect and enforce the pledge on Pledged Eligible Collateral
+(meaning that it shall be entitled to apply the Pledged Eligible Collateral transferred
+by the Defaulting Clearing Member as envisaged by Article 4.3.3.1 of the CDS
+Clearing Rule Book), against the Defaulting Clearing Member, any other creditors of
+the Defaulting Clearing Member and/or the trustee in bankruptcy, without having to
+notify, or secure any further consent from the Defaulting Clearing Member or any
+other person, and without having to obtain any court approval (see article 8 of the
+Law of 15 December 2004).
+In the event that LCH SA elects to enforce the pledge by appropriating the Client
+Pledged Eligible Collateral in accordance with the Article 4.3.2.6 of the CDS Clearing
+Rule Book, the Eligible Securities so appropriated shall be credited to the LCH Client
+Securities Account.
+(e)
+Transfer of Client Cleared Transactions and related Client Assets in respect of a CCM
+Provided that:
+i) LCH SA provides Euroclear Bank with a copy of the Client Full Transfer Form
+transmitted by the Receiving Clearing Member to LCH SA, in accordance
+with Section 5 of the Procedures; and
+ii) the deadline for the Carrying Clearing Member to reject the transfer of
+Client Cleared Transactions and Client Assets, by submission of the Carrying
+Clearing Member Response Form in accordance with Section 5 of the
+Procedures, has expired,
+LCH SA shall be able to instruct Euroclear Bank to transfer the relevant Client
+Pledged Eligible Collateral from the Carrying Clearing Member’s Client Pledged
+Account to the Receiving Clearing Member’s Client Pledged Account in accordance
+with the conditions and timeline set out in Section 5 of the Procedures.
+LCH SA ©2017
+34
+Published on 11 December 2017CDS Clearing Procedures
+3.14
+Collateral and Cash Payment
+US T-BILLS TRANSFERRED TO LCH SA’S DEPOSITORY ACCOUNT AT BNYM
+US
+An FCM Clearing Member may provide US T-Bills by way of security interest governed by
+laws of the State of New York in accordance with this Paragraph 3.14 and the FCM CDS
+Clearing Regulations.
+(a)
+Segregated depository account opened with BNYM US
+To permit an FCM Clearing Member to transfer US T-Bills on behalf of its FCM Clients,
+LCH SA has opened a segregated depository account in BNYM US’ books which shall
+be used to register US T-Bills in connection with FCM Cleared Transactions cleared
+for its FCM Clients (the “LCH Client Depository Account”).
+The LCH Client Depository Account forms part of the LCH Cleared Swaps Client
+Segregated Depository Account for purposes of the FCM CDS Clearing Regulations.
+(b)
+Transfer of FCM Client Cleared Transactions and related Account Assets
+Provided that LCH SA provides BNYM US with a copy of the Client Full Transfer Form
+transmitted by the Receiving Clearing Member to LCH SA in accordance with Section
+5 of the Procedures, LCH SA shall be able to transfer the relevant Eligible Collateral
+from the Carrying Clearing Member’s LCH Client Depository Account to the Receiving
+Clearing Member’s LCH Client Depository Account in accordance with the conditions
+and timeline set out in Section 5 of the Procedures.
+3.15
+ELIGIBLE COLLATERAL
+AGREEMENT
+(a)
+TRANSFER
+PURSUANT
+TO
+THE
+PLEDGE
+Transfer of Pledged Eligible Collateral
+On Day
+If:
+(i) a Clearing Member wishes to transfer additional Pledged Eligible Collateral
+to be recorded in its House Collateral Account and, in the case of a CCM, in
+any of its CCM Client Collateral Accounts; or
+(ii) a Clearing Member wishes to transfer Pledged Eligible Collateral to be
+recorded in any of its Collateral Accounts for the purpose of substituting
+such Pledged Eligible Collateral for any Collateral recorded in its Collateral
+Accounts,
+it shall notify LCH SA of its request to transfer Pledged Eligible Collateral to the
+relevant Pledged Account by submitting the relevant form by
+any means as
+specified in a Clearing Notice. The process that a Clearing Member and LCH SA must
+follow to process the return of substituted Collateral to the Clearing Member is set
+out in paragraph 3.7(g) (for Euro denominated Cash Collateral), 3.8(h) (for non-Euro
+denominated Cash Collateral), 3.8(i) (for USD denominated Cash Collateral), 3.10(c)
+(for Eligible Collateral transferred with full title) or 3.17(b) (for US T-Bills), as
+applicable.
+LCH SA ©2017
+35
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+In respect of a CCM only, if such CCM notifies to LCH SA that Pledged Eligible
+Collateral will be transferred to the Client Pledged Account but the CCM does not
+specify to which CCM Client Collateral Account(s) some or all such Pledged Eligible
+Collateral should be recorded, LCH SA will not accept the request to transfer such
+Pledged Eligible Collateral.
+The Clearing Member must notify LCH SA as set out above by no later than 17:15
+CET on a Business Day (“Day minus one”) in order for the Clearing Member’s request
+to be processed on the next following Business Day (“Day”) and to enable the
+transfer to occur on Day. It is the Clearing Member’s responsibility to ensure the due
+receipt by LCH SA of the relevant notification. Accordingly, the Clearing Member
+should confirm the request by 17:15 CET by a phone call to LCH SA’s collateral
+management team on + 33 1 70 37 66 86/66 37/65 35, although a failure to do so
+shall not invalidate any request actually received by LCH SA.
+On Day
+A Clearing Member must submit instructions (Franco or Sell Free of payment) via
+Euroclear Bank and LCH SA must submit instructions (Buy free of payment) if
+Clearing Member uses Sell free of payment, for matching through Euroclear Bank.
+If LCH SA receives the confirmation of settlement from Euroclear Bank:
+LCH SA ©2017
+i) before 10:30 CET on Day, the Pledged Eligible Collateral will form part of the
+relevant Margin Balance and be taken into account for the purposes of the
+First Intraday Call on Day;
+ii) at or after 10:30 CET and prior to 11:45 CET on Day, the Pledged Eligible
+Collateral will form part of the relevant Margin Balance and be taken into
+account for the purposes of calculations in relation to a Collateral
+substitution request which is to be effected using the Additional Specific
+Collateral Slot;
+iii) before at or after 11:45 CET and prior to 14:30 CET on Day, the Pledged
+Eligible Collateral will form part of the relevant Margin Balance and be
+taken into account for the purposes of the Second Intraday Call on Day;
+iv) at or after 14:30 CET but prior to 17:15 CET on Day, the Pledged Eligible
+Collateral will form part of the relevant Margin Balance and be taken into
+account solely for the purposes of novating Intraday Transactions;
+v) if LCH SA receives the confirmation of settlement from Euroclear Bank at or
+after 17:15 CET on Day, the Pledged Eligible Collateral will form part of the
+relevant Margin Balance and be taken into account for the purposes of the
+Morning Call on the next following Business Day.
+36
+Published on 11 December 2017CDS Clearing Procedures
+(b)
+Collateral and Cash Payment
+Release of Pledged Eligible Collateral
+On Day minus one
+A Clearing Member must notify LCH SA of a request to have Pledged Eligible
+Collateral released by submitting the relevant form by any means as specified in a
+Clearing Notice.
+The Clearing Member must notify LCH SA by no later than 16:00 CET on a Business
+Day (“Day minus one”) in order for the Clearing Member’s request to be processed
+on the next following Business Day (“Day”) and to allow LCH SA to give instructions
+(in the circumstances described below) to make the transfer to occur on Day. It is
+the Clearing Member’s responsibility to ensure the due receipt by LCH SA of the
+relevant notification. Accordingly, the Clearing Member should confirm the request
+by 16:00 CET by a phone call to LCH SA’s collateral management team on +33 1 70 37
+66 86/66 37/65 35, although a failure to do so shall not invalidate any request
+actually received by LCH SA. Any request received by LCH pursuant to this process
+shall be deemed firm and irrevocable
+On Day
+Following the first intraday TARGET2 payment window (11:25-11:50 CET) and, in any
+event, by 12:00 CET latest, LCH SA will re-calculate the value of the Pledged Eligible
+Collateral to be released (the “Pledged Eligible Collateral Value”) and if:
+1- LCH SA holds Collateral (other than that which is to be released) to cover
+the Margin Requirement for the relevant Margin Account, LCH SA will
+process the release of the Pledged Eligible Collateral on request of the
+Clearing Member in accordance with the remaining provisions of this
+Paragraph 3.15(b); or
+2- LCH SA does not hold sufficient Collateral (other than that which is to be
+released) to cover the Margin Requirement for the relevant Margin
+Account, LCH SA will notify the Clearing Member by 12:20 CET and debit
+an amount of Euro denominated Cash Collateral equal to the Pledged
+Eligible Collateral Value from the relevant TARGET2 Account(s) of the
+Clearing Member (or the relevant cash account(s) of its TARGET2
+Payment Agent) during the Additional Specific Collateral Slot. Provided
+an amount of Euro-denominated Cash Collateral equal to the Pledged
+Eligible Collateral Value is received by LCH SA, LCH SA will process the
+return of the Pledged Eligible Collateral to the Clearing Member in
+accordance with the remaining provisions of this Paragraph 3.15(b).
+In the event that LCH SA is required to, but has not been able to, debit an amount of
+Euro-denominated Cash Collateral equal to the Pledged Eligible Collateral Value from
+the Clearing Member’s TARGET2 Accounts or the relevant cash accounts of its
+TARGET2 Payment Agent), the Clearing Member’s request to have Pledged Eligible
+Collateral released to it will be deemed void and LCH SA shall not release Pledged
+Eligible Collateral to the Clearing Member. LCH SA’s inability to debit Euro-
+denominated Cash Collateral equal to the Pledged Eligible Collateral Value intra-day
+LCH SA ©2017
+37
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+through TARGET2 shall not constitute a Payment Failure in respect of the Clearing
+Member.
+Save in the circumstances described above, LCH SA will send instructions (Sell Free of
+Payment) submitted via Euroclear Bank and the Clearing Member shall submit
+instructions (Buy Free of Payment), for matching through Euroclear Bank between
+13:00 and 15:00.
+LCH SA’s instructions via Euroclear Bank shall constitute the release of the relevant
+Pledged Eligible Collateral.
+Such instructions will, in any event, be sent on the same Business Day in advance of
+the relevant International Central Securities Depository cut-off time (except in
+exceptional circumstances, as judged in an objective and commercially reasonable
+manner).
+By exception to the time limits for notification as set out in paragraphs 3.15 (a) and (b), in
+case of atypical market conditions (i.e. periods of time with reduced activity and lowered
+liquidity), including but not limited to the end of the year period (i.e. the period starting
+from 22 December of each year to 2 January of the following year) LCH SA may inform by
+any means the Clearing Members that notifications of movement (transfer or release) of
+Eligible Pledged Collateral, for value on Day, must be received by LCH SA on Day minus five
+before 16.00 CET. Such information will contain the implementation measure of the
+extension of the notification period.
+3.16
+TRANSFER OF CLIENT PLEDGED ELIGIBLE COLLATERAL FOLLOWING AN
+EVENT OF DEFAULT
+In the event that a Defaulting Clearing Member or a Backup Clearing Member is a CCM, any
+transfer of Client Pledged Eligible Collateral shall be undertaken in accordance with this
+Paragraph 3.16 and the CDS Clearing Documentation.
+(a)
+Transfer of Client Pledged Eligible Collateral to LCH SA
+In order to transfer Client Pledged Eligible Collateral to LCH SA, in order to satisfy a
+request made in accordance with Article 4.3.2.1(i) of the CDS Clearing Rule Book, the
+Defaulting Clearing Member must provide LCH SA with its consent to the debit of
+Client Pledged Eligible Collateral from its Client Pledged Account by Euroclear,
+pursuant to an instruction of LCH SA, and credit of the Client Pledged Eligible
+Collateral to be credited to the LCH Client Securities Account. The Defaulting Clearing
+Member must evidence its consent by submitting the relevant form by any means as
+specified in a Clearing Notice.
+Following the receipt of the consent of the Defaulting Clearing Member, LCH SA will
+submit instructions via Euroclear Bank. When LCH SA receives the confirmation of
+settlement from Euroclear Bank or Euroclear France, as applicable, LCH SA shall
+update the relevant CCM Client Collateral Account(s) of the Defaulting Clearing
+Member to reflect that such Eligible Collateral has been transferred with full title to
+LCH SA.
+Provided the Defaulting Clearing Member has sent its consent in accordance with
+this Paragraph 3.16(a), within the timeframe specified by LCH SA pursuant to Article
+LCH SA ©2017
+38
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+4.3.2.1(i), the Defaulting Clearing Member shall be treated as having satisfied its
+obligation to transfer ownership in the Client Pledged Eligible Collateral to LCH SA as
+required by the CDS Admission Agreement. If, however, the Defaulting Clearing
+Member has not sent its consent within the timeframe specified by LCH SA pursuant
+to Article 4.3.2.1(i), LCH SA shall be entitled to enforce the security interest granted
+to it under, and in accordance with, the Pledge Agreement and, in accordance with
+the CDS Clearing Rule Book by appropriation of the Defaulting Clearing Member’s
+Client Pledged Eligible Collateral.
+(b)
+Transfer of Eligible Collateral to the Backup Clearing Member
+On the day prior to the registration of the Relevant Client Cleared Transactions and
+the Ported Collateral in the CCM Client Account Structure of the Backup Clearing
+Member, in accordance with the CDS Client Clearing DMP, LCH SA will update its
+books and records so that the Eligible Collateral recorded in the LCH Client Securities
+Account is recorded as Eligible Collateral which has been transferred with full title by
+the Backup Clearing Member to be recorded in the relevant CCM Client Collateral
+Account(s) of the Backup Clearing Member.
+Once the books and records update has been processed, the relevant Eligible
+Collateral will form part of the CCM Margin Balance for the relevant CCM Client
+Margin Account of the Backup Clearing Member to be taken into account for the
+purposes of the Morning Call on the next following Business Day. If the Backup
+Clearing Member wishes that such Eligible Collateral be transferred to its relevant
+Client Pledged Account, it shall follow the process to substitute the Eligible Collateral
+for Pledged Eligible Collateral as set out in Paragraph 3.10(c) and 3.15(a) of this
+Section 3.
+3.17
+TRANSFER OF US T-BILLS ON BEHALF OF FCM CLIENTS
+(a)
+Transfer of Eligible Collateral consisting of US T-Bills on behalf of FCM Clients
+On Day
+If an FCM Clearing Member wishes to transfer Eligible Collateral consisting of US T-
+Bills to be recorded in its FCM Client Collateral Account for the purpose of
+substituting such Eligible Collateral for any Collateral recorded in its FCM Client
+Collateral Account, it shall notify LCH SA of its request to transfer such Eligible
+Collateral to the LCH Client Depository Account by submitting the relevant form by
+any means as specified in a Clearing Notice. The process that an FCM Clearing
+Member and LCH SA must follow to process the return of substituted Collateral to
+the FCM Clearing Member is set out in paragraph 3.7(g) (for Euro denominated Cash
+Collateral), 3.8(h) (for non-Euro denominated Cash Collateral) or 3.8(i) (for USD
+denominated Cash Collateral), as applicable.
+The FCM Clearing Member must notify LCH SA as set out above by no later than
+17:15 CET on Day in order for the FCM Clearing Member’s request to be processed
+before 18:00 CET on the same Day. It is the FCM Clearing Member’s responsibility to
+ensure the due receipt by LCH SA of the relevant notification. Accordingly, the FCM
+Clearing Member should confirm the request by 17:15 CET by a phone call to LCH
+LCH SA ©2017
+39
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+SA’s collateral management team on + 33 1 70 37 66 86/66 37/65 35, although a
+failure to do so shall not invalidate any request actually received by LCH SA.
+On Day
+An FCM Clearing Member must submit instructions (Franco or Sell Free of payment)
+via BNYM US and LCH SA must submit instructions (Buy free of payment) if an FCM
+Clearing Member uses Sell free of payment, for matching through BNYM US.
+If LCH SA receives the confirmation of settlement from BNYM US before 18:00 CET on
+Day, US T-Bills will be taken into account in the relevant Margin Balance.
+(b)
+Release of Eligible Collateral consisting of US T-Bills on behalf of FCM Clients
+On Day
+An FCM Clearing Member must notify LCH SA of a request to have US T-Bills released
+by submitting the relevant form by any means as specified in a Clearing Notice.
+The FCM Clearing Member must notify LCH SA as set out above by no later than
+17:00 CET on a Business Day (“Day”) in order for the FCM Clearing Member’s request
+to be processed and to allow LCH SA to give instructions (in the circumstances
+described below) to make the transfer to occur on the Business Day (“Day”) before
+18:00 CET. It is the FCM Clearing Member’s responsibility to ensure the due receipt
+by LCH SA of the relevant notification. Accordingly, the FCM Clearing Member should
+confirm the request by 17:00 CET by a phone call to LCH SA’s collateral management
+team on +33 1 70 37 66 86/66 37/65 35, although a failure to do so shall not
+invalidate any request actually received by LCH SA. Any request received by LCH
+pursuant to this process shall be deemed firm and irrevocable.
+On Day
+By 17:00 CET at the latest, LCH SA will re-calculate the value of US T-Bills to be
+released (the “Eligible Collateral Value”) and if:
+1- LCH SA holds Collateral (other than that which is to be released) to cover
+the FCM Client Margin Requirement for the relevant FCM Client Margin
+Account, LCH SA will process the release of the Eligible Collateral
+consisting of US T-Bills on request of the FCM Clearing Member; or
+2- LCH SA does not hold sufficient Collateral (other than that which is to be
+released) to cover the FCM Client Margin Requirement for the relevant
+FCM Client Margin Account, LCH SA will reject the FCM Clearing
+Member’s request.
+LCH SA will send instructions (Sell Free of Payment) submitted via BNYM US and the
+FCM Clearing Member shall submit instructions (Buy Free of Payment), for matching
+through BNYM US between 17:00 and 18:00.
+LCH SA’s instructions via BNYM US shall constitute the release of the relevant US T-
+Bills.
+LCH SA ©2017
+40
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+Such instructions will, in any event, be made on the same Business Day (“Day”) at
+18:00 CET, i.e. in advance of the BNYM US’s cut-off time (except in exceptional
+circumstances, as determined by LCH SA in an objective and commercially
+reasonable manner).
+By exception to the time limits for notification as set out in paragraphs 3.17 (a) and (b), in
+case of atypical market conditions (i.e. periods of time with reduced activity and lowered
+liquidity), including but not limited to the end of the year period (i.e. the period starting
+from 22 December of each year to 2 January of the following year) LCH SA may inform by
+any means the FCM Clearing Members that notifications of movement (transfer or release)
+of US T-Bills, for value on Day, must be received by LCH SA on Day minus five before 18.00
+CET. Such information will contain the implementation measure of the extension of the
+notification period.
+3.18
+CASH PAYMENTS
+(a)
+Currencies for Cash Payments
+A Clearing Member is required to satisfy the following Cash Payment obligations in
+accordance with the following table:
+LCH SA ©2017
+Cash Payment Type Cash Payment
+CDS or Index Swaption-related payments (Initial
+Payment Amount, Fixed Amounts or as the case
+may be, Premium, cash amounts due upon the
+occurrence of Credit Events and cash amounts due
+in connection with an MTM change) Cash in CDS Contractual
+Currency
+Variation Margin, Price Alignment Interest Cash in CDS Contractual
+Currency
+Clearing House Adjustments Cash in an Eligible
+Currency
+Fees Cash in Euro
+Remuneration Cash in the currency of the
+relevant Cash Collateral
+deposit
+41
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+By exception to the above table, LCH SA shall be entitled to require from a Clearing
+Member that it performs its Cash Payments obligations in a currency other than the
+CDS Contractual Currency of the relevant Cleared Transaction(s), in the conditions
+and manner as set out in Paragraph 3.18 (d) below.
+(b)
+Cash Payments in Euro
+With respect to a Clearing Member’s Cleared Transactions with a CDS Contractual
+Currency in Euro, the relevant Clearing Member is required to satisfy the associated
+Cash Payment obligations through TARGET2. Where a Clearing Member is required
+to make a Cash Payment in Euro, its relevant TARGET2 Account(s) (or the relevant
+cash account(s) of its TARGET2 Payment Agent) will be automatically debited by
+LCH SA using its Power of Attorney.
+Where a Clearing Member is due to receive a Cash Payment in Euro, its relevant
+TARGET2 Account(s) (or the relevant cash account(s) of its TARGET2 Payment
+Agent) will be automatically credited by LCH SA using its Power of Attorney.
+(c)
+Cash Payments in USD
+With respect to a Clearing Member’s Cleared Transactions with a CDS Contractual
+Currency in USD, LCH SA will require such Clearing Member to satisfy the
+associated Cash Payment obligations in USD. For the purpose of making or
+receiving Cash Payments in USD, LCH SA will use the following accounts opened in
+its name in the books of BNYM US:
+(i) a cash account used to debit or credit USD to satisfy Cash Payments
+obligations in USD with respect to all relevant House Cleared Transactions of
+each Clearing Member (the “LCH House BNYM Account”);
+(ii) with respect to Clients of a Clearing Member:
+(x) a cash account used to debit or credit USD to satisfy Cash Payments
+obligations in USD with respect to all relevant Client Cleared
+Transactions of each CCM (the “LCH CCM Client BNYM Account”); or
+(y) a cash account used to debit or credit USD to satisfy Cash Payments
+obligations in USD with respect to all relevant Client Cleared
+Transactions of each FCM Clearing Member (the “LCH FCM Client
+BNYM Account”),
+together referred to as the “LCH Client BNYM Accounts” and individually as
+a “LCH Client BNYM Account”.
+LCH SA ©2017
+42
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+The LCH House BNYM Account and the LCH Client BNYM Accounts shall be
+together referred to as the “LCH BNYM Accounts”.
+For the purpose of satisfying its Cash Payments obligations in USD, a Clearing
+Member shall open, or use a Payment Agent having, one or more cash account(s)
+in the books of BNYM US (the “BNYM Accounts”).
+A CCM has no obligation to hold two BNYM Accounts (or arrange its Payment
+Agent to hold two cash account(s)) for the purposes of satisfying its Cash
+Payments obligations in respect of (i) its House Cleared Transactions and (ii) its
+Client Cleared Transactions. It may either:
+(x) hold one BNYM Account (or one cash account of its Payment Agent), in
+which case such BNYM Account will be used for the debits and credits
+made out of both the LCH House BNYM Account and the LCH Client
+BNYM Account; or
+(y) hold two BNYM Accounts (or two cash accounts of its Payment Agent),
+in which case one BNYM Account will be used for the debits and credits
+made out of the LCH House BNYM Account and the other will be used
+for the debits and credits made out of the LCH Client BNYM Account.
+An FCM Clearing Member has an obligation to hold two BNYM Accounts (or arrange
+its Payment Agent to hold two cash account(s)) for the purposes of satisfying its
+Cash Payments obligations in respect of (i) its House Cleared Transactions and (ii) its
+Client Cleared Transactions. Therefore, an FCM Clearing Member will hold two
+BNYM Accounts (or two cash accounts of its Payment Agent), in which case one
+BNYM Account will be used for the debits and credits made out of the LCH House
+BNYM Account and the other will be used for the debits and credits made out of
+the LCH FCM Client BNYM Account.
+If a Clearing Member wishes to add a new BNYM Account or replace an existing
+BNYM Account with another, it may do so by providing LCH SA with the details of
+the relevant BNYM Account with at least 15 days’ prior notice (unless otherwise
+agreed by LCH SA).
+Where a Clearing Member is required to make a Cash Payment in USD, its relevant
+BNYM Account(s) (or the relevant cash account(s) of its Payment Agent) will be
+automatically debited by LCH SA using its Power of Attorney.
+Where a Clearing Member is due to receive a Cash Payment in USD, its relevant
+BNYM Account(s) (or the relevant cash account(s) of its BNYM Payment Agent) will
+be automatically credited by LCH SA using its Power of Attorney.
+(d)
+Timing for Cash Payments
+Debiting or crediting the TARGET2 Account(s) or BNYM Account(s) will occur on
+each Cash Payment Day, at the times of the Initial Slot and Post-Initial Slot set out
+in Paragraph 3.7(c) above with the exception that crediting any BNYM Account(s)
+of a Clearing Member will occur by no later than 16:30 CET on that Cash Payment
+Day.
+LCH SA ©2017
+43
+Published on 11 December 2017CDS Clearing Procedures
+Collateral and Cash Payment
+In the event that:
+(i) any BNYM Account(s) of a Clearing Member cannot be debited within the
+time slots set out above in this Paragraph 3.18 (d); and
+(ii) such Clearing Member has not made its Cash Payments in USD during the
+Initial Slot by 10:00 CET,
+such Clearing Member shall be required to satisfy such Cash Payments obligations
+in Euro through TARGET2 at the time of the First Intraday Slot as set out in
+Paragraph 3.7 (c) above except that, when such debiting related to Cash Payments
+made by an FCM Clearing Member in respect of Client Variation Margin
+Requirements, it will occur between 11:30-12:00 CET. LCH SA shall convert the USD
+amount in respect of such Cash Payment obligation into a Euro amount at the FX
+rate dealt by LCH SA on the market and shall notify the relevant Clearing Member
+of such Euro amount in accordance with, subject to and at the times set out in
+Section 5 of the Procedures. The relevant Clearing Member will be liable for costs
+incurred by LCH SA in connection with the conversion of those Cash Payments
+initially due in USD into Euro, that will be debited from the relevant TARGET2
+Account(s) of that Clearing Member (or the relevant cash account(s) of its TARGET2
+Payment Agent).
+Once the relevant cash amount is debited by LCH SA, it will satisfy the Clearing
+Member’s Cash Payment obligations.
+LCH SA ©2017
+44
+Published on 11 December 2017

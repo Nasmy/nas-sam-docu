@@ -1,0 +1,88 @@
+African Communications Group
+In February 1996, Monique Maddy, president and chief executive officer of the African
+Communications Group (ACG), and Côme Laguë, chief operating officer, completed a review of
+ACG’s projects in Tanzania. After more than three years of planning, ACG was about to install a pay-
+phone system in Tanzania’s largest city, Dar es Salaam. Tanzania had the highest backlog in Africa
+for telephone services. ACG’s system would be based on wireless radio technology. Callers would
+prepay for service by purchasing cards that would activate ACG’s pay phones. ACG also planned to
+offer paging and voice-mail services to Tanzania’s burgeoning business community.
+Maddy and Laguë formed ACG after graduating from the Harvard Business School in 1993.
+They believed that Africa was the last major geographic market yet to experience significant growth
+in the communications sector. Maddy and Laguë envisioned that their firm would eventually provide
+a wide range of media and communications services across the continent. Tanzania had been chosen
+as ACG’s entry point for its relatively stable political environment and its overwhelming need for
+additional telephone service. After three months of on-site research in 1993, Maddy and a team of six
+HBS students identified a pay-phone network as the most promising opportunity. Maddy and Laguë
+then developed a business plan, obtained financing, purchased operating licenses, and contracted
+with equipment suppliers. Despite their success to date, ACG faced significant challenges in early
+1996. Regulators in Tanzania and other African countries were issuing telecommunications licenses to
+a number of companies, and private enterprise was growing rapidly. Maddy and Laguë knew they
+would have to move quickly if they were to achieve their goal of a continent-wide system.
+ACG Card Phone and Paging Services
+In the mid-1990s, telecommunications in Tanzania was considered a luxury rather than a
+utility. As in most other African countries, private investment in telecommunications had been
+minimal and most service was delivered by a state agency. Years of neglect resulted in a sparse
+terrestrial network with congestion, high fault rates, and obsolete equipment. At the end of 1992,
+Tanzania had approximately 78,000 telephone lines for a population of about 27 million people. Some
+80% of these lines were concentrated in Dar es Salaam, where about 7% of the population lived. In
+Dar es Salaam, one telephone line had been installed per hundred residents. In rural areas, one line
+was available per two thousand residents on average. Many towns and villages did not have access
+to telecommunications services at all.
+According to the Tanzanian telecommunications authority, 153,000 potential subscribers had
+applied for private telephone service but had not yet received it. Applicants waited from 7 to 10 years
+for service hook-ups. “Unofficial” demand from individuals who had not applied for service was
+thought to be equally high and growing rapidly. By the end of 1996, the demand for private
+telephone service—both official and unofficial—was forecast at nearly 500,000 potential subscribers.
+Research Associate Dale O. Coxe prepared this case under the supervision of Assistant Professor Anita McGahan as the
+basis for class discussion rather than to illustrate either effective or ineffective handling of an administrative situation. Julia
+Kou provided additional research assistance.
+Copyright © 1996 by the President and Fellows of Harvard College. To order copies or request permission to
+reproduce materials, call 1-800-545-7685 or write Harvard Business School Publishing, Boston, MA 02163. No
+part of this publication may be reproduced, stored in a retrieval system, used in a spreadsheet, or transmitted in
+any form or by any means—electronic, mechanical, photocopying, recording, or otherwise—without the
+permission of Harvard Business School.
+Although a planned US$220 million in infrastructure improvements would double the number of
+available lines by the end of 1997, demand for private telephone lines would not be satisfied.
+The infrastructure that supported the country’s private telephone lines was antiquated and
+poorly maintained. Line problems and broken parts meant that many subcriber lines either did not
+work or worked intermittently. Some private telephone subscribers offered their phones to the public
+for calls at rates up to 2,000% above their costs. The success rate on a call averaged between 25% and
+45%. In most areas, the caller had to wait several minutes before receiving a dial tone; once a dial tone
+was obtained, it could take 40 minutes to reach other cities within Africa and 20 minutes to connect
+with Europe. In addition to private telephones, approximately 300 coin-operated pay phones were
+located across Tanzania. Most were defective and needed to be replaced. The country’s high inflation
+rate also meant many working pay phones were configured to accept coins that were no longer in
+circulation.
+Card-Operated Pay Phone
+The ACG pay-phone system had four basic elements: card-operated phones, a radio system
+for transmitting calls, a central platform at ACG headquarters for routing calls, and a connection
+between the central platform and the Tanzania Telecommunications Company Limited (TTCL). TTCL
+operated the country’s basic wireline telephone system. A typical call from an ACG pay phone would
+be transmitted via copper cable to a nearby outstation. Each outstation could be connected with up to
+10 pay phones. The outstation would transmit the call via radio signal to ACG’s headquarters in Dar
+es Salaam. The central platform would then route the call to TTCL, where it would be directed to a
+local, long-distance, or international destination. The system was innovative because it did not
+require copper wire between outstations and ACG’s central platform. (See Exhibit 1.) The central
+platform contained all card information and allowed ACG personnel to continuously manage and
+monitor the phone system from the central office.
+ACG pay phones were activated by inserting a card that had been pre-programmed to allow
+the holder to make phone calls lasting a specific number of minutes. These cards could be purchased
+in a variety of values from retail establishments that were located near phone booths. Retailers
+purchased cards from ACG at an average discount of 14% off face values. Cards were available with
+face values of US$0.87, US$1.74, US$3.47, US$8.68, and US$34.72 which corresponded to values of
+500, 1,000, 2,000, 5,000 and 20,000 Tanzanian shillings. 1 ACG managers believed that the kind of call
+a customer wished to make would govern the kind of card purchased. Generally, 500 and 1,000 cards
+would be used for local calls; 2,000 and 5,000 cards for long distance; and 20,000 cards for
+international calls.
+The newly purchased card was sealed in a wrapper to indicate that it was unused.
+Instructions on card use—how to insert the card, lift the hand set, and listen for instructions—were
+printed on the wrapper in both Kiswahili and English, the two predominant languages in Tanzania. 2
+The card information and the destination number were transmitted from the pay phone by wireless
+radio to ACG’s central station. There, a computer analyzed the card to determine its validity and
+value. Once the analysis was completed, the caller received a voice prompt, first in Kiswahili and
+then in English, to dial the desired number.
+After the number was dialed, the central station’s computer analyzed the number to
+determine its destination, the price of the call, and the length of time the caller could talk given the
+value on the card. A voice prompt provided the customer with this information. If there was
+insufficient value on the card to make the call, the caller was informed. If there was sufficient value,
+the call proceeded. Once a card’s value was exhausted, the holder would throw it away.
