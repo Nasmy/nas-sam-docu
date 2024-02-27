@@ -22,7 +22,7 @@ Parameters:
     Default: "docudive-input-files"
   SMTPServer:
     Type: String
-    Default: "email-smtp.us-east-1.amazonaws.com"
+    Default: "email-smtp.us-east-2.amazonaws.com"
     NoEcho: true
   SMTPPort:
     Type: Number
@@ -35,6 +35,10 @@ Parameters:
   SMTPPassword:
     Type: String
     Default: "BI4QQPZfdZ0TvH6z4zVSYHGfqL+jLWoauLE2zMT9MLR8"
+    NoEcho: true
+  OpenApiKey:
+    Type: String
+    Default: "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"
     NoEcho: true
 
 
