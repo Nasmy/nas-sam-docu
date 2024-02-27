@@ -80,12 +80,12 @@ Resources:
   DocumentsBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: nas-docud-documents
+      BucketName: docud-documents
 
   DocumentsInputBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: nas-dd-input-files
+      BucketName: dd-input-files
       NotificationConfiguration:
         EventBridgeConfiguration:
           EventBridgeEnabled: true
@@ -102,7 +102,7 @@ Resources:
   PDFImageBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: nas-dd-docudive-input-images
+      BucketName: dd-docudive-input-images
       NotificationConfiguration:
         EventBridgeConfiguration:
           EventBridgeEnabled: true
@@ -110,7 +110,7 @@ Resources:
   FilesDigestBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: nas-dd-files-digest-bucket
+      BucketName: dd-files-digest-bucket
       NotificationConfiguration:
         EventBridgeConfiguration:
           EventBridgeEnabled: true
@@ -124,7 +124,7 @@ Resources:
   CustomObjectBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: nas-dd-custom-object-bucket
+      BucketName: dd-custom-object-bucket
       NotificationConfiguration:
         EventBridgeConfiguration:
           EventBridgeEnabled: true
@@ -132,7 +132,7 @@ Resources:
   ChatHistoryBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: nas-dd-chat-history-bucket
+      BucketName: dd-chat-history-bucket
       NotificationConfiguration:
         EventBridgeConfiguration:
           EventBridgeEnabled: true
@@ -140,7 +140,7 @@ Resources:
   ChatContextBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: nas-dd-chat-context-bucket
+      BucketName: dd-chat-context-bucket
       NotificationConfiguration:
         EventBridgeConfiguration:
           EventBridgeEnabled: true
