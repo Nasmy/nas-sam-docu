@@ -8,18 +8,26 @@ Parameters:
     Default: dev
   Username:
     Type: String
-    Default: "ddadminkdn"
+    Default: "postgres"
     NoEcho: true
   Password:
     Type: String
-    Default: "4b4o4i*ZwE*j%2VgCgS2"
+    Default: "W4DWRdv8dKMmCYimKs9Z"
+    NoEcho: true
+  DBEndpoint:
+    Type: String
+    Default: "docudive-backend-postgresdbinstance.cb0aukieofkq.us-east-1.rds.amazonaws.com"
+    NoEcho: true
+  DBPort:
+    Type: Number
+    Default: 5432
     NoEcho: true
   OCRImageUri:
     Type: String
-    Default: "654654477985.dkr.ecr.us-east-1.amazonaws.com/docudive:ocr-v1"
+    Default: "654654477985.dkr.ecr.us-east-1.amazonaws.com/nas-docudive:ocr-v1"
   InputFilesBucket:
     Type: String
-    Default: "docudive-input-files"
+    Default: "nas-docudive-input-files"
   SMTPServer:
     Type: String
     Default: "email-smtp.us-east-2.amazonaws.com"
@@ -48,8 +56,8 @@ Globals:
     Environment:
       Variables:
         version: "1.0"
-        database_endpoint: !GetAtt PostgresDBInstance.Endpoint.Address
-        database_port: !GetAtt PostgresDBInstance.Endpoint.Port
+        database_endpoint: !Ref DBEndpoint
+        database_port: !Ref DBPort
         database_username: !Ref Username
         database_password: !Ref Password
         database_name: "postgres"
@@ -61,7 +69,7 @@ Resources:
     Properties:
       AllocatedStorage: "20"
       DBInstanceClass: "db.t3.micro"
-      Engine: "postgres"
+      Engine: "PostgreSQL"
       EngineVersion: "14.6"
       MasterUsername: !Ref Username  # You should ideally use secret parameters or AWS Secrets Manager.
       MasterUserPassword: !Ref Password # DO NOT hard-code passwords in templates. Use secrets.
@@ -84,12 +92,12 @@ Resources:
   DocumentsBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: docud-documents
+      BucketName: nas-docud-documents
 
   DocumentsInputBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: dd-input-files
+      BucketName: nas-dd-input-files
       NotificationConfiguration:
         EventBridgeConfiguration:
           EventBridgeEnabled: true
@@ -106,7 +114,7 @@ Resources:
   PDFImageBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: dd-docudive-input-images
+      BucketName: nas-dd-docudive-input-images
       NotificationConfiguration:
         EventBridgeConfiguration:
           EventBridgeEnabled: true
@@ -114,7 +122,7 @@ Resources:
   FilesDigestBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: dd-files-digest-bucket
+      BucketName: nas-dd-files-digest-bucket
       NotificationConfiguration:
         EventBridgeConfiguration:
           EventBridgeEnabled: true
@@ -128,7 +136,7 @@ Resources:
   CustomObjectBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: dd-custom-object-bucket
+      BucketName: nas-dd-custom-object-bucket
       NotificationConfiguration:
         EventBridgeConfiguration:
           EventBridgeEnabled: true
@@ -136,7 +144,7 @@ Resources:
   ChatHistoryBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: dd-chat-history-bucket
+      BucketName: nas-dd-chat-history-bucket
       NotificationConfiguration:
         EventBridgeConfiguration:
           EventBridgeEnabled: true
@@ -144,7 +152,7 @@ Resources:
   ChatContextBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: dd-chat-context-bucket
+      BucketName: nas-dd-chat-context-bucket
       NotificationConfiguration:
         EventBridgeConfiguration:
           EventBridgeEnabled: true

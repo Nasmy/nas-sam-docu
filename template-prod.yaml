@@ -16,7 +16,7 @@ Parameters:
     NoEcho: true
   DBEndpoint:
     Type: String
-    Default: "docudive-backend-postgresdbinstance-i09m9opuah4u.cjkgya1modqe.us-east-2.rds.amazonaws.com"
+    Default: "docudive-backend-postgresdbinstance.cb0aukieofkq.us-east-1.rds.amazonaws.com"
     NoEcho: true
   DBPort:
     Type: Number

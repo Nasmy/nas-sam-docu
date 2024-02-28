@@ -19,11 +19,11 @@ rsync -av functions/layers/ functions/prompts_ner/ --exclude=requirements.txt
 sam validate --region us-east-2
 sam build -c -p --use-container
 sam deploy \
---profile docudive \
---stack-name docudive-backend-prod \
---region us-east-2 \
+--profile nas-docudive \
+--stack-name nas-docudive-backend \
+--region us-east-1 \
 --no-confirm-changeset \
 --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND \
 --on-failure ROLLBACK \
 --resolve-s3 \
---image-repository 456657096993.dkr.ecr.us-east-2.amazonaws.com/docudive-prod
+--image-repository 654654477985.dkr.ecr.us-east-1.amazonaws.com/nas-docudive
