@@ -69,7 +69,7 @@ Resources:
     Properties:
       AllocatedStorage: "20"
       DBInstanceClass: "db.t3.micro"
-      Engine: "PostgreSQL"
+      Engine: "postgres"
       EngineVersion: "14.6"
       MasterUsername: !Ref Username  # You should ideally use secret parameters or AWS Secrets Manager.
       MasterUserPassword: !Ref Password # DO NOT hard-code passwords in templates. Use secrets.
