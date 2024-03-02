@@ -51,6 +51,7 @@ def handler(event, _):
 
                 logger.info(f"file_name: {file_name}")
                 document_ext = f"{file_name.suffix}".lower()
+                logger.info(f"doc_type: {document_ext}")
 
                 doc_type: DocumentTypes = get_document_type_from_extension(document_ext)
                 logger.info(f"doc_type: {doc_type}")
@@ -92,7 +93,6 @@ def handler(event, _):
                 db_doc = Documents(
                     id=document_id,
                     user_id=user.id,
-                    document_type_id=db_doc_type.id,
                     file_name=trimmed_filename,
                     file_alias=trimmed_filename,
                     file_extension=document_ext,
