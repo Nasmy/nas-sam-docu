@@ -53,6 +53,7 @@ def handler(event, _):
                 document_ext = f"{file_name.suffix}".lower()
 
                 doc_type: DocumentTypes = get_document_type_from_extension(document_ext)
+                logger.info(f"doc_type: {doc_type}")
 
                 if doc_type not in [
                     DocumentTypes.PDF,
@@ -71,6 +72,9 @@ def handler(event, _):
                 db_doc_type = (
                     session.query(DocumentTypesTable).filter(DocumentTypesTable.document_type == doc_type.name).first()
                 )
+
+                logger.info(f"db_doc_type: {db_doc_type}")
+
                 if not doc_type:
                     db_doc_type = DocumentTypesTable(
                         document_type=doc_type.name,
@@ -80,6 +84,7 @@ def handler(event, _):
                     session.commit()
 
                 document_id = str(uuid.uuid4())
+                logger.info(f"document_id: {document_id}")
                 name, ext = os.path.splitext(str(file_name))
                 trimmed_filename = name[:56] + ext
                 if str(file_name) != trimmed_filename:
