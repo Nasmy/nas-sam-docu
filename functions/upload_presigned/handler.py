@@ -93,6 +93,7 @@ def handler(event, _):
                 db_doc = Documents(
                     id=document_id,
                     user_id=user.id,
+                    document_type_id=db_doc_type.id,
                     file_name=trimmed_filename,
                     file_alias=trimmed_filename,
                     file_extension=document_ext,
