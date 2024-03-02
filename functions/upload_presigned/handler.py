@@ -71,7 +71,7 @@ def handler(event, _):
                     return json_return(status_code, msg)
 
                 db_doc_type = (
-                    session.query(DocumentTypesTable).filter(DocumentTypesTable.document_type == doc_type.name).first()
+                    session.query(DocumentTypesTable).filter(DocumentTypesTable.document_type == doc_type).first()
                 )
 
                 logger.info(f"db_doc_type: {db_doc_type}")
