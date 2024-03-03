@@ -71,12 +71,12 @@ def handler(event, _):
                     return json_return(status_code, msg)
 
                 db_doc_type = (
-                    session.query(DocumentTypesTable).filter(DocumentTypesTable.document_type == doc_type).first()
+                    session.query(DocumentTypesTable).filter(DocumentTypesTable.document_type == doc_type.name).first()
                 )
 
                 logger.info(f"db_doc_type: {db_doc_type}")
 
-                if not doc_type:
+                if not db_doc_type:
                     db_doc_type = DocumentTypesTable(
                         document_type=doc_type.name,
                         mime_type=doc_type_to_mime_type(doc_type),

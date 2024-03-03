@@ -43,6 +43,12 @@ class Database:
         password = os.environ.get("database_password")
         database = os.environ.get("database_name")
 
+        #endpoint = "docudive-backend-postgresdbinstance.cb0aukieofkq.us-east-1.rds.amazonaws.com"
+        #port = 5432
+        #username = "postgres"
+        #password = "W4DWRdv8dKMmCYimKs9Z"
+        #database = "postgres"
+
         db_url = f"postgresql+pg8000://{username}:{password}@{endpoint}:{port}/{database}"
         return db_url
 

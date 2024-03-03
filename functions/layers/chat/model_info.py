@@ -34,14 +34,6 @@ class OpenAIModels:
             "prompt_token_1k": 0.003,
             "completion_token_1k": 0.004,
         },
-        "gpt-4": {
-            "name": "gpt-4",
-            "engine": "davinci",
-            "max_tokens": 8192,
-            "max_words": 3000,
-            "prompt_token_1k": 0.003,
-            "completion_token_1k": 0.006,
-        },
     }
 
     @staticmethod
