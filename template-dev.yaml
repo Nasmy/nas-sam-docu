@@ -14,10 +14,6 @@ Parameters:
     Type: String
     Default: "W4DWRdv8dKMmCYimKs9Z"
     NoEcho: true
-  DBEndpoint:
-    Type: String
-    Default: "docudive-backend-postgresdbinstance.cb0aukieofkq.us-east-1.rds.amazonaws.com"
-    NoEcho: true
   DBPort:
     Type: Number
     Default: 5432
@@ -56,8 +52,8 @@ Globals:
     Environment:
       Variables:
         version: "1.0"
-        database_endpoint: !Ref DBEndpoint
-        database_port: !Ref DBPort
+        database_endpoint: !GetAtt PostgresDBInstance.Endpoint.Address
+        database_port: !GetAtt PostgresDBInstance.Endpoint.Port
         database_username: !Ref Username
         database_password: !Ref Password
         database_name: "postgres"
