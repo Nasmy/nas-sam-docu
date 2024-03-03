@@ -14,10 +14,6 @@ Parameters:
     Type: String
     Default: "W4DWRdv8dKMmCYimKs9Z"
     NoEcho: true
-  DBPort:
-    Type: Number
-    Default: 5432
-    NoEcho: true
   OCRImageUri:
     Type: String
     Default: "654654477985.dkr.ecr.us-east-1.amazonaws.com/nas-docudive:ocr-v1"

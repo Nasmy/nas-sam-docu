@@ -16,6 +16,7 @@ class ModelInfo:
 class OpenAIModels:
     gpt_3_5_turbo = "gpt-3.5-turbo"
     gpt_3_5_turbo_16k = "gpt-3.5-turbo-16k-0613"
+    gpt_4_vision = "gpt_4_vision"
     # ['gpt-3.5-turbo', 'gpt-3.5-turbo-0613', 'gpt-3.5-turbo-16k-0613', 'gpt-4-0314', 'gpt-3.5-turbo-16k', 'gpt-4', 'gpt-4-0613', 'gpt-3.5-turbo-0301']
     model_info = {
         gpt_3_5_turbo: {
@@ -34,6 +35,14 @@ class OpenAIModels:
             "prompt_token_1k": 0.003,
             "completion_token_1k": 0.004,
         },
+        gpt_4_vision: {
+            "name": gpt_4_vision,
+            "engine": "davinci",
+            "max_pixels": 4096,
+            "max_objects": 100,
+            "prompt_token_1k": 0.003,
+            "completion_token_1k": 0.004
+        }
     }
 
     @staticmethod

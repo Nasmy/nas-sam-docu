@@ -43,7 +43,7 @@ class Database:
         password = os.environ.get("database_password")
         database = os.environ.get("database_name")
 
-        #endpoint = "docudive-backend-postgresdbinstance.cb0aukieofkq.us-east-1.rds.amazonaws.com"
+        #endpoint = "nas-docudive-backend-postgresdbinstance-glvcazeyy2r4.cb0aukieofkq.us-east-1.rds.amazonaws.com"
         #port = 5432
         #username = "postgres"
         #password = "W4DWRdv8dKMmCYimKs9Z"
