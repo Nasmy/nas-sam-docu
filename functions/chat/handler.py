@@ -137,12 +137,11 @@ def handler(event, _):
             query_request_timestamp = datetime.utcnow().isoformat()
             """If the context is questions, we dont need to invoke chatgpt since we have the answers"""
             if doc_context_initialized and context_type == ContextTypes.QUESTION.value:
-                logger.info({chat_context})
                 query = chat_context["question"]
                 chat_response = chat_context["answer"]
                 query_response_timestamp = datetime.utcnow().isoformat()
                 total_tokens = 0
-                selected_model = OpenAIModels.get_model("gpt-3.5-turbo")
+                selected_model = OpenAIModels.get_model("gpt_4_vision")
             else:
                 """Model selection based on context length"""
                 full_word_count = ContextLoader.context_length(chat_context) + query.count(" ")
