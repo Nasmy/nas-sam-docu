@@ -137,6 +137,7 @@ def handler(event, _):
             query_request_timestamp = datetime.utcnow().isoformat()
             """If the context is questions, we dont need to invoke chatgpt since we have the answers"""
             if doc_context_initialized and context_type == ContextTypes.QUESTION.value:
+                logger.info({chat_context})
                 query = chat_context["question"]
                 chat_response = chat_context["answer"]
                 query_response_timestamp = datetime.utcnow().isoformat()
