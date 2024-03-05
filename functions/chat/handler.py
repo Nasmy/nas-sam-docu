@@ -179,14 +179,10 @@ def handler(event, _):
                 if gpt_4_vision_enable:
                     exp_seconds = int(os.getenv("link_expiration_seconds", 600))
                     file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
-                    pre_signed_url = dd_s3.s3_generate_presigned_url(
-                        bucket_name=bucket_name,
-                        file_key=file_key,
-                        exp_seconds=exp_seconds,
-                    )
+                    image, metadata = dd_s3.load_image_from_s3(bucket_name, file_key)
 
                     prompt = {
-                     "image_string": pre_signed_url,
+                     "image_string": image,
                      "questions": query
                     }
                     gpt_vision = ChatGptVision(db_api_key, selected_model, prompt)

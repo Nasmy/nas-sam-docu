@@ -74,6 +74,9 @@ class ChatGptVision:
         payload = self.get_vision_payload(image_url=self.prompt["image_string"], gpt_questions=self.prompt["questions"])
 
         response = requests.post("https://api.openai.com/v1/chat/completions", headers=self.get_headers(), json=payload)
+        return self.load_content(response)
+
+    def load_content(self, response):
         gpt_chat = ChatGPT(self.gpt_model, api_key=self.gpt_api_key, verbose=True)
         role, content = gpt_chat.get_role_and_context(response)
 
