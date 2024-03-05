@@ -17,7 +17,7 @@ number_of_pages = 50
 def prompt_headings(text_prediction: TextDetScrapePrediction, open_api_key=None, insight_type=None):
     question = (
         "\n\nConsider the given context and generate 1 heading and the corresponding summary. Suggest the "
-        "heading text except introduction and conclusion. Make sure the the summary is in bullet points. "
+        "heading text except introduction and conclusion. Make sure the the summary is in bullet points and should be in markup language"
         "The summary should include all the data points, facts and figures in minimum of 5 lines. "
         "The summary should contain as much information as possible. Form your answer in the following json "
         'format:\n{\n "heading": "heading text",\n "summary": "Summary text"\n}\n\ncontext:\n'

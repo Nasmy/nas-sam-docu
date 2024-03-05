@@ -162,6 +162,7 @@ def handler(event, _):
 
                 gpt_model = ChatGPT(selected_model, api_key=db_api_key.api_key, verbose=True)
                 gpt_model.set_context_dict(chat_context)
+                logger.info(f"query message - {query}")
                 chat_response = gpt_model.chat_with_context(prompt=query)
 
                 query_response_timestamp = datetime.utcnow().isoformat()
