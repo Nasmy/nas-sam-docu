@@ -162,10 +162,10 @@ def handler(event, _):
                     DocumentTypes.IMAGE_PNG,
                 ]:
                     gpt_4_vision_enable = True
-                    selected_model: ModelInfo = OpenAIModels.get_model("gpt-4-vision-preview")
+                    selected_model = OpenAIModels.get_model("gpt-4-vision-preview")
                 else:
                     gpt_4_vision_enable = False
-                    selected_model: ModelInfo = OpenAIModels.get_model_based_on_text_length(full_word_count)
+                    selected_model = OpenAIModels.get_model_based_on_text_length(full_word_count)
 
                 """
                 Need to get the API key from db and set in chatGPT class
