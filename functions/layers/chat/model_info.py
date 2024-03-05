@@ -38,7 +38,7 @@ class OpenAIModels:
         gpt_4_vision: {
             "name": gpt_4_vision,
             "engine": "davinci",
-            "max_pixels": 4096,
+            "max_tokens": 16384,
             "max_objects": 100,
             "prompt_token_1k": 0.003,
             "completion_token_1k": 0.004
