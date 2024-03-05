@@ -176,8 +176,9 @@ def handler(event, _):
                 gpt_model = ChatGPT(selected_model, api_key=db_api_key.api_key, verbose=True)
                 gpt_model.set_context_dict(chat_context)
                 logger.info(f"query message - {query}")
+
+                # enable the gpt 4
                 if gpt_4_vision_enable:
-                    exp_seconds = int(os.getenv("link_expiration_seconds", 600))
                     file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
                     image, metadata = dd_s3.load_image_from_s3(bucket_name, file_key)
 
@@ -185,6 +186,7 @@ def handler(event, _):
                      "image_string": image,
                      "questions": query
                     }
+
                     gpt_vision = ChatGptVision(db_api_key, selected_model, prompt)
                     chat_response = gpt_vision.analyse_image_string()
                 else:
