@@ -1,6 +1,7 @@
 from openai import OpenAI
 import base64
 import requests
+from chat.chatgpt import ChatGPT
 
 
 # TODO Can do refactor. Just Written a Mock Code for Testing Purpose
@@ -67,15 +68,16 @@ class ChatGptVision:
         image_path = f"data:image/jpeg;base64,{base64_image}"
         payload = self.get_vision_payload(image_url=image_path, gpt_questions=self.prompt["questions"])
         response = requests.post("https://api.openai.com/v1/chat/completions", headers=self.get_headers(), json=payload)
-
         print(response.json())
 
     def gpt_analysis_image_url(self):
         payload = self.get_vision_payload(image_url=self.prompt["image_string"], gpt_questions=self.prompt["questions"])
 
         response = requests.post("https://api.openai.com/v1/chat/completions", headers=self.get_headers(), json=payload)
+        gpt_chat = ChatGPT(self.gpt_model, api_key=self.gpt_api_key, verbose=True)
+        role, content = gpt_chat.get_role_and_context(response)
 
-        print(response.json())
+        return content
 
     def analyse_image_string(self):
 
