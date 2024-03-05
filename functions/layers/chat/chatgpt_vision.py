@@ -15,6 +15,20 @@ class ChatGptVision:
         self.gpt_model = gpt_model
         self.prompt = prompt_data
 
+    def get_content_payload(self, image_url, gpt_questions):
+        return [
+            {
+                "type": "text",
+                "text": gpt_questions
+            },
+            {
+                "type": "image_url",
+                "image_url": {
+                    "url": image_url
+                }
+            }
+        ]
+
     def get_vision_payload(self, image_url, gpt_questions):
         return {
             "model": "gpt-4-vision-preview",

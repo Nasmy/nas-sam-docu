@@ -1,13 +1,14 @@
 import json
 import os
 import uuid
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from loguru import logger
 
 from aws.aws_s3 import S3Wrapper
 from chat.chat_types import ChatTypes
 from chat.chatgpt import ChatGPT
+from chat.chatgpt_vision import ChatGptVision
 from chat.model_info import OpenAIModels, ModelInfo
 from chat.query_types import ContextTypes
 from context_loader import ContextLoader
@@ -21,11 +22,13 @@ from utils.custom_exceptions import (
     RaiseCustomException,
 )
 from utils.util import json_return, get_body_parameter
+from utils.document_types import get_document_type_from_extension, DocumentTypes
 
 dd_s3 = S3Wrapper()
 files_digest_bucket = os.getenv("files_digest_bucket")
 chat_context_bucket = os.getenv("chat_context_bucket")
 chat_history_bucket = os.getenv("chat_history_bucket")
+bucket_name = os.getenv("bucket")
 
 
 def handler(event, _):
@@ -52,6 +55,7 @@ def handler(event, _):
             doc_context = get_body_parameter(body, "context", required=False)
             reset_context = get_body_parameter(body, "reset_context", required=False)
             chat_debug = get_body_parameter(body, "debug", required=False)
+            gpt_4_vision_enable = False
             logger.info(f"{username}, {document_id}, {query_id}, {query}, {doc_context}")
 
             """Check whether chat id or chat name is set"""
@@ -78,7 +82,7 @@ def handler(event, _):
             if not result:
                 raise DocumentNotFoundError(document_id)
 
-            db_username, db_user_id, db_document_id, db_document_extensions = result
+            db_username, db_user_id, db_document_id, db_doc_ext = result
             if db_username != username:
                 raise UserNotFoundError(username)
 
@@ -129,6 +133,7 @@ def handler(event, _):
             ,then load the context
             """
             doc_context_initialized = False
+            doc_type = get_document_type_from_extension(db_doc_ext)
             context_type = None
             if chat_initialized and doc_context:
                 context_loader_obj = ContextLoader(db_user_id, document_id, doc_context)
@@ -143,12 +148,20 @@ def handler(event, _):
                 chat_response = chat_context["answer"]
                 query_response_timestamp = datetime.utcnow().isoformat()
                 total_tokens = 0
-                selected_model = OpenAIModels.get_model("gpt_4_vision")
+                selected_model = OpenAIModels.get_model("gpt-3.5-turbo")
             else:
                 logger.info("Enter into else part")
                 """Model selection based on context length"""
                 full_word_count = ContextLoader.context_length(chat_context) + query.count(" ")
-                selected_model: ModelInfo = OpenAIModels.get_model_based_on_text_length(full_word_count)
+                if doc_type in [
+                    DocumentTypes.IMAGE_JPG,
+                    DocumentTypes.IMAGE_PNG,
+                ]:
+                    gpt_4_vision_enable = True
+                    selected_model: OpenAIModels.get_model("gpt-4-vision-preview")
+                else:
+                    selected_model: ModelInfo = OpenAIModels.get_model_based_on_text_length(full_word_count)
+
 
                 """
                 Need to get the API key from db and set in chatGPT class
@@ -163,7 +176,23 @@ def handler(event, _):
                 gpt_model = ChatGPT(selected_model, api_key=db_api_key.api_key, verbose=True)
                 gpt_model.set_context_dict(chat_context)
                 logger.info(f"query message - {query}")
-                chat_response = gpt_model.chat_with_context(prompt=query)
+                if gpt_4_vision_enable:
+                    exp_seconds = int(os.getenv("link_expiration_seconds", 600))
+                    file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
+                    pre_signed_url = dd_s3.s3_generate_presigned_url(
+                        bucket_name=bucket_name,
+                        file_key=file_key,
+                        exp_seconds=exp_seconds,
+                    )
+
+                    prompt = {
+                     "image_string": pre_signed_url,
+                     "questions": query
+                    }
+                    gpt_vision = ChatGptVision(db_api_key, selected_model, prompt)
+                    chat_response = gpt_vision.analyse_image_string()
+                else:
+                    chat_response = gpt_model.chat_with_context(prompt=query)
 
                 query_response_timestamp = datetime.utcnow().isoformat()
                 total_tokens = gpt_model.get_total_tokens()
