@@ -71,10 +71,10 @@ class ChatGptVision:
             self.gpt_analysis_image_upload()
 
 
-if __name__ == "__main__":
-    prompt = {
-        "image_string": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
-        "questions": "What’s in this image?"
-    }
-    gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
-    gptVision.analyse_image_string()
+#if __name__ == "__main__":
+    # prompt = {
+        #"image_string": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
+        #"questions": "What’s in this image?"
+    #}
+    #gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
+    #gptVision.analyse_image_string()

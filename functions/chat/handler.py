@@ -52,7 +52,7 @@ def handler(event, _):
             doc_context = get_body_parameter(body, "context", required=False)
             reset_context = get_body_parameter(body, "reset_context", required=False)
             chat_debug = get_body_parameter(body, "debug", required=False)
-            logger.info(f"{username}, {document_id}, {query_id}, {query}")
+            logger.info(f"{username}, {document_id}, {query_id}, {query}, {doc_context}")
 
             """Check whether chat id or chat name is set"""
             if not (chat_id or chat_name):
@@ -67,16 +67,18 @@ def handler(event, _):
             query_id = query_id if query_id else str(uuid.uuid4())
 
             result = (
-                session.query(Users.username, Users.id, Documents.id)
+                session.query(Users.username, Users.id, Documents.id, Documents.file_extension)
                 .join(Documents, Documents.user_id == Users.id)
                 .filter(Documents.id == document_id)
                 .filter(Documents.is_deleted == False)
                 .first()
             )
+            logger.info(f"results - {result}")
+
             if not result:
                 raise DocumentNotFoundError(document_id)
 
-            db_username, db_user_id, db_document_id = result
+            db_username, db_user_id, db_document_id, db_document_extensions = result
             if db_username != username:
                 raise UserNotFoundError(username)
 
@@ -143,6 +145,7 @@ def handler(event, _):
                 total_tokens = 0
                 selected_model = OpenAIModels.get_model("gpt_4_vision")
             else:
+                logger.info("Enter into else part")
                 """Model selection based on context length"""
                 full_word_count = ContextLoader.context_length(chat_context) + query.count(" ")
                 selected_model: ModelInfo = OpenAIModels.get_model_based_on_text_length(full_word_count)
