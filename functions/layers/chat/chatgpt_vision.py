@@ -1,4 +1,3 @@
-from openai import OpenAI
 import base64
 import requests
 from chat.chatgpt import ChatGPT
@@ -12,7 +11,6 @@ class ChatGptVision:
 
     def __init__(self, gpt_api_key, gpt_model, prompt_data):
         self.gpt_api_key = gpt_api_key
-        self.client = OpenAI(api_key=gpt_api_key)
         self.gpt_model = gpt_model
         self.prompt = prompt_data
 

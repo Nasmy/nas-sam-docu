@@ -153,6 +153,10 @@ def handler(event, _):
                 logger.info("Enter into else part")
                 """Model selection based on context length"""
                 full_word_count = ContextLoader.context_length(chat_context) + query.count(" ")
+                """ 
+                Check the document type is relevant to images
+                If document type is image then change the gpt model to gpt model vision api
+                """
                 if doc_type in [
                     DocumentTypes.IMAGE_JPG,
                     DocumentTypes.IMAGE_PNG,
@@ -160,6 +164,7 @@ def handler(event, _):
                     gpt_4_vision_enable = True
                     selected_model: OpenAIModels.get_model("gpt-4-vision-preview")
                 else:
+                    gpt_4_vision_enable = False
                     selected_model: ModelInfo = OpenAIModels.get_model_based_on_text_length(full_word_count)
 
 
@@ -177,7 +182,7 @@ def handler(event, _):
                 gpt_model.set_context_dict(chat_context)
                 logger.info(f"query message - {query}")
 
-                # enable the gpt 4
+                """ enable the gpt 4 """
                 if gpt_4_vision_enable:
                     file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
                     image, metadata = dd_s3.load_image_from_s3(bucket_name, file_key)
