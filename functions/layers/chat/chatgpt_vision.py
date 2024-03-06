@@ -64,7 +64,8 @@ class ChatGptVision:
 
     def encode_image(self, image_path):
         with open(image_path, "rb") as image_file:
-            return base64.b64encode(image_file.read()).decode('utf-8')
+            image_data = image_file.read().replace(b'\x00', b'')
+            return base64.b64encode(image_data).decode('utf-8')
 
     def gpt_analysis_image_upload(self):
         image_file_key = self.prompt["image_string"]
