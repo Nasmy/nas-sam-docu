@@ -192,8 +192,6 @@ def handler(event, _):
                      "questions": query
                     }
 
-                    logger.info(f"db_api_key - {db_api_key}")
-
                     gpt_vision = ChatGptVision(db_api_key.api_key, selected_model, prompt)
                     chat_response = gpt_vision.analyse_image_string()
                 else:
@@ -232,6 +230,7 @@ def handler(event, _):
                 """Create the chat context output"""
                 chat_context_output = gpt_model.get_context_dict()
                 json_str = json.dumps(chat_context_output)
+                logger.info(f"chat context out put - {json_str}")
 
             try:
                 """Update the chat context in S3"""
