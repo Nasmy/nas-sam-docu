@@ -31,6 +31,7 @@ files_digest_bucket = os.getenv("files_digest_bucket")
 chat_context_bucket = os.getenv("chat_context_bucket")
 chat_history_bucket = os.getenv("chat_history_bucket")
 bucket_name = os.getenv("bucket")
+image_bucket_name = os.getenv("image_bucket")
 
 
 def handler(event, _):
@@ -185,7 +186,8 @@ def handler(event, _):
 
                 """ enable the gpt 4 """
                 if gpt_4_vision_enable:
-                    file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
+                    key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
+                    image_url = s3_dd.s3_generate_presigned_url(bucket_name=image_bucket_name,file_key=key, exp_seconds=3600)
                     # image, _ = s3_dd.load_image_from_s3(bucket_name, file_key)
                     # print(image)
 
@@ -199,7 +201,7 @@ def handler(event, _):
                     # print(type(image_string))
                     # print(len(image_string))
                     prompt = {
-                     "image_string": file_key,
+                     "image_string": image_url,
                      "questions": query
                     }
 
