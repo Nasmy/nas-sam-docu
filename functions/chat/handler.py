@@ -25,6 +25,7 @@ from utils.util import json_return, get_body_parameter
 from utils.document_types import get_document_type_from_extension, DocumentTypes
 
 s3 = boto3.client("s3")
+s3_dd = S3Wrapper()
 files_digest_bucket = os.getenv("files_digest_bucket")
 chat_context_bucket = os.getenv("chat_context_bucket")
 chat_history_bucket = os.getenv("chat_history_bucket")
@@ -183,12 +184,11 @@ def handler(event, _):
 
                 """ enable the gpt 4 """
                 if gpt_4_vision_enable:
-                    """"file_key = f"{db_user_id}/{db_document_id}.{db_doc_ext}"
-                    content = s3.get_object(Bucket=bucket_name, key=file_key)
-                    logger.info(json.loads(content["Body"].read().decode("utf-8")))
-                    print(json.loads(content["Body"].read().decode("utf-8")))"""""
+                    file_key = f"{db_user_id}/{db_document_id}.{db_doc_ext}"
+                    obj = s3_dd.s3_get_object(bucket=bucket_name, key=file_key)
+                    image_data = obj["Body"].read()
                     prompt = {
-                     "image_string": "https://www.peacepost.asia/wp-content/uploads/2019/06/11560198184_.pic_-1024x768.jpg",
+                     "image_string": image_data,
                      "questions": query
                     }
 
@@ -235,10 +235,10 @@ def handler(event, _):
             try:
                 """Update the chat context in S3"""
                 s3.put_object(
-                    body=json_str,
-                    bucket=chat_context_bucket,
-                    key=file_key,
-                    content_type="application/json",
+                    Body=json_str,
+                    Bucket=chat_context_bucket,
+                    Key=file_key,
+                    ContentType="application/json",
                 )
             except Exception as exception:
                 logger.info("failed to update object")
@@ -267,10 +267,10 @@ def handler(event, _):
             """Update the chat history in S3"""
             chat_history_str = json.dumps(chat_history)
             s3.put_object(
-                body=chat_history_str,
-                bucket=chat_history_bucket,
-                key=file_key,
-                content_type="application/json",
+                Body=chat_history_str,
+                Bucket=chat_history_bucket,
+                Key=file_key,
+                ContentType="application/json",
             )
 
             api_response = {
