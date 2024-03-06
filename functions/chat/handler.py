@@ -185,7 +185,9 @@ def handler(event, _):
                 if gpt_4_vision_enable:
                     file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
                     image = s3.get_object(Bucket=bucket_name, key=file_key)
+                    logger.info(f"image - {image}")
                     image_data = image['Body'].read()
+                    logger.info(f"image data - {image_data}")
                     prompt = {
                      "image_string": image_data,
                      "questions": query
