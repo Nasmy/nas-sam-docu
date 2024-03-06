@@ -1,8 +1,6 @@
 import json
 
 import boto3
-import numpy as np
-
 from loguru import logger
 
 
@@ -12,6 +10,8 @@ class S3Wrapper:
 
     def load_image_from_s3(self, bucket_name, key):
         import cv2
+        import numpy as np
+
         """
         Download image from S3 bucket
         :param bucket: S3 bucket name
