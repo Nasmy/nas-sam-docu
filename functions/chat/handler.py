@@ -191,6 +191,7 @@ def handler(event, _):
                          "questions": query
                         }
                     except Exception as e:
+                        logger.info(f"Error loading image from S3: {e}")
                         print(f"Error loading image from S3: {e}")
                     gpt_vision = ChatGptVision(db_api_key, selected_model, prompt)
                     chat_response = gpt_vision.analyse_image_string()
