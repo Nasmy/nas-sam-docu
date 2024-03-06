@@ -192,6 +192,8 @@ def handler(event, _):
                      "questions": query
                     }
 
+                    logger.info(f"db_api_key - {db_api_key}")
+
                     gpt_vision = ChatGptVision(db_api_key, selected_model, prompt)
                     chat_response = gpt_vision.analyse_image_string()
                 else:
