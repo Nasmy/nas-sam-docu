@@ -183,21 +183,17 @@ def handler(event, _):
 
                 """ enable the gpt 4 """
                 if gpt_4_vision_enable:
-                    try:
-                        file_key = f"{db_user_id}/{db_document_id}.{db_doc_ext}"
-                        content = s3.get_object(Bucket=bucket_name, key=file_key)
-                        logger.info(json.loads(content["Body"].read().decode("utf-8")))
-                        print(json.loads(content["Body"].read().decode("utf-8")))
-                        """prompt = {
-                         "image_string": image,
-                         "questions": query
-                        }"""""
-                    except Exception as e:
-                        logger.info(f"Error loading image from S3: {e}")
-                        print(f"Error loading image from S3: {e}")
+                    """"file_key = f"{db_user_id}/{db_document_id}.{db_doc_ext}"
+                    content = s3.get_object(Bucket=bucket_name, key=file_key)
+                    logger.info(json.loads(content["Body"].read().decode("utf-8")))
+                    print(json.loads(content["Body"].read().decode("utf-8")))"""""
+                    prompt = {
+                     "image_string": "https://www.peacepost.asia/wp-content/uploads/2019/06/11560198184_.pic_-1024x768.jpg",
+                     "questions": query
+                    }
 
-                    # gpt_vision = ChatGptVision(db_api_key, selected_model, prompt)
-                    # chat_response = gpt_vision.analyse_image_string()
+                    gpt_vision = ChatGptVision(db_api_key, selected_model, prompt)
+                    chat_response = gpt_vision.analyse_image_string()
                 else:
                     chat_response = gpt_model.chat_with_context(prompt=query)
 
