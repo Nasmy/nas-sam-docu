@@ -1,12 +1,10 @@
 import base64
 import requests
-from chat.chatgpt import ChatGPT
 from loguru import logger
 
 
 # TODO Can do refactor. Just Written a Mock Code for Testing Purpose
 class ChatGptVision:
-
     gpt_api_key = None
     gpt_model = None
 
@@ -67,34 +65,37 @@ class ChatGptVision:
         image_path = f"data:image/jpeg;base64,{base64_image}"
         payload = self.get_vision_payload(image_url=image_path, gpt_questions=self.prompt["questions"])
         response = requests.post("https://api.openai.com/v1/chat/completions", headers=self.get_headers(), json=payload)
-        print(response.json())
+        return self.load_response_content(response)
 
     def gpt_analysis_image_url(self):
         payload = self.get_vision_payload(image_url=self.prompt["image_string"], gpt_questions=self.prompt["questions"])
-
         response = requests.post("https://api.openai.com/v1/chat/completions", headers=self.get_headers(), json=payload)
-        print(response)
-        logger.info(response)
-        #return self.load_content(response)
-
-    def load_content(self, response):
-        gpt_chat = ChatGPT(self.gpt_model, api_key=self.gpt_api_key, verbose=True)
-        role, content = gpt_chat.get_role_and_context(response)
-
+        content, role = self.load_response_content(response)
         return content
+
+    @staticmethod
+    def load_response_content(response):
+        # Accessing content of response
+        response_content = response.json()
+        content = response_content['choices'][0]['message']['content']
+        role = response_content['choices'][0]['message']['role']
+        return content, role
 
     def analyse_image_string(self):
 
         if self.prompt["image_string"].startswith("http"):
-            self.gpt_analysis_image_url()
+            content = self.gpt_analysis_image_url()
         else:
-            self.gpt_analysis_image_upload()
+            content = self.gpt_analysis_image_upload()
+
+        return content
 
 
-#if __name__ == "__main__":
-    # prompt = {
-        #"image_string": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
-        #"questions": "What’s in this image?"
-    #}
-    #gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
-    #gptVision.analyse_image_string()
+"""" Internal testing purpose
+if __name__ == "__main__":
+    prompt = {
+        "image_string": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
+        "questions": "What’s in this image?"
+    }
+    gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
+    print(gptVision.analyse_image_string()) """
