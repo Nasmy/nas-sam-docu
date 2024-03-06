@@ -184,7 +184,7 @@ def handler(event, _):
                 """ enable the gpt 4 """
                 if gpt_4_vision_enable:
                     try:
-                        file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
+                        file_key = f"{db_user_id}/{db_document_id}.{db_doc_ext}"
                         image, metadata = s3.get_object(Bucket=bucket_name, key=file_key)
                         prompt = {
                          "image_string": image,
