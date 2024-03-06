@@ -185,10 +185,11 @@ def handler(event, _):
                 """ enable the gpt 4 """
                 if gpt_4_vision_enable:
                     file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
-                    obj = s3_dd.s3_get_object(bucket=bucket_name, key=file_key)
-                    image_data = obj["Body"].read()
+                    img = s3.get_object(Bucket=bucket_name, Key=file_key)
+                    # image_data = obj["Body"].read()
+                    logger.info(f"img-obj - {img}")
                     prompt = {
-                     "image_string": image_data,
+                     "image_string": img,
                      "questions": query
                     }
 
@@ -197,123 +198,6 @@ def handler(event, _):
                 else:
                     chat_response = gpt_model.chat_with_context(prompt=query)
 
-                query_response_timestamp = datetime.utcnow().isoformat()
-                total_tokens = gpt_model.get_total_tokens()
-                logger.info(f"Total tokens used: {total_tokens}")
-
-                db_model = session.query(Models).filter(Models.name == selected_model.name).first()
-
-                if not db_model:
-                    details = {"model": selected_model.name}
-                    raise RaiseCustomException(404, "model not found", details)
-
-                """Update the query cost in the database"""
-                prompt_tokens = gpt_model.get_prompt_tokens()
-                completion_tokens = gpt_model.get_completion_tokens()
-                prompt_1k_cost = db_model.prompt_1k_cost
-                completion_1k_cost = db_model.completion_1k_cost
-                total_cost = prompt_tokens * prompt_1k_cost + completion_tokens * completion_1k_cost
-
-                chat_query = Queries(
-                    id=query_id,
-                    chat_id=chat_id,
-                    model_id=db_model.id,
-                    api_key_id=db_api_key.id,
-                    prompt_tokens=prompt_tokens,
-                    completion_tokens=completion_tokens,
-                    prompt_1k_cost=prompt_1k_cost,
-                    completion_1k_cost=prompt_1k_cost,
-                    total_amount=total_cost,
-                )
-                session.add(chat_query)
-
-                """Create the chat context output"""
-                chat_context_output = gpt_model.get_context_dict()
-                json_str = json.dumps(chat_context_output)
-                logger.info(f"chat context out put - {json_str}")
-
-            try:
-                """Update the chat context in S3"""
-                s3.put_object(
-                    Body=json_str,
-                    Bucket=chat_context_bucket,
-                    Key=file_key,
-                    ContentType="application/json",
-                )
-            except Exception as exception:
-                logger.info("failed to update object")
-
-            """Prepare the chat history"""
-            chat_history_entry = {
-                "request": {"sender": "me", "timestamp": query_request_timestamp, "message": query},
-                "response": {
-                    "sender": "Docudive AI",
-                    "timestamp": query_response_timestamp,
-                    "message": chat_response,
-                },
-                "usage": {"tokens": total_tokens, "model": selected_model.name},
-            }
-
-            chat_history = {"conversation": [chat_history_entry]}
-
-            try:
-                """Load the chat history in S3"""
-                content, _ = s3.get_object(bucket=chat_history_bucket, key=file_key)
-                chat_history = json.loads(content.decode("utf-8"))
-                chat_history["conversation"].append(chat_history_entry)
-            except Exception as exception:
-                logger.info("no chat history, creating")
-
-            """Update the chat history in S3"""
-            chat_history_str = json.dumps(chat_history)
-            s3.put_object(
-                Body=chat_history_str,
-                Bucket=chat_history_bucket,
-                Key=file_key,
-                ContentType="application/json",
-            )
-
-            api_response = {
-                "status": "success",
-                "message": "chat complete",
-                "details": {
-                    "document_id": document_id,
-                    "chat_id": chat_id,
-                    "query_id": query_id,
-                    "response": chat_response,
-                    "chat_reset": chat_initialized,
-                    "context_initialized": doc_context_initialized,
-                    "timestamp": datetime.utcnow().isoformat(),
-                    "model": selected_model.name,
-                    "total_tokens": total_tokens,
-                },
-            }
-            if chat_debug:
-                api_response["debug"] = {
-                    "max_tokens": selected_model.max_tokens,
-                    "chat_context": chat_context,
-                }
-
-        except (MissingBodyParameter, UserNotFoundError, DocumentNotFoundError, RaiseCustomException) as e:
-            return json_return(
-                e.status_code,
-                {"status": "failed", "message": e.message, "details": e.details},
-            )
-        except Exception as exception:
-            error_id = uuid.uuid4()
-            logger.exception("Exception occurred")
-            logger.error(f"an error occured, id: {error_id} error: {exception}")
-            return {
-                "isBase64Encoded": False,
-                "statusCode": 500,
-                "body": f"error id:{error_id}",
-                "headers": {"content-type": "application/json"},
-            }
-        else:
-            session.commit()
-            return {
-                "isBase64Encoded": False,
-                "statusCode": 200,
-                "body": json.dumps(api_response),
-                "headers": {"content-type": "application/json"},
-            }
+                print(chat_response)
+        except:
+            return "error"
