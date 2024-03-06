@@ -187,13 +187,19 @@ def handler(event, _):
                 if gpt_4_vision_enable:
                     file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
                     body, metadata = s3_dd.s3_get_object(bucket=bucket_name, key=file_key)
-                    image_string = base64.b64encode(body).decode('utf-8')
-                    # image_data = obj["Body"].read()
-                    logger.info(f"img-obj - {image_string}")
-                    prompt = {
+                    print(type(body))
+                    print(len(body))
+
+                    # Encode the binary image data to base64
+                    image_string = base64.b64encode(body).decode('utf-8')  # Convert bytes to string
+
+                    # Check the type and length of the 'image_string' variable
+                    print(type(image_string))
+                    print(len(image_string))
+                    """"prompt = {
                      "image_string": image_string,
                      "questions": query
-                    }
+                    }""
 
                     #gpt_vision = ChatGptVision(db_api_key.api_key, selected_model, prompt)
                     #chat_response = gpt_vision.analyse_image_string()
