@@ -171,7 +171,7 @@ def handler(event, _):
                 Need to get the API key from db and set in chatGPT class
                 This is WIP code
                 """
-                db_api_key = session.query(APIKeys).filter(APIKeys.service_key == "openai_key1").first()
+                db_api_key = session.query(APIKeys.api_key).filter(APIKeys.service_key == "openai_key1").first()
                 if not db_api_key:
                     logger.error("API key not found!")
                     details = {"service_key": "openai_key1"}
