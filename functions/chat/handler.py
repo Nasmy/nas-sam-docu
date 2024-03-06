@@ -185,16 +185,16 @@ def handler(event, _):
                 """ enable the gpt 4 """
                 if gpt_4_vision_enable:
                     file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
-                    img = s3.get_object(Bucket=bucket_name, Key=file_key)
+                    body = s3_dd.s3_get_object(bucket=bucket_name, key=file_key)
                     # image_data = obj["Body"].read()
-                    logger.info(f"img-obj - {img}")
+                    logger.info(f"img-obj - {body}")
                     prompt = {
-                     "image_string": img,
+                     "image_string": body,
                      "questions": query
                     }
 
-                    gpt_vision = ChatGptVision(db_api_key.api_key, selected_model, prompt)
-                    chat_response = gpt_vision.analyse_image_string()
+                    #gpt_vision = ChatGptVision(db_api_key.api_key, selected_model, prompt)
+                    #chat_response = gpt_vision.analyse_image_string()
                 else:
                     chat_response = gpt_model.chat_with_context(prompt=query)
 
