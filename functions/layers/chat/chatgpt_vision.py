@@ -1,4 +1,5 @@
 import os
+from io import BytesIO
 import base64
 import boto3
 import requests
@@ -64,15 +65,15 @@ class ChatGptVision:
 
     def encode_image(self, image_path):
         with open(image_path, "rb") as image_file:
-            image_data = image_file.read().replace(b'\x00', b'')
-            return base64.b64encode(image_data).decode('utf-8')
+            return base64.b64encode(image_file.read()).decode('utf-8')
 
     def gpt_analysis_image_upload(self):
         image_file_key = self.prompt["image_string"]
         logger.info(image_file_key)
         logger.info(self.bucket_name)
         body, _ = self.s3_dd.s3_get_object(bucket=self.bucket_name, key=image_file_key)
-        base64_image = self.encode_image(body)
+        img = BytesIO(body)
+        base64_image = self.encode_image(img)
         image_path = f"data:image/jpeg;base64,{base64_image}"
         payload = self.get_vision_payload(image_url=image_path, gpt_questions=self.prompt["questions"])
         response = requests.post("https://api.openai.com/v1/chat/completions", headers=self.get_headers(), json=payload)
