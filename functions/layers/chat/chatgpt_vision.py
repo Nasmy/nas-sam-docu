@@ -10,7 +10,7 @@ from loguru import logger
 class ChatGptVision:
     gpt_api_key = None
     gpt_model = None
-    bucket_name = os.getenv("bucket")
+    bucket_name = os.getenv("image_bucket")
     s3 = boto3.client("s3")
     s3_dd = S3Wrapper()
 
