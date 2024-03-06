@@ -187,7 +187,8 @@ def handler(event, _):
                 """ enable the gpt 4 """
                 if gpt_4_vision_enable:
                     file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
-                    s3_dd.load_image_from_s3(bucket_name, file_key)
+                    image, _ = s3_dd.load_image_from_s3(bucket_name, file_key)
+                    print(image)
 
                     # body, _ = s3_dd.s3_get_object(bucket=bucket_name, key=file_key)
                     # print("Length of binary data:", len(body))
