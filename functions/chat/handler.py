@@ -4,6 +4,7 @@ import uuid
 from datetime import datetime, timedelta
 import boto3
 from loguru import logger
+import base64
 
 from aws.aws_s3 import S3Wrapper
 from chat.chat_types import ChatTypes
@@ -186,10 +187,11 @@ def handler(event, _):
                 if gpt_4_vision_enable:
                     file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
                     body = s3_dd.s3_get_object(bucket=bucket_name, key=file_key)
+                    image_string = base64.b64encode(body).decode('utf-8')
                     # image_data = obj["Body"].read()
-                    logger.info(f"img-obj - {body}")
+                    logger.info(f"img-obj - {image_string}")
                     prompt = {
-                     "image_string": body,
+                     "image_string": image_string,
                      "questions": query
                     }
 
