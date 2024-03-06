@@ -199,5 +199,5 @@ def handler(event, _):
                     chat_response = gpt_model.chat_with_context(prompt=query)
 
                 print(chat_response)
-        except:
-            return "error"
+        except Exception as e:
+            return f"error {e}"
