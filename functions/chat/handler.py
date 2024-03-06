@@ -2,7 +2,7 @@ import json
 import os
 import uuid
 from datetime import datetime, timedelta
-
+import boto3
 from loguru import logger
 
 from aws.aws_s3 import S3Wrapper
@@ -24,7 +24,7 @@ from utils.custom_exceptions import (
 from utils.util import json_return, get_body_parameter
 from utils.document_types import get_document_type_from_extension, DocumentTypes
 
-dd_s3 = S3Wrapper()
+s3 = boto3.client("s3")
 files_digest_bucket = os.getenv("files_digest_bucket")
 chat_context_bucket = os.getenv("chat_context_bucket")
 chat_history_bucket = os.getenv("chat_history_bucket")
@@ -116,7 +116,7 @@ def handler(event, _):
             chat_initialized = True
             try:
                 if not reset_context:
-                    content, _ = dd_s3.s3_get_object(bucket=chat_context_bucket, key=file_key)
+                    content, _ = s3.get_object(bucket=chat_context_bucket, key=file_key)
                     chat_context = json.loads(content.decode("utf-8"))
                     logger.info("chat context loaded!")
                     chat_initialized = False
@@ -184,10 +184,10 @@ def handler(event, _):
                 """ enable the gpt 4 """
                 if gpt_4_vision_enable:
                     file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
-                    image, metadata = dd_s3.load_image_from_s3(bucket_name, file_key)
-
+                    image = s3.get_object(bucket_name, file_key)
+                    image_data = image['Body'].read()
                     prompt = {
-                     "image_string": image,
+                     "image_string": image_data,
                      "questions": query
                     }
 
