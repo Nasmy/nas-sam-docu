@@ -199,7 +199,7 @@ def handler(event, _):
                     """"prompt = {
                      "image_string": image_string,
                      "questions": query
-                    }""
+                    }"""""
 
                     #gpt_vision = ChatGptVision(db_api_key.api_key, selected_model, prompt)
                     #chat_response = gpt_vision.analyse_image_string()
