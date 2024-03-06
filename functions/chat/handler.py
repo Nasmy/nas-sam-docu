@@ -184,7 +184,7 @@ def handler(event, _):
 
                 """ enable the gpt 4 """
                 if gpt_4_vision_enable:
-                    file_key = f"{db_user_id}/{db_document_id}.{db_doc_ext}"
+                    file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
                     obj = s3_dd.s3_get_object(bucket=bucket_name, key=file_key)
                     image_data = obj["Body"].read()
                     prompt = {
