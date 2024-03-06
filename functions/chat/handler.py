@@ -4,7 +4,6 @@ import uuid
 from datetime import datetime, timedelta
 import boto3
 from loguru import logger
-import base64
 
 from aws.aws_s3 import S3Wrapper
 from chat.chat_types import ChatTypes
@@ -187,28 +186,28 @@ def handler(event, _):
                 """ enable the gpt 4 """
                 if gpt_4_vision_enable:
                     file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
-                    image, _ = s3_dd.load_image_from_s3(bucket_name, file_key)
-                    print(image)
+                    # image, _ = s3_dd.load_image_from_s3(bucket_name, file_key)
+                    # print(image)
 
                     # body, _ = s3_dd.s3_get_object(bucket=bucket_name, key=file_key)
                     # print("Length of binary data:", len(body))
 
                     # Encode the binary image data to base64
-                    #image_string = base64.b64encode(body).decode('utf-8')  # Convert bytes to string
+                    # image_string = base64.b64encode(body).decode('utf-8')  # Convert bytes to string
 
                     # Check the type and length of the 'image_string' variable
-                    #print(type(image_string))
-                    #print(len(image_string))
-                    """"prompt = {
-                     "image_string": image_string,
+                    # print(type(image_string))
+                    # print(len(image_string))
+                    prompt = {
+                     "image_string": file_key,
                      "questions": query
-                    }"""""
+                    }
 
-                    #gpt_vision = ChatGptVision(db_api_key.api_key, selected_model, prompt)
-                    #chat_response = gpt_vision.analyse_image_string()
+                    gpt_vision = ChatGptVision(db_api_key.api_key, selected_model, prompt)
+                    chat_response = gpt_vision.analyse_image_string()
                 else:
                     chat_response = gpt_model.chat_with_context(prompt=query)
 
-                #print(chat_response)
+                print(chat_response)
         except Exception as e:
             return f"error {e}"

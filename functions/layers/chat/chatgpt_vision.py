@@ -1,5 +1,8 @@
+import os
 import base64
+import boto3
 import requests
+from aws.aws_s3 import S3Wrapper
 from loguru import logger
 
 
@@ -7,6 +10,9 @@ from loguru import logger
 class ChatGptVision:
     gpt_api_key = None
     gpt_model = None
+    bucket_name = os.getenv("bucket")
+    s3 = boto3.client("s3")
+    s3_dd = S3Wrapper()
 
     def __init__(self, gpt_api_key, gpt_model, prompt_data):
         self.gpt_api_key = gpt_api_key
@@ -61,7 +67,9 @@ class ChatGptVision:
             return base64.b64encode(image_file.read()).decode('utf-8')
 
     def gpt_analysis_image_upload(self):
-        base64_image = self.encode_image(self.prompt["image_string"])
+        image_file_key = self.prompt["image_string"]
+        body, _ = self.s3_dd.s3_get_object(bucket=self.bucket_name, key=image_file_key)
+        base64_image = self.encode_image(body)
         image_path = f"data:image/jpeg;base64,{base64_image}"
         payload = self.get_vision_payload(image_url=image_path, gpt_questions=self.prompt["questions"])
         response = requests.post("https://api.openai.com/v1/chat/completions", headers=self.get_headers(), json=payload)
