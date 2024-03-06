@@ -235,10 +235,10 @@ def handler(event, _):
             try:
                 """Update the chat context in S3"""
                 s3.put_object(
-                    body=json_str,
-                    bucket=chat_context_bucket,
-                    key=file_key,
-                    content_type="application/json",
+                    Body=json_str,
+                    Bucket=chat_context_bucket,
+                    Key=file_key,
+                    ContentType="application/json",
                 )
             except Exception as exception:
                 logger.info("failed to update object")
@@ -267,10 +267,10 @@ def handler(event, _):
             """Update the chat history in S3"""
             chat_history_str = json.dumps(chat_history)
             s3.put_object(
-                body=chat_history_str,
-                bucket=chat_history_bucket,
-                key=file_key,
-                content_type="application/json",
+                Body=chat_history_str,
+                Bucket=chat_history_bucket,
+                Key=file_key,
+                ContentType="application/json",
             )
 
             api_response = {
