@@ -21,7 +21,6 @@ sam validate --region us-east-1
 sam build -c -p --use-container
 sam deploy \
 --profile nas-docudive \
---template-file packaged.yaml \
 --stack-name nas-docudive-backend \
 --region us-east-1 \
 --no-confirm-changeset \
