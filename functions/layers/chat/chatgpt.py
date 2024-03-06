@@ -86,7 +86,6 @@ class ChatGPT:
 
     @staticmethod
     def get_role_and_context(response):
-        logger.info(f"response gpt 4 - {response}")
         content = response.choices[0].message["content"]
         role = response.choices[0].message["role"]
         return role, content

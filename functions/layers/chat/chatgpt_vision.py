@@ -1,6 +1,7 @@
 import base64
 import requests
 from chat.chatgpt import ChatGPT
+from loguru import logger
 
 
 # TODO Can do refactor. Just Written a Mock Code for Testing Purpose
@@ -72,7 +73,9 @@ class ChatGptVision:
         payload = self.get_vision_payload(image_url=self.prompt["image_string"], gpt_questions=self.prompt["questions"])
 
         response = requests.post("https://api.openai.com/v1/chat/completions", headers=self.get_headers(), json=payload)
-        return self.load_content(response)
+        print(response)
+        logger.info(response)
+        #return self.load_content(response)
 
     def load_content(self, response):
         gpt_chat = ChatGPT(self.gpt_model, api_key=self.gpt_api_key, verbose=True)
