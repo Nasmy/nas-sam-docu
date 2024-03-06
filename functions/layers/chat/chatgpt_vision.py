@@ -72,8 +72,8 @@ class ChatGptVision:
         logger.info(image_file_key)
         logger.info(self.bucket_name)
         body, _ = self.s3_dd.s3_get_object(bucket=self.bucket_name, key=image_file_key)
-        img = BytesIO(body)
-        base64_image = self.encode_image(img)
+        logger.info(body)
+        base64_image = self.encode_image(body)
         image_path = f"data:image/jpeg;base64,{base64_image}"
         payload = self.get_vision_payload(image_url=image_path, gpt_questions=self.prompt["questions"])
         response = requests.post("https://api.openai.com/v1/chat/completions", headers=self.get_headers(), json=payload)
