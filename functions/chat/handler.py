@@ -194,7 +194,6 @@ def handler(event, _):
 
                     gpt_vision = ChatGptVision(db_api_key.api_key, selected_model, prompt)
                     chat_response = gpt_vision.analyse_image_string()
-                    return chat_response
 
                 else:
                     chat_response = gpt_model.chat_with_context(prompt=query)
