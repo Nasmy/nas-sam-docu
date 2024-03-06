@@ -232,7 +232,7 @@ def handler(event, _):
 
             try:
                 """Update the chat context in S3"""
-                dd_s3.s3_put_object(
+                s3.put_object(
                     body=json_str,
                     bucket=chat_context_bucket,
                     key=file_key,
@@ -256,7 +256,7 @@ def handler(event, _):
 
             try:
                 """Load the chat history in S3"""
-                content, _ = dd_s3.s3_get_object(bucket=chat_history_bucket, key=file_key)
+                content, _ = s3.get_object(bucket=chat_history_bucket, key=file_key)
                 chat_history = json.loads(content.decode("utf-8"))
                 chat_history["conversation"].append(chat_history_entry)
             except Exception as exception:
@@ -264,7 +264,7 @@ def handler(event, _):
 
             """Update the chat history in S3"""
             chat_history_str = json.dumps(chat_history)
-            dd_s3.s3_put_object(
+            s3.put_object(
                 body=chat_history_str,
                 bucket=chat_history_bucket,
                 key=file_key,
