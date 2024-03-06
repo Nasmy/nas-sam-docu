@@ -69,6 +69,7 @@ class ChatGptVision:
     def gpt_analysis_image_upload(self):
         image_file_key = self.prompt["image_string"]
         logger.info(image_file_key)
+        logger.info(self.bucket_name)
         body, _ = self.s3_dd.s3_get_object(bucket=self.bucket_name, key=image_file_key)
         base64_image = self.encode_image(body)
         image_path = f"data:image/jpeg;base64,{base64_image}"
