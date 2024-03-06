@@ -186,8 +186,15 @@ def handler(event, _):
                 """ enable the gpt 4 """
                 if gpt_4_vision_enable:
                     file_key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
-                    body, _ = s3_dd.s3_get_object(bucket=bucket_name, key=file_key)
-                    print("Length of binary data:", len(body))
+                    s3 = boto3.resource("s3")
+                    bucket = s3.Bucket(bucket_name)
+                    image = bucket.Object(file_key)
+                    img_data = image.get().get('Body').read()
+                    image_string = base64.b64encode(img_data).decode('utf-8')
+                    print(type(image_string))
+
+                    # body, _ = s3_dd.s3_get_object(bucket=bucket_name, key=file_key)
+                    # print("Length of binary data:", len(body))
 
                     # Encode the binary image data to base64
                     #image_string = base64.b64encode(body).decode('utf-8')  # Convert bytes to string
