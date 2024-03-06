@@ -191,7 +191,7 @@ def handler(event, _):
                     image = bucket.Object(file_key)
                     img_data = image.get().get('Body').read()
                     image_string = base64.b64encode(img_data).decode('utf-8')
-                    print(type(image_string))
+                    print(image_string)
 
                     # body, _ = s3_dd.s3_get_object(bucket=bucket_name, key=file_key)
                     # print("Length of binary data:", len(body))
