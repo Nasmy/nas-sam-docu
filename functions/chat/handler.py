@@ -85,6 +85,8 @@ def handler(event, _):
                         .first()
                     )
                     if document:
+                        gpt_4_vision_enable = OpenAIModels.can_gpt_4_model_enable(doc_ext=document.file_extension)
+
                         if chat_id:
                             doc_chat = (
                                 session.query(DocumentChat)

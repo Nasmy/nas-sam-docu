@@ -26,6 +26,7 @@ class Documents(Base):
     document_type = Column(String(36), nullable=False)
     file_name = Column(String(255), nullable=False, index=True)
     file_alias = Column(String(255), nullable=True)
+    file_extension = Column(String(8), nullable=True)
     mime_type = Column(String(255), nullable=True)
     page_count = Column(Integer, default=0)
     is_deleted = Column(Boolean, default=False)
