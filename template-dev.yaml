@@ -420,7 +420,7 @@ Resources:
             Method: get
             ApiId: !Ref DocudiveApi
 
-  UsersFunction:
+  UsersFunctionUsersFunction:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: UsersFunction
