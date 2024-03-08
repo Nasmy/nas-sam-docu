@@ -7,23 +7,22 @@ from chat.chatgpt import ChatGPT
 from chat.model_info import OpenAIModels
 from chat.prompt_handler import prompt_handler, page_wise_questions
 from chat.query_types import PromptResponse
-from prompts.insights import InsightTypes
 from text.scrape_prediction import TextDetScrapePrediction
 from utils.annotation_types import AnnotationTypes
 
 number_of_pages = 50
 
 
-def prompt_headings(text_prediction: TextDetScrapePrediction, open_api_key=None, insight_type=None):
+def prompt_headings(text_prediction: TextDetScrapePrediction):
     question = (
         "\n\nConsider the given context and generate 1 heading and the corresponding summary. Suggest the "
-        "heading text except introduction and conclusion. Make sure the the summary is in bullet points and should be in markup language"
+        "heading text except introduction and conclusion. Make sure the the summary is in bullet points. "
         "The summary should include all the data points, facts and figures in minimum of 5 lines. "
         "The summary should contain as much information as possible. Form your answer in the following json "
         'format:\n{\n "heading": "heading text",\n "summary": "Summary text"\n}\n\ncontext:\n'
     )
 
-    gpt_model = ChatGPT(model=OpenAIModels.get_model("gpt-3.5-turbo"), api_key=open_api_key, verbose=False)
+    gpt_model = ChatGPT(model=OpenAIModels.get_model("gpt-3.5-turbo"), verbose=False)
 
     response_list, prompts, model_names, pages_per_iterations = page_wise_questions(
         text_prediction, question, gpt_model
@@ -37,12 +36,17 @@ def prompt_headings(text_prediction: TextDetScrapePrediction, open_api_key=None,
         try:
             cleaned_response = response.replace("\n", "").replace("\r", "").replace("\t", " ")
             heading_summary_dict = json.loads(cleaned_response)
+            heading_summary_dict[f"H{loop_count}"] = heading_summary_dict.pop("heading")
+            heading_summary_dict[f"S{loop_count}"] = heading_summary_dict.pop("summary")
             heading_summary_list.append(heading_summary_dict)
             loop_count += 1
         except Exception as e:
             logger.exception(e)
             continue
 
+    heading_summary_dict = {
+        "headings": heading_summary_list,
+    }
     information = {
         "model_name": model_names,
         "iteration_count": len(model_names),
@@ -50,7 +54,7 @@ def prompt_headings(text_prediction: TextDetScrapePrediction, open_api_key=None,
     }
 
     return PromptResponse(
-        response=heading_summary_list,
+        response=heading_summary_dict,
         prompt=prompts,
         debug_info=information,
         gpt_model=gpt_model,

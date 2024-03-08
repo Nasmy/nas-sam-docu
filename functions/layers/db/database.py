@@ -14,26 +14,21 @@ class Database:
     """Database connection class"""
 
     def __init__(self, echo=False):
-        self.echo = echo
-
-    def get_engine(self):
-        return create_engine(self.get_database_connection_string(), echo=self.echo)
+        self.engine = create_engine(self.get_database_connection_string(), echo=echo)
 
     def close_connection(self):
         """Close existing connection"""
-        print("Closing connection")
+        self.engine.dispose()
 
     @contextlib.contextmanager
     def get_session(self, echo=False):
         """Create a session from db connection"""
-        engine = self.get_engine()
-        Session = sessionmaker(bind=engine)
+        Session = sessionmaker(bind=self.engine)
         session = Session()
         try:
             yield session
         finally:
             session.close()
-            engine.dispose()
 
     def get_database_connection_string(self):
         """Retrieve connection string"""
@@ -43,34 +38,27 @@ class Database:
         password = os.environ.get("database_password")
         database = os.environ.get("database_name")
 
-        #endpoint = "nas-docudive-backend-postgresdbinstance-glvcazeyy2r4.cb0aukieofkq.us-east-1.rds.amazonaws.com"
-        #port = 5432
-        #username = "postgres"
-        #password = "W4DWRdv8dKMmCYimKs9Z"
-        #database = "postgres"
-
         db_url = f"postgresql+pg8000://{username}:{password}@{endpoint}:{port}/{database}"
         return db_url
 
     def create_all_tables(self, drop_existing: bool = False):
-        engine = self.get_engine()
+
         """Creates database and schema"""
         try:
-            if not database_exists(engine.url):
-                create_database(engine.url)
+            if not database_exists(self.engine.url):
+                create_database(self.engine.url)
             if drop_existing:
-                Base.metadata.drop_all(engine)
-            Base.metadata.create_all(engine)
+                Base.metadata.drop_all(self.engine)
+            Base.metadata.create_all(self.engine)
 
         except Exception as exception:
             _error_id = uuid.uuid4()
             detail = f"error_id: {_error_id} error: {exception}"
             logging.error(detail)
             raise AssertionError(detail)
-        finally:
-            engine.dispose()
 
 
 if __name__ == "__main__":
+
     database = Database()
     database.create_all_tables(drop_existing=False)

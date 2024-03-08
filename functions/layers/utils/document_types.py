@@ -41,18 +41,3 @@ def doc_type_to_mime_type(doc_type: DocumentTypes):
         return "application/msword"
     else:
         return "application/octet-stream"
-
-
-def get_doc_type_to_supported_extensions(doc_type: DocumentTypes):
-    if doc_type == DocumentTypes.PDF:
-        return ["pdf"]
-    elif doc_type == DocumentTypes.TXT:
-        return ["txt"]
-    elif doc_type == DocumentTypes.IMAGE_JPG:
-        return ["jpg", "jpeg"]
-    elif doc_type == DocumentTypes.IMAGE_PNG:
-        return ["png"]
-    elif doc_type == DocumentTypes.DOC:
-        return ["doc", "docx"]
-    else:
-        return ["unknown"]

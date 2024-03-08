@@ -4,18 +4,24 @@ import os
 import uuid
 from datetime import datetime
 
+import boto3
 from loguru import logger
 
-from aws.aws_s3 import S3Wrapper
 from db.database import Database
-from db.tables import Users, Documents, Chats
-from utils.custom_exceptions import (
-    MissingQueryParameterError,
-    ChatNotFoundError,
-    UserNotFoundError,
-    DocumentNotFoundError,
-)
-from utils.util import json_return, get_query_parameter
+from db.document_chat import DocumentChat
+from db.documents import Documents
+from db.users import Users
+
+response = {"isBase64Encoded": False, "statusCode": 500, "body": "", "headers": {"content-type": "application/json"}}
+
+s3 = boto3.client("s3")
+
+
+def return_response(status_code: int, msg: dict):
+
+    response["statusCode"] = status_code
+    response["body"] = json.dumps(msg)
+    return response
 
 
 def handler(event, _):
@@ -23,106 +29,128 @@ def handler(event, _):
     Downloads a PDF file from S3 given the file id
     """
     logger.info(event)
-    database = Database()
-
-    with database.get_session() as session:
-        try:
-            # Initialize custom S3 client
-            s3_dd = S3Wrapper()
-
+    try:
+        database = Database()
+        with database.get_session() as session:
             username = event["requestContext"]["authorizer"]["lambda"]["user"]
             request_method = event["requestContext"]["http"]["method"]
-            document_id = get_query_parameter(event, "document_id")
-            chat_id = get_query_parameter(event, "chat_id")
-            result = (
-                session.query(Users.username, Users.id, Documents.id)
-                .join(Documents, Documents.user_id == Users.id)
-                .join(Chats, Chats.document_id == Documents.id)
-                .filter(Chats.id == chat_id)
-                .filter(Documents.is_deleted == False)
-                .first()
-            )
-            if not result:
-                raise ChatNotFoundError(chat_id)
-            db_username, db_user_id, db_document_id = result
+            if username:
+                user = session.query(Users).filter(Users.username == username).first()
+                if user:
+                    document_id = event["queryStringParameters"]["document_id"]
+                    doc = (
+                        session.query(Documents)
+                        .filter(Documents.user_id == user.id, Documents.document_id == document_id)
+                        .first()
+                    )
+                    if doc:
+                        chat_id = event["queryStringParameters"]["chat_id"]
+                        document_chat = (
+                            session.query(DocumentChat)
+                            .filter(DocumentChat.chat_id == chat_id, DocumentChat.document_id == document_id)
+                            .first()
+                        )
+                        if document_chat:
+                            file_key = f"{user.id}/{document_id}/{chat_id}.json"
+                            debug_enabled = event["queryStringParameters"].get("debug", None)
+                            try:
+                                if request_method == "GET":
+                                    if debug_enabled:
+                                        bucket_name = os.getenv("chat_context_bucket")
+                                    else:
+                                        bucket_name = os.getenv("chat_history_bucket")
+                                    obj = s3.get_object(Bucket=bucket_name, Key=file_key)
+                                elif request_method == "DELETE":
+                                    bucket_name = os.getenv("chat_history_bucket")
+                                    obj = s3.get_object(Bucket=bucket_name, Key=file_key)
 
-            if username != db_username:
-                raise UserNotFoundError(username)
+                                    # move as a different object to chat_history_bucket
+                                    new_file_key = f"{file_key}.json.{datetime.utcnow().isoformat()}"
+                                    s3.put_object(Body=obj["Body"].read(), Bucket=bucket_name, Key=new_file_key)
 
-            if document_id != db_document_id:
-                raise DocumentNotFoundError(document_id)
+                                    # delete the object from chat_history_bucket
+                                    obj = s3.delete_object(Bucket=bucket_name, Key=file_key)
+                                    return return_response(
+                                        200,
+                                        {
+                                            "status": "success",
+                                            "message": "chat history deleted",
+                                            "details": {
+                                                "document_id": document_id,
+                                                "chat_id": chat_id,
+                                                "timestamp": datetime.utcnow().isoformat(),
+                                            },
+                                        },
+                                    )
 
-            file_key = f"{db_user_id}/{db_document_id}/{chat_id}.json"
-            debug_enabled = get_query_parameter(event, "debug", required=False)
-
-            if request_method == "GET":
-                if debug_enabled:
-                    bucket_name = os.getenv("chat_context_bucket")
+                            except Exception as exception:
+                                logger.info(f"document: {document_id}, chat: {chat_id}, with error: {exception}")
+                                return {
+                                    "isBase64Encoded": True,
+                                    "statusCode": 202,
+                                    "detail": {
+                                        "status": "processing",
+                                        "document_id": str(doc.document_id),
+                                        "chat_id": str(chat_id),
+                                    },
+                                    "headers": {"content-type": "application/json"},
+                                }
+                            json_history = json.loads(obj["Body"].read().decode("utf-8"))
+                            output_dict = {
+                                "status": "success",
+                                "message": "Successfully extracted chat history",
+                                "details": {
+                                    "timestamp": datetime.utcnow().isoformat(),
+                                    "response": json_history,
+                                },
+                            }
+                            file_content = base64.b64encode(json.dumps(output_dict).encode("utf-8")).decode("utf-8")
+                            return {
+                                "isBase64Encoded": True,
+                                "statusCode": 200,
+                                "body": file_content,
+                                "headers": {
+                                    "Content-Type": "application/json",  # Replace this with the correct MIME type for your file
+                                },
+                            }
+                        else:
+                            logger.error(f"Invalid chat id: {chat_id}")
+                            status_code, msg = 404, {
+                                "status": "failed",
+                                "message": "chat doesn't exist",
+                                "detail": {"chat_id": chat_id},
+                            }
+                    else:
+                        logger.error(f"Invalid document id: {document_id}")
+                        status_code, msg = 404, {
+                            "status": "failed",
+                            "message": "document doesn't exist",
+                            "detail": {"document_id": document_id},
+                        }
                 else:
-                    bucket_name = os.getenv("chat_history_bucket")
-                data, _ = s3_dd.s3_get_object(bucket=bucket_name, key=file_key)
-
-                json_history = json.loads(data.decode("utf-8"))
-                output_dict = {
-                    "status": "success",
-                    "message": "Successfully extracted chat history",
-                    "details": {
-                        "timestamp": datetime.utcnow().isoformat(),
-                        "response": json_history,
-                    },
+                    logger.error(f"user does not exist: {username}")
+                    status_code, msg = 403, {
+                        "status": "failed",
+                        "message": "user doesn't exist",
+                        "detail": {"username": username},
+                    }
+            else:
+                logger.error(f"!Very important: user was not passed from authorizer: {username}")
+                status_code, msg = 403, {
+                    "status": "failed",
+                    "message": "user doesn't exist",
+                    "detail": {"username": username},
                 }
-                file_content = base64.b64encode(json.dumps(output_dict).encode("utf-8")).decode("utf-8")
-                return {
-                    "isBase64Encoded": True,
-                    "statusCode": 200,
-                    "body": file_content,
-                    "headers": {
-                        "Content-Type": "application/json",  # Replace this with the correct MIME type for your file
-                    },
-                }
+        database.close_connection()
+        return return_response(status_code, msg)
 
-            elif request_method == "DELETE":
-                bucket_name = os.getenv("chat_history_bucket")
-                data, _ = s3_dd.s3_get_object(bucket=bucket_name, key=file_key)
-
-                # move as a different object to chat_history_bucket
-                new_file_key = f"{file_key}.json.{datetime.utcnow().isoformat()}"
-                s3_dd.s3_put_object(body=data, bucket=bucket_name, key=new_file_key)
-
-                # delete the object from chat_history_bucket
-                s3_dd.s3_delete_object(bucket=bucket_name, key=file_key)
-
-                # put empty object in chat_context_bucket
-                json_history = json.loads(data.decode("utf-8"))
-                json_history["conversation"] = []
-                s3_dd.s3_put_json(body=json_history, bucket=bucket_name, key=file_key)
-
-                return json_return(
-                    200,
-                    {
-                        "status": "success",
-                        "message": "chat history deleted",
-                        "details": {
-                            "document_id": document_id,
-                            "chat_id": chat_id,
-                            "timestamp": datetime.utcnow().isoformat(),
-                        },
-                    },
-                )
-
-        except (MissingQueryParameterError, ChatNotFoundError, UserNotFoundError, DocumentNotFoundError) as e:
-            return json_return(
-                e.status_code,
-                {"status": "failed", "message": e.message, "details": e.details},
-            )
-        except Exception as exception:
-            error_id = uuid.uuid4()
-            logger.exception(f"an error occurred, id: {error_id} error: {exception}")
-            return {
-                "isBase64Encoded": False,
-                "statusCode": 500,
-                "body": exception,
-                "headers": {"content-type": "application/json"},
-            }
-        else:
-            session.cmmmit()
+    except Exception as exception:
+        database.close_connection()
+        error_id = uuid.uuid4()
+        logger.error(f"an error occured, id: {error_id} error: {exception}")
+        return {
+            "isBase64Encoded": False,
+            "statusCode": 500,
+            "body": exception,
+            "headers": {"content-type": "application/json"},
+        }

@@ -1,6 +1,7 @@
 import json
 
 import boto3
+import numpy as np
 from loguru import logger
 
 
@@ -8,9 +9,8 @@ class S3Wrapper:
     def __init__(self):
         self.s3_client = boto3.client("s3")
 
-    def load_image_from_s3(self, bucket_name, key):
+    def load_image_from_s3(self, bucket_name, key) -> (np.ndarray, json):
         import cv2
-        import numpy as np
 
         """
         Download image from S3 bucket
@@ -34,13 +34,10 @@ class S3Wrapper:
             print(e)
             return None, None
 
-    def s3_put_object(self, bucket, key, body, metadata=None, content_type=None):
+    def s3_put_object(self, bucket, key, body, metadata=None):
         if metadata is None:
             metadata = {}
-        if content_type is None:
-            self.s3_client.put_object(Bucket=bucket, Key=key, Body=body, Metadata=metadata)
-        else:
-            self.s3_client.put_object(Bucket=bucket, Key=key, Body=body, Metadata=metadata, ContentType=content_type)
+        self.s3_client.put_object(Bucket=bucket, Key=key, Body=body, Metadata=metadata)
         logger.info(f"Uploaded file to s3 - {bucket}:{key}")
         return True
 
@@ -50,11 +47,6 @@ class S3Wrapper:
         metadata = obj.get("Metadata", None)
         logger.info(f"Loaded file from S3 - {bucket}:{key}")
         return body, metadata
-
-    def s3_delete_object(self, bucket, key):
-        self.s3_client.delete_object(Bucket=bucket, Key=key)
-        logger.info(f"Deleted file from S3 - {bucket}:{key}")
-        return True
 
     def s3_get_json(self, bucket, key) -> (json, json):
         obj = self.s3_client.get_object(Bucket=bucket, Key=key)
@@ -69,24 +61,3 @@ class S3Wrapper:
         self.s3_client.put_object(Bucket=bucket, Key=key, Body=json.dumps(body), Metadata=metadata)
         logger.info(f"Uploaded json to s3 - {bucket}:{key}")
         return True
-
-    def s3_generate_presigned_url(self, bucket_name, file_key, exp_seconds):
-        pre_signed_url = self.s3_client.generate_presigned_url(
-            "get_object",
-            Params={"Bucket": bucket_name, "Key": file_key},
-            ExpiresIn=exp_seconds,
-        )
-        logger.info(f"Generated pre-signed url - {bucket_name}:{file_key}")
-        return pre_signed_url
-
-    def s3_set_public(self, bucket_name, file_key, region_name="us-east-2"):
-        """
-        Set file to public and return public url
-        """
-        self.s3_client.put_object_acl(
-            ACL='public-read',
-            Bucket=bucket_name,
-            Key=file_key
-        )
-        logger.info(f"Set public - {bucket_name}:{file_key}")
-        return f"https://{bucket_name}.s3.{region_name}.amazonaws.com/{file_key}"

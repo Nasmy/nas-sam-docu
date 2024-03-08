@@ -1,24 +1,39 @@
 """ Commone lambda authorizer """
 import base64
+import contextlib
+import os
 
 from jose import JWTError, jwt
-from loguru import logger
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
-from db.database import Database
-from db.tables import Sessions
+from db.sessions import Sessions
 
-allowed_http_paths = [
-    "/api/signup",
-    "/api/verify",
-    "/api/google-signin",
-    "/api/signin",
-    "/api/reset-email",
-    "/api/reset-password",
-    "/api/subscription-list",
-]
+allowed_http_paths = ["/api/signup", "/api/token", "/api/verify", "/api/google_signin"]
 
 secret_key = "74192c43d038bdc5d11a354d6c950ddb5d1fe6a2c21a122fbb10f3e2eeb49cd9"
 algorithm = "HS256"
+
+
+@contextlib.contextmanager
+def get_session():
+    """Create a session from db connection"""
+    endpoint = os.environ.get("database_endpoint")
+    port = os.environ.get("database_port")
+    username = os.environ.get("database_username")
+    password = os.environ.get("database_password")
+    database = os.environ.get("database_name")
+
+    db_url = f"postgresql+pg8000://{username}:{password}@{endpoint}:{port}/{database}"
+    print(db_url)
+    engine = create_engine(db_url, echo=False)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    try:
+        yield session
+    finally:
+        session.close()
+        engine.dispose()
 
 
 def handler(event, _):
@@ -35,9 +50,9 @@ def handler(event, _):
 
     # Decode Basic auth
     # Check auth type
-    logger.info(event)
+    print(event)
     auth_header = event.get("headers", "").get("authorization", "")
-    logger.info(auth_header)
+    print(auth_header)
 
     if "Basic" in auth_header:
         # Basic auth handler
@@ -59,26 +74,21 @@ def handler(event, _):
         try:
             payload = jwt.decode(token, secret_key, algorithms=[algorithm])
             subject = payload.get("sub")
-            session_id = payload.get("session")
 
             if subject is None:
                 return response
             else:
-                database = Database(echo=True)
-                with database.get_session() as session:
-                    session = session.query(Sessions).filter(Sessions.session == session_id).first()
+                # Check if token is in blacklist
+                with get_session() as session:
+                    session = session.query(Sessions).filter(Sessions.username == subject).first()
                     if session:
                         response["isAuthorized"] = True
                         response["context"]["user"] = subject
-                        response["context"]["session_id"] = session_id
                         return response
                     else:
                         return response
 
-        except JWTError:
-            return response
-        except Exception as exception:
-            logger.error(exception)
+        except (JWTError, Exception):
             return response
 
     return response

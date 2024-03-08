@@ -4,6 +4,3 @@ opencv-python-headless
 pytesseract
 pandas
 numpy
-SQLAlchemy==1.4.44
-sqlalchemy-utils==0.38.3
-pg8000

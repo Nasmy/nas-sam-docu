@@ -4,12 +4,10 @@ from chat.chatgpt import ChatGPT
 from chat.model_info import OpenAIModels, ModelInfo
 from chat.prompt_handler import prompt_handler
 from chat.query_types import PromptResponse
-from text.scrape_prediction import TextDetScrapePrediction
 from utils.annotation_types import AnnotationTypes
-from utils.custom_exceptions import RaiseCustomException
 
 
-def prompt_summary(text_prediction: TextDetScrapePrediction, open_api_key=None, insight_type=None):
+def prompt_summary(text_prediction):
     # Get the model
     # question = "Give me short summary in 300 words max for the above context."
     question = (
@@ -44,11 +42,9 @@ def prompt_summary(text_prediction: TextDetScrapePrediction, open_api_key=None, 
         "percentage_of_document_used_for_prediction": f"{round(selected_word_count * 100 / document_word_count, 2)}%",
     }
 
-    gpt_model = ChatGPT(model=model, api_key=open_api_key)
+    gpt_model = ChatGPT(model=model)
     gpt_model.reset_context()
     response = gpt_model.chat_with_context(prompt)
-    if not response:
-        raise RaiseCustomException(204, "No content", response)
     summary_output = {"summary": response.replace("\n", " ").replace("  ", " ")}
 
     return PromptResponse(response=summary_output, prompt=prompt, debug_info=information, gpt_model=gpt_model)

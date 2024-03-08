@@ -3,4 +3,3 @@ pydantic==1.10.12
 email-validator
 loguru
 bcrypt
-opencv-python-headless

@@ -65,8 +65,6 @@ class ContextLoader:
                 return None
         elif context_type == ContextTypes.FULL.value:
             return self.full_context_chat()
-        elif context_type == ContextTypes.LABEL_BRIEF.value:
-            return self.label_brief_chat()
 
     def headings_context(self, heading_keys: list):
         chat_context = dict()
@@ -77,13 +75,11 @@ class ContextLoader:
 
             context_headings = []
             context_summaries = []
-
-            headings_and_summaries_list = full_headings_json["details"]["response"]
-
-            for hed_key in heading_keys:
-                hed_key_index = int(hed_key)
-                context_headings.append(headings_and_summaries_list[hed_key_index]['heading'])
-                context_summaries.append(headings_and_summaries_list[hed_key_index]['summary'])
+            for hs in full_headings_json["details"]["response"]["headings"]:
+                hed_key = list(hs.keys())[0]
+                if hed_key in heading_keys:
+                    context_headings.append(hs[hed_key])
+                    context_summaries.append(hs[f"S{hed_key[1:]}"])
 
             if len(context_headings) > 0:
                 logger.info(f"context_headings: {context_headings}")
@@ -96,7 +92,7 @@ class ContextLoader:
                 logger.error(f"invalid heading_keys: {heading_keys}")
                 return None
         except Exception as e:
-            logger.error(f"document: {self.doc_id} with error")
+            logger.exception(f"document: {self.doc_id} with error")
             logger.exception(e)
             return None
 
@@ -107,13 +103,12 @@ class ContextLoader:
             digest_file_key = f"{self.user_id}/{self.doc_id}/{self.doc_id}-{AnnotationTypes.QUESTIONS.value}.json"
             full_questions_json, _ = self.s3_dd.s3_get_json(bucket=self.input_bucket, key=digest_file_key)
 
-            question_ans_list = full_questions_json["details"]["response"]
-            try:
-                question_index = int(question_key)
-                q_and_a_dict = question_ans_list[question_index]
-                question = q_and_a_dict['question']
-                answer = q_and_a_dict['answer']
-            except Exception as e:
+            for hs in full_questions_json["details"]["response"]["questions"]:
+                if list(hs.keys())[0] == question_key:
+                    question = hs[question_key]
+                    answer = hs[f"A{question_key[1:]}"]
+                    break
+            else:
                 logger.error(f"invalid question_key: {question_key}")
                 return None
             if question:
@@ -128,21 +123,6 @@ class ContextLoader:
             logger.exception(f"document: {self.doc_id} with error")
             logger.exception(e)
             return None
-
-    def label_brief_chat(self):
-        chat_context = dict()
-        chat_context["conversation"] = []
-        digest_file_key = f"{self.user_id}/{self.doc_id}/{self.doc_id}-{AnnotationTypes.HEADINGS.value}.json"
-        label_brief_json, _ = self.s3_dd.s3_get_json(bucket=self.input_bucket, key=digest_file_key)
-        all_headings_and_summaries = label_brief_json["details"]["response"]
-
-        summary_context = ""
-        for hs_json in all_headings_and_summaries:
-            summary_context += f"heading - {hs_json['heading']} corresponding summary - {hs_json['summary']}"
-        chat_context["conversation"].append(
-            {"role": "user", "content": f"Consider the following context: {summary_context} - and answer"}
-        )
-        return chat_context
 
     def full_context_chat(self):
         chat_context = dict()

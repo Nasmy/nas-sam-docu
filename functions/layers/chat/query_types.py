@@ -5,13 +5,21 @@ from typing import Optional, Dict, List, Union
 from chat.chatgpt import ChatGPT
 
 
+class QueryTypes(str, Enum):
+    QUESTIONS = "questions"
+    HEADINGS = "headings"
+    SUMMARIES = "summaries"
+    TIMELINE = "timeline"
+    CHAT = "chat"
+    NER = "ner"
+
+
 class ContextTypes(str, Enum):
     QUESTION = "question"
     HEADINGS = "headings"
     TEXT = "text"
     BLOCKS = "blocks"
     FULL = "full"
-    LABEL_BRIEF = "label_brief"
 
 
 @dataclass

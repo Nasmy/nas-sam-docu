@@ -1,32 +1,45 @@
-from loguru import logger
+import json
 
 from db.database import Database
-from db.tables import Sessions
-from utils.util import json_return
+from db.sessions import Sessions
 
 
 def handler(event, _):
     """authorizer lambda handler"""
-    database = Database()
-    with database.get_session() as session:
-        try:
-            username = event["requestContext"]["authorizer"]["lambda"]["user"]
-            session_id = event["requestContext"]["authorizer"]["lambda"]["session_id"]
-            current_session = session.query(Sessions).filter(Sessions.session == session_id).first()
+    username = event["requestContext"]["authorizer"]["lambda"]["user"]
+
+    try:
+        database = Database()
+        with database.get_session() as session:
+            current_session = session.query(Sessions).filter(Sessions.username == username).first()
             if current_session:
                 session.delete(current_session)
-                logger.info(f"Session {session_id} deleted")
-                status_code = 200
-                message = {"status": "success", "message": "user sign-out success", "details": {"username": username}}
-
+                print("Session deleted")
+                session.commit()
+                return {
+                    "isBase64Encoded": False,
+                    "statusCode": 200,
+                    "body": json.dumps(
+                        {"status": "success", "message": "user signout success", "detail": {"username": username}}
+                    ),
+                    "headers": {"content-type": "application/json"},
+                }
             else:
-                status_code = 404
-                message = {"status": "failed", "message": "user sign-out failed", "details": {"username": username}}
-        except Exception as exception:
-            status_code = 500
-            message = {"status": "failed", "message": "user sign-out failed", "details": {"username": username}}
-            logger.error(exception)
-            return json_return(status_code, message)
-        else:
-            session.commit()
-            return json_return(status_code, message)
+                return {
+                    "isBase64Encoded": False,
+                    "statusCode": 404,
+                    "body": json.dumps(
+                        {"status": "failed", "message": "user signout failed", "detail": {"username": username}}
+                    ),
+                    "headers": {"content-type": "application/json"},
+                }
+    except Exception as exception:
+        print(exception)
+        return {
+            "isBase64Encoded": False,
+            "statusCode": 500,
+            "body": json.dumps(
+                {"status": "failed", "message": "user signout failed", "detail": {"username": username}}
+            ),
+            "headers": {"content-type": "application/json"},
+        }
