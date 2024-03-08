@@ -10,10 +10,10 @@ from text.scrape_prediction import TextDetScrapePrediction
 from utils.annotation_types import AnnotationTypes
 
 
-def prompt_questions(text_prediction: TextDetScrapePrediction):
+def prompt_questions(text_prediction: TextDetScrapePrediction, open_api_key=None, insight_type=None):
     # Get the model
     question = (
-        "\n\nBased on the context, suggest me 4 important possible questions and relevant answers."
+        "\n\nBased on the context, suggest me 5 important possible questions and relevant answers."
         "Form your answer in the following json inside a list "
         'format:\n[{\n "question": "question text",\n "answer": "answer text"\n}]\n'
     )
@@ -44,22 +44,18 @@ def prompt_questions(text_prediction: TextDetScrapePrediction):
         "selected_word_count": selected_word_count,
         "percentage_of_document_used_for_prediction": f"{round(selected_word_count * 100 / document_word_count, 2)}%",
     }
-    gpt_model = ChatGPT(model=model, verbose=True)
+    gpt_model = ChatGPT(model=model, api_key=open_api_key, verbose=True)
     gpt_model.reset_context()
     response = gpt_model.chat_with_context(prompt)
     questions_output_list = []
     question_and_answer_list = json.loads(response)
     try:
         for i, qa_dict in enumerate(question_and_answer_list):
-            questions_output_list.append({f"Q{i + 1}": qa_dict["question"], f"A{i + 1}": qa_dict["answer"]})
+            questions_output_list.append(qa_dict)
     except Exception as e:
         logger.error(e)
 
-    questions_output_dict = {
-        "questions": questions_output_list,
-    }
-
-    return PromptResponse(response=questions_output_dict, prompt=prompt, debug_info=information, gpt_model=gpt_model)
+    return PromptResponse(response=questions_output_list, prompt=prompt, debug_info=information, gpt_model=gpt_model)
 
 
 def handler(event, _):

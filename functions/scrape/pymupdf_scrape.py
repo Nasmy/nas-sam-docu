@@ -71,8 +71,8 @@ class PyMuPDF:
 
     def get_image(self, page_number, image_path=None):
         page = self.doc[page_number - 1]
-        zoom_x = 2.0  # horizontal zoom
-        zoom_y = 2.0  # vertical zoom
+        zoom_x = 1.0  # horizontal zoom
+        zoom_y = 1.0  # vertical zoom
         mat = fitz.Matrix(zoom_x, zoom_y)  # zoom factor 2 in each dimension
         pix = page.get_pixmap(matrix=mat)  # use 'mat' instead of the identity matrix
         image_path = f"page-{page_number:04d}.png" if image_path is None else image_path

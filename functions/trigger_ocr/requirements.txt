@@ -1,5 +1,6 @@
 passlib==1.7.4
 pydantic==1.10.12
 email-validator
-loguru
+loguru==0.7.0
 bcrypt
+numpy==1.24.4

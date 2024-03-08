@@ -44,7 +44,7 @@ Parameters:
 
 Globals:
   Function:
-    Timeout: 60
+    Timeout: 600
     Environment:
       Variables:
         version: "1.0"
@@ -53,6 +53,7 @@ Globals:
         database_username: !Ref Username
         database_password: !Ref Password
         database_name: "postgres"
+        database_schema: "test"
 
 Resources:
   PostgresDBInstance:
@@ -66,10 +67,24 @@ Resources:
       MasterUserPassword: !Ref Password # DO NOT hard-code passwords in templates. Use secrets.
       PubliclyAccessible: true
 
+#  MyEventBridgeRule:
+#    Type: AWS::Events::Rule
+#    Properties:
+#      Description: Triggering Lambda from a custom event bus
+#      EventBusName: default
+#      EventPattern:
+#        source:
+#          - "custom.source"
+#      State: "ENABLED"
+#      Targets:
+#        - Id: TriggerFunction
+#          Arn:
+#            Fn::GetAtt: [ TriggerFunction, Arn ]
+
   DocumentsBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: nas-docud-documents
+      BucketName: docud-documents
 
   DocumentsInputBucket:
     Type: AWS::S3::Bucket
@@ -103,6 +118,12 @@ Resources:
       NotificationConfiguration:
         EventBridgeConfiguration:
           EventBridgeEnabled: true
+
+#  PublicS3Bucket:
+#    Type: AWS::S3::Bucket
+#    Properties:
+#      BucketName: dd-public-files-bucket
+#      AccessControl: PublicRead
 
   CustomObjectBucket:
     Type: AWS::S3::Bucket
@@ -226,7 +247,7 @@ Resources:
             BucketName: !Ref DocumentsBucket
       Environment:
         Variables:
-          verification_url: "https://11g21recbe.execute-api.us-east-2.amazonaws.com/dev"
+          verification_url: "https://docudive.vercel.app"
           bucket: !Ref DocumentsBucket
           smtp_server: !Ref SMTPServer
           smtp_port: !Ref SMTPPort
@@ -260,6 +281,37 @@ Resources:
             Method: get
             ApiId: !Ref DocudiveApi
 
+  ResetFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: ResetFunction
+      CodeUri: functions/reset
+      Handler: handler.handler
+      Runtime: python3.11
+      Layers:
+        - !Ref CommonLambdaLayer
+      Environment:
+        Variables:
+          verification_url: "https://docudive.vercel.app"
+          bucket: !Ref DocumentsBucket
+          smtp_server: !Ref SMTPServer
+          smtp_port: !Ref SMTPPort
+          smtp_username: !Ref SMTPUsername
+          smtp_password: !Ref SMTPPassword
+      Events:
+        ProxyEmail:
+          Type: HttpApi
+          Properties:
+            Path: /api/reset-email
+            Method: post
+            ApiId: !Ref DocudiveApi
+        ProxyPass:
+          Type: HttpApi
+          Properties:
+            Path: /api/reset-password
+            Method: post
+            ApiId: !Ref DocudiveApi
+
   SignoutFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -286,11 +338,14 @@ Resources:
       Runtime: python3.8
       Layers:
         - !Ref CommonLambdaLayer
+      Policies:
+        - EventBridgePutEventsPolicy:
+            EventBusName: default
       Events:
-        Proxy:
+        Proxy2:
           Type: HttpApi
           Properties:
-            Path: /api/token
+            Path: /api/signin
             Method: post
             ApiId: !Ref DocudiveApi
 
@@ -300,64 +355,38 @@ Resources:
       FunctionName: GoogleSignInFunction
       CodeUri: functions/google_signin
       Handler: handler.handler
-      Runtime: python3.8
+      Runtime: python3.11
       Layers:
         - !Ref CommonLambdaLayer
+      Policies:
+        - EventBridgePutEventsPolicy:
+            EventBusName: default
       Environment:
         Variables:
           CLIENT_ID: "739388002072-lqhmp6jbvhrvn7p40i3s27fmc41bsflh.apps.googleusercontent.com"
       Events:
-        Proxy:
+        Proxy2:
           Type: HttpApi
           Properties:
-            Path: /api/google_signin
+            Path: /api/google-signin
             Method: post
             ApiId: !Ref DocudiveApi
 
-  UploadFunction:
+  ValidateFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: UploadFunction
-      CodeUri: functions/upload_binary
+      FunctionName: ValidateFunction
+      CodeUri: functions/validate
       Handler: handler.handler
-      Runtime: python3.8
+      Runtime: python3.11
       Layers:
         - !Ref CommonLambdaLayer
-      Policies:
-        - S3CrudPolicy:
-            BucketName: !Ref DocumentsInputBucket
-      Environment:
-        Variables:
-          bucket: !Ref DocumentsInputBucket
       Events:
         Proxy:
           Type: HttpApi
           Properties:
-            Path: /api/upload-binary
-            Method: post
-            ApiId: !Ref DocudiveApi
-
-  UploadMultipartFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      FunctionName: UploadMultipartFunction
-      CodeUri: functions/upload_multipart
-      Handler: handler.handler
-      Runtime: python3.8
-      Layers:
-        - !Ref CommonLambdaLayer
-      Policies:
-        - S3CrudPolicy:
-            BucketName: !Ref DocumentsInputBucket
-      Environment:
-        Variables:
-          bucket: !Ref DocumentsInputBucket
-      Events:
-        Proxy:
-          Type: HttpApi
-          Properties:
-            Path: /api/upload-multipart
-            Method: post
+            Path: /api/validate
+            Method: get
             ApiId: !Ref DocudiveApi
 
   UploadPreSignedFunction:
@@ -379,7 +408,13 @@ Resources:
         Proxy:
           Type: HttpApi
           Properties:
-            Path: /api/upload-presigned
+            Path: /api/documents
+            Method: post
+            ApiId: !Ref DocudiveApi
+        ProxyUrl:
+          Type: HttpApi
+          Properties:
+            Path: /api/document-url
             Method: post
             ApiId: !Ref DocudiveApi
 
@@ -387,7 +422,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: ListFunction
-      CodeUri: functions/list
+      CodeUri: functions/documents
       Handler: handler.handler
       Runtime: python3.8
       Layers:
@@ -396,11 +431,23 @@ Resources:
         Variables:
           bucket: !Ref DocumentsInputBucket
       Events:
-        Proxy:
+        ProxyGet:
           Type: HttpApi
           Properties:
-            Path: /api/doc-list
+            Path: /api/documents
             Method: get
+            ApiId: !Ref DocudiveApi
+        ProxyDelete:
+          Type: HttpApi
+          Properties:
+            Path: /api/documents
+            Method: delete
+            ApiId: !Ref DocudiveApi
+        ProxyUpdate:
+          Type: HttpApi
+          Properties:
+            Path: /api/documents
+            Method: patch
             ApiId: !Ref DocudiveApi
 
   ChatListFunction:
@@ -413,28 +460,40 @@ Resources:
       Layers:
         - !Ref CommonLambdaLayer
       Events:
-        Proxy:
+        Proxy2:
           Type: HttpApi
           Properties:
-            Path: /api/chat-list
+            Path: /api/chats
             Method: get
             ApiId: !Ref DocudiveApi
 
-  UsersFunctionUsersFunction:
+  UsersFunction:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: UsersFunction
       CodeUri: functions/user
       Handler: handler.handler
-      Runtime: python3.10
+      Runtime: python3.11
       Layers:
         - !Ref CommonLambdaLayer
+      Environment:
+        Variables:
+          bucket: 'nas-dd-public-access'
+      Policies:
+        - S3CrudPolicy:
+            BucketName: 'nas-dd-public-access'
       Events:
         Proxy:
           Type: HttpApi
           Properties:
             Path: /api/user
             Method: get
+            ApiId: !Ref DocudiveApi
+        ProxyPost:
+          Type: HttpApi
+          Properties:
+            Path: /api/user
+            Method: post
             ApiId: !Ref DocudiveApi
 
   UsageFunction:
@@ -443,7 +502,7 @@ Resources:
       FunctionName: UsageFunction
       CodeUri: functions/usage
       Handler: handler.handler
-      Runtime: python3.10
+      Runtime: python3.11
       Layers:
         - !Ref CommonLambdaLayer
       Events:
@@ -454,28 +513,58 @@ Resources:
             Method: get
             ApiId: !Ref DocudiveApi
 
-  DownloadFunction:
+  TriggerFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: DownloadFunction
-      CodeUri: functions/download
+      FunctionName: TriggerFunction
+      CodeUri: functions/triggers
       Handler: handler.handler
-      Runtime: python3.8
+      Runtime: python3.11
       Layers:
         - !Ref CommonLambdaLayer
-      Policies:
-        - S3CrudPolicy:
-            BucketName: !Ref DocumentsInputBucket
-      Environment:
-        Variables:
-          bucket: !Ref DocumentsInputBucket
       Events:
         Proxy:
           Type: HttpApi
           Properties:
-            Path: /api/download
+            Path: /api/trigger
             Method: get
             ApiId: !Ref DocudiveApi
+        MyEventBridge:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - custom.signin
+              detail-type:
+                - success
+
+  TriggerOCRFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: TriggerOCRFunction
+      CodeUri: functions/trigger_ocr
+      Handler: handler.handler
+      Runtime: python3.11
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+      Environment:
+        Variables:
+          ocr_output_bucket: !Ref FilesDigestBucket
+          predict_bucket_name: !Ref CustomObjectBucket
+      Events:
+        MyEventBridge:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - custom.ocr
+              detail-type:
+                - success
 
   DownloadPreSignedFunction:
     Type: AWS::Serverless::Function
@@ -494,10 +583,10 @@ Resources:
           bucket: !Ref DocumentsInputBucket
           link_expiration_seconds: 86400
       Events:
-        Proxy:
+        Proxy2:
           Type: HttpApi
           Properties:
-            Path: /api/download-presigned
+            Path: /api/documents/{document_id}
             Method: get
             ApiId: !Ref DocudiveApi
 
@@ -523,6 +612,12 @@ Resources:
             Path: /api/annotations
             Method: get
             ApiId: !Ref DocudiveApi
+        Proxy2:
+          Type: HttpApi
+          Properties:
+              Path: /api/annotation-progress
+              Method: get
+              ApiId: !Ref DocudiveApi
 
   ChatHistoryFunction:
     Type: AWS::Serverless::Function
@@ -556,17 +651,92 @@ Resources:
             Method: delete
             ApiId: !Ref DocudiveApi
 
+  StripeFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: StripeFunction
+      CodeUri: functions/stripe
+      Handler: handler.handler
+      Runtime: python3.11
+      Layers:
+        - !Ref CommonLambdaLayer
+      Environment:
+        Variables:
+          STRIPE_SECRET_KEY: "sk_test_51O21ZuEIx0QzrdrDkRpaZAixfOxeamUkUp18LW2IxRorplnTTjC2Fd7lMZHwqBVNMKkl3pV6cPFR4Wuq4KGS34Fm003470GztC"
+      Events:
+        ProxyPMGet:
+          Type: HttpApi
+          Properties:
+            Path: /api/payment-methods
+            Method: get
+            ApiId: !Ref DocudiveApi
+        ProxyPMPost:
+          Type: HttpApi
+          Properties:
+            Path: /api/payment-methods
+            Method: post
+            ApiId: !Ref DocudiveApi
+        ProxyPMPatch:
+          Type: HttpApi
+          Properties:
+            Path: /api/payment-methods
+            Method: patch
+            ApiId: !Ref DocudiveApi
+        ProxyPMDelete:
+          Type: HttpApi
+          Properties:
+            Path: /api/payment-methods
+            Method: delete
+            ApiId: !Ref DocudiveApi
+        ProxyInvGet:
+          Type: HttpApi
+          Properties:
+            Path: /api/invoices
+            Method: get
+            ApiId: !Ref DocudiveApi
+        ProxyBillGet:
+          Type: HttpApi
+          Properties:
+            Path: /api/billing
+            Method: get
+            ApiId: !Ref DocudiveApi
+        ProxyBillPut:
+          Type: HttpApi
+          Properties:
+            Path: /api/billing
+            Method: put
+            ApiId: !Ref DocudiveApi
+        ProxySubGet:
+          Type: HttpApi
+          Properties:
+            Path: /api/subscriptions
+            Method: get
+            ApiId: !Ref DocudiveApi
+        ProxySubPost:
+          Type: HttpApi
+          Properties:
+            Path: /api/subscriptions
+            Method: post
+            ApiId: !Ref DocudiveApi
+        ProxySubGetList:
+          Type: HttpApi
+          Properties:
+            Path: /api/subscription-list
+            Method: get
+            ApiId: !Ref DocudiveApi
+
   OCRFunction:
     Type: AWS::Serverless::Function
     DependsOn: PDFImageBucket
     Properties:
       FunctionName: OCRFunction
       PackageType: Image
-      Timeout: 120
       MemorySize: 512
       ImageConfig:
         Command: ["handler.handler"]
       Policies:
+        - EventBridgePutEventsPolicy:
+            EventBusName: default
         - S3CrudPolicy:
             BucketName: !Ref PDFImageBucket
         - S3CrudPolicy:
@@ -600,7 +770,6 @@ Resources:
     Properties:
       FunctionName: NERFunction
       PackageType: Image
-      Timeout: 120
       MemorySize: 1024
       ImageConfig:
         Command: ["handler.handler"]
@@ -637,6 +806,7 @@ Resources:
       CodeUri: functions/scrape
       Handler: handler.handler
       Runtime: python3.11
+      MemorySize: 512
       Layers:
         - !Ref CommonLambdaLayer
       Policies:
@@ -673,7 +843,7 @@ Resources:
       FunctionName: PromptQuestionsFunction
       CodeUri: functions/prompts_questions
       Handler: handler.handler
-      Runtime: python3.10
+      Runtime: python3.11
       Layers:
         - !Ref CommonLambdaLayer
       Policies:
@@ -685,7 +855,302 @@ Resources:
         Variables:
           predict_bucket_name: !Ref CustomObjectBucket
           output_bucket: !Ref FilesDigestBucket
-          openai_api_key: !Ref OpenApiKey
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref CustomObjectBucket
+
+  PromptCitationsFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: CustomObjectBucket
+    Properties:
+      FunctionName: PromptCitationsFunction
+      CodeUri: functions/prompts_citations
+      Handler: handler.handler
+      Runtime: python3.11
+      MemorySize: 256
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref CustomObjectBucket
+          output_bucket: !Ref FilesDigestBucket
+          QUESTION: 'Extract the citations if exists in the context. If citations do not exist, then please provide the answer as \"no answer\". Make sure in your answer you only include the citations and not any other summarised answer. Form your answer in the following json format. Each json node should include one citation information only:\n\n{\n"citation_n": {\n"document": "document_term",\n"section": "section_text"\n},\n...\n}'
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref CustomObjectBucket
+
+  PromptCustomFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: CustomObjectBucket
+    Properties:
+      FunctionName: PromptCustomFunction
+      CodeUri: functions/prompts_custom
+      Handler: handler.handler
+      Runtime: python3.11
+      MemorySize: 256
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref CustomObjectBucket
+          output_bucket: !Ref FilesDigestBucket
+          QUESTION: 'What is the main idea of the text?'
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref CustomObjectBucket
+
+  PromptCitedExamplesFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: CustomObjectBucket
+    Properties:
+      FunctionName: PromptCitedExamplesFunction
+      CodeUri: functions/prompts_cited_examples
+      Handler: handler.handler
+      Runtime: python3.11
+      MemorySize: 256
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref CustomObjectBucket
+          output_bucket: !Ref FilesDigestBucket
+          QUESTION: 'Extract the cited examples if exists in the context. If example does not exist, then please provide the answer as \"no answer\". Make sure in your answer you only include the example and not any other summarised answer. Form your answer in the following json format. Each json node should include one example information only:\n\n{\n"example_n": {\n"term": "example_term",\n"example": "example_text"\n},\n...\n}'
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref CustomObjectBucket
+
+  PromptTopicsFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: CustomObjectBucket
+    Properties:
+      FunctionName: PromptTopicsFunction
+      CodeUri: functions/prompts_topics
+      Handler: handler.handler
+      Runtime: python3.11
+      MemorySize: 256
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref CustomObjectBucket
+          output_bucket: !Ref FilesDigestBucket
+          QUESTION: 'Extract n topics from the context. provide topic with a short description in maximum 3 lines. Each topic name should be of maximum of 3 word phrase. Suggest the topic text except “introduction” and “conclusion”. Make sure in your answer you only include the topics and not any other summarised answer. Form your answer in the following json format. Each json node should include one topic information only:\n\n{\n"topic_n": {\n"topic": "topic_term",\n"description": "description_text"\n},\n...\n}'
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref CustomObjectBucket
+
+  PromptLegalFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: CustomObjectBucket
+    Properties:
+      FunctionName: PromptLegalFunction
+      CodeUri: functions/prompts_legal_info
+      Handler: handler.handler
+      Runtime: python3.11
+      MemorySize: 256
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref CustomObjectBucket
+          output_bucket: !Ref FilesDigestBucket
+          QUESTION: 'Extract the following items from the given context \nAuthor Information\nContent Quality and Originality\nWriting Style and Clarity\nConsistency and Coherence\nTitle and Metadata\nPeer Review Feedback. If any of the items does not exist, then please provide the answer as \"Information does not exist\". Make sure in your answer you only include the items and not any other summarised answer. Form your answer in the following json format. Each json string should be in markup language. Each json node should include one example information only:\n\n{\n"item_name": {\n"item": "term_text",\n"term_description": "term_description"\n},\n...\n}'
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref CustomObjectBucket
+
+  PromptEducationalFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: CustomObjectBucket
+    Properties:
+      FunctionName: PromptEducationalFunction
+      CodeUri: functions/prompts_educational_info
+      Handler: handler.handler
+      Runtime: python3.11
+      MemorySize: 256
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref CustomObjectBucket
+          output_bucket: !Ref FilesDigestBucket
+          QUESTION: 'Extract the following items from the given context Methodology\nConclusion and Findings\nHistorical and Cultural Context. If any of the items does not exist, then please provide the answer as \"Information does not exist\". Make sure in your answer you only include the items and not any other summarised answer. Form your answer in the following json format. Each json string should be in markup language. Each json node should include one example information only:\n\n{\n"item_name": {\n"item": "term_text",\n"term_description": "term_description"\n},\n...\n}'
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref CustomObjectBucket
+
+  PromptFinancialFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: CustomObjectBucket
+    Properties:
+      FunctionName: PromptFinancialFunction
+      CodeUri: functions/prompts_financial_info
+      Handler: handler.handler
+      Runtime: python3.11
+      MemorySize: 256
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref CustomObjectBucket
+          output_bucket: !Ref FilesDigestBucket
+          QUESTION: 'Extract the following items from the given context \nAssets and Liabilities\nIncome and Employment Information\n Risk Factors\n Market and Economic Indicators\n Tax Information\n Transaction Details. If any of the items does not exist, then please provide the answer as \"Information does not exist\". Make sure in your answer you only include the items and not any other summarised answer. Form your answer in the following json format. Each json string should be in markup language. Each json node should include one example information only:\n\n{\n"item_name": {\n"item": "term_text",\n"term_description": "term_description"\n},\n...\n}'
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref CustomObjectBucket
+
+  PromptEditorialFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: CustomObjectBucket
+    Properties:
+      FunctionName: PromptEditorialFunction
+      CodeUri: functions/prompts_editorial_info
+      Handler: handler.handler
+      Runtime: python3.11
+      MemorySize: 256
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref CustomObjectBucket
+          output_bucket: !Ref FilesDigestBucket
+          QUESTION: 'Extract the following items from the given context \nAuthor Information\nContent Quality and Originality\nWriting Style and Clarity\nConsistency and Coherence\nTitle and Metadata\nPeer Review Feedback. If any of the items does not exist, then please provide the answer as \"Information does not exist\". Make sure in your answer you only include the items and not any other summarised answer. Form your answer in the following json format. Each json string should be in markup language. Each json node should include one example information only:\n\n{\n"item_name": {\n"item": "term_text",\n"term_description": "term_description"\n},\n...\n}'
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref CustomObjectBucket
+
+  PromptInfoSnippetsFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: CustomObjectBucket
+    Properties:
+      FunctionName: PromptInfoSnippetsFunction
+      CodeUri: functions/prompts_info_snippets
+      Handler: handler.handler
+      Runtime: python3.11
+      MemorySize: 256
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref CustomObjectBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref CustomObjectBucket
+          output_bucket: !Ref FilesDigestBucket
       Events:
         S3EventBridgeRule:
           Type: EventBridgeRule
@@ -705,8 +1170,7 @@ Resources:
       FunctionName: PromptHeadingsFunction
       CodeUri: functions/prompts_headings
       Handler: handler.handler
-      Runtime: python3.10
-      Timeout: 120
+      Runtime: python3.11
       MemorySize: 256
       Layers:
         - !Ref CommonLambdaLayer
@@ -719,7 +1183,6 @@ Resources:
         Variables:
           predict_bucket_name: !Ref CustomObjectBucket
           output_bucket: !Ref FilesDigestBucket
-          openai_api_key: !Ref OpenApiKey
       Events:
         S3EventBridgeRule:
           Type: EventBridgeRule
@@ -739,7 +1202,7 @@ Resources:
       FunctionName: PromptSummaryFunction
       CodeUri: functions/prompts_summary
       Handler: handler.handler
-      Runtime: python3.10
+      Runtime: python3.11
       Layers:
         - !Ref CommonLambdaLayer
       Policies:
@@ -751,7 +1214,6 @@ Resources:
         Variables:
           predict_bucket_name: !Ref CustomObjectBucket
           output_bucket: !Ref FilesDigestBucket
-          openai_api_key: !Ref OpenApiKey
       Events:
         S3EventBridgeRule:
           Type: EventBridgeRule
@@ -771,8 +1233,7 @@ Resources:
       FunctionName: PromptTimelineFunction
       CodeUri: functions/prompts_timeline
       Handler: handler.handler
-      Runtime: python3.10
-      Timeout: 120
+      Runtime: python3.11
       MemorySize: 256
       Layers:
         - !Ref CommonLambdaLayer
@@ -785,7 +1246,7 @@ Resources:
         Variables:
           predict_bucket_name: !Ref CustomObjectBucket
           output_bucket: !Ref FilesDigestBucket
-          openai_api_key: !Ref OpenApiKey
+          QUESTION: 'Extract a timeline if exists in the context. If a timeline does not exist, then please provide the answer as  "no timeline". Make sure in your answer you only include the timeline and not any other summarised answer.  Form your answer in the following json format. Each json node should include one timeline information only: \n\n{\n"timeline_n": {\n "time": "time element",\n "summary": "Summary text"\n},\n...\n}'
       Events:
         S3EventBridgeRule:
           Type: EventBridgeRule
@@ -805,7 +1266,7 @@ Resources:
       FunctionName: TextExtractFunction
       CodeUri: functions/text_extract
       Handler: handler.handler
-      Runtime: python3.10
+      Runtime: python3.11
       Layers:
         - !Ref CommonLambdaLayer
       Policies:
@@ -817,7 +1278,6 @@ Resources:
         Variables:
           predict_bucket_name: !Ref CustomObjectBucket
           output_bucket: !Ref FilesDigestBucket
-          openai_api_key: !Ref OpenApiKey
       Events:
         S3EventBridgeRule:
           Type: EventBridgeRule
@@ -851,12 +1311,11 @@ Resources:
           files_digest_bucket: !Ref FilesDigestBucket
           chat_context_bucket: !Ref ChatContextBucket
           chat_history_bucket: !Ref ChatHistoryBucket
-          openai_api_key: !Ref OpenApiKey
       Events:
-        Proxy:
+        Proxy2:
           Type: HttpApi
           Properties:
-            Path: /api/chat
+            Path: /api/chats
             Method: post
             ApiId: !Ref DocudiveApi
 

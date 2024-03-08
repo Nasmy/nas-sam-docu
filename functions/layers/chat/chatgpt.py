@@ -10,15 +10,17 @@ from text.timer import Timer
 
 
 class ChatGPT:
-    openai.api_key = os.getenv("openai_api_key", None)
     total_input_tokens = 0
     total_output_tokens = 0
 
-    def __init__(self, model: ModelInfo = OpenAIModels.get_model("gpt-3.5-turbo"), verbose=True):
+    def __init__(self, model: ModelInfo = OpenAIModels.get_model("gpt-3.5-turbo"), api_key=None, verbose=True):
+        if api_key is None:
+            api_key = os.getenv("openai_api_key_v2", None)
+        logger.info("ChatGPT: api_key: {}".format(api_key))
+        openai.api_key = api_key
         self.context_messages = []
         self.verbose = verbose
         # self.reset_context()
-        # usage
         self.model = None
         self.role = None
         self.set_model(model)

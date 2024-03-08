@@ -14,21 +14,26 @@ class Database:
     """Database connection class"""
 
     def __init__(self, echo=False):
-        self.engine = create_engine(self.get_database_connection_string(), echo=echo)
+        self.echo = echo
+
+    def get_engine(self):
+        return create_engine(self.get_database_connection_string(), echo=self.echo)
 
     def close_connection(self):
         """Close existing connection"""
-        self.engine.dispose()
+        print("Closing connection")
 
     @contextlib.contextmanager
     def get_session(self, echo=False):
         """Create a session from db connection"""
-        Session = sessionmaker(bind=self.engine)
+        engine = self.get_engine()
+        Session = sessionmaker(bind=engine)
         session = Session()
         try:
             yield session
         finally:
             session.close()
+            engine.dispose()
 
     def get_database_connection_string(self):
         """Retrieve connection string"""
@@ -42,23 +47,24 @@ class Database:
         return db_url
 
     def create_all_tables(self, drop_existing: bool = False):
-
+        engine = self.get_engine()
         """Creates database and schema"""
         try:
-            if not database_exists(self.engine.url):
-                create_database(self.engine.url)
+            if not database_exists(engine.url):
+                create_database(engine.url)
             if drop_existing:
-                Base.metadata.drop_all(self.engine)
-            Base.metadata.create_all(self.engine)
+                Base.metadata.drop_all(engine)
+            Base.metadata.create_all(engine)
 
         except Exception as exception:
             _error_id = uuid.uuid4()
             detail = f"error_id: {_error_id} error: {exception}"
             logging.error(detail)
             raise AssertionError(detail)
+        finally:
+            engine.dispose()
 
 
 if __name__ == "__main__":
-
     database = Database()
     database.create_all_tables(drop_existing=False)
