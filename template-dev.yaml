@@ -84,7 +84,7 @@ Resources:
   DocumentsBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: docud-documents
+      BucketName: nas-docud-documents
 
   DocumentsInputBucket:
     Type: AWS::S3::Bucket
