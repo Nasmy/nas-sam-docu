@@ -1306,8 +1306,11 @@ Resources:
             BucketName: !Ref ChatContextBucket
         - S3CrudPolicy:
             BucketName: !Ref FilesDigestBucket
+        - S3CrudPolicy:
+            BucketName: !Ref DocumentsInputBucket
       Environment:
         Variables:
+          image_bucket: !Ref DocumentsInputBucket
           files_digest_bucket: !Ref FilesDigestBucket
           chat_context_bucket: !Ref ChatContextBucket
           chat_history_bucket: !Ref ChatHistoryBucket

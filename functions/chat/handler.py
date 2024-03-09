@@ -26,6 +26,8 @@ dd_s3 = S3Wrapper()
 files_digest_bucket = os.getenv("files_digest_bucket")
 chat_context_bucket = os.getenv("chat_context_bucket")
 chat_history_bucket = os.getenv("chat_history_bucket")
+chat_image_bucket = os.getenv("image_bucket")
+
 
 
 def handler(event, _):
@@ -67,7 +69,7 @@ def handler(event, _):
             query_id = query_id if query_id else str(uuid.uuid4())
 
             result = (
-                session.query(Users.username, Users.id, Documents.id)
+                session.query(Users.username, Users.id, Documents.id, Documents.file_extension)
                 .join(Documents, Documents.user_id == Users.id)
                 .filter(Documents.id == document_id)
                 .filter(Documents.is_deleted == False)
@@ -76,7 +78,7 @@ def handler(event, _):
             if not result:
                 raise DocumentNotFoundError(document_id)
 
-            db_username, db_user_id, db_document_id = result
+            db_username, db_user_id, db_document_id, db_doc_ext = result
             if db_username != username:
                 raise UserNotFoundError(username)
 
@@ -106,6 +108,7 @@ def handler(event, _):
                 chat_id = db_doc_chat.id
 
             """Load chat context from S3 if present"""
+            gpt_4_vision_enable = OpenAIModels.can_enable_gpt_4_vision(db_doc_ext)
             file_key = f"{db_user_id}/{db_document_id}/{chat_id}.json"
             chat_initialized = True
             try:
@@ -135,17 +138,25 @@ def handler(event, _):
                     doc_context_initialized = True
 
             query_request_timestamp = datetime.utcnow().isoformat()
+            selected_model = OpenAIModels.get_model("gpt-4-vision-preview")
+
             """If the context is questions, we dont need to invoke chatgpt since we have the answers"""
             if doc_context_initialized and context_type == ContextTypes.QUESTION.value:
                 query = chat_context["question"]
                 chat_response = chat_context["answer"]
                 query_response_timestamp = datetime.utcnow().isoformat()
                 total_tokens = 0
-                selected_model = OpenAIModels.get_model("gpt-3.5-turbo")
+                if gpt_4_vision_enable is False:
+                    selected_model = OpenAIModels.get_model("gpt-3.5-turbo")
+                else:
+                    selected_model = selected_model
             else:
                 """Model selection based on context length"""
                 full_word_count = ContextLoader.context_length(chat_context) + query.count(" ")
-                selected_model: ModelInfo = OpenAIModels.get_model_based_on_text_length(full_word_count)
+                if gpt_4_vision_enable is False:
+                    selected_model: ModelInfo = OpenAIModels.get_model_based_on_text_length(full_word_count)
+                else:
+                    selected_model = selected_model
 
                 """
                 Need to get the API key from db and set in chatGPT class
@@ -159,7 +170,13 @@ def handler(event, _):
 
                 gpt_model = ChatGPT(selected_model, api_key=db_api_key.api_key, verbose=True)
                 gpt_model.set_context_dict(chat_context)
-                chat_response = gpt_model.chat_with_context(prompt=query)
+                if gpt_4_vision_enable:
+                    key = f"{db_user_id}/{db_document_id}{db_doc_ext}"
+                    image_url = dd_s3.s3_generate_presigned_url(bucket_name=chat_image_bucket, file_key=key,
+                                                                exp_seconds=3600)
+                    chat_response = gpt_model.chat_with_gpt_vision_context(image_url=image_url, query=query)
+                else:
+                    chat_response = gpt_model.chat_with_context(prompt=query)
 
                 query_response_timestamp = datetime.utcnow().isoformat()
                 total_tokens = gpt_model.get_total_tokens()

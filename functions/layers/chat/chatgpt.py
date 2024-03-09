@@ -41,8 +41,8 @@ class ChatGPT:
 
     def calculate_cost(self):
         total_cost = (
-            ChatGPT.total_input_tokens * self.get_prompt_1k_cost()
-            + ChatGPT.total_output_tokens * self.get_completion_1k_cost()
+                ChatGPT.total_input_tokens * self.get_prompt_1k_cost()
+                + ChatGPT.total_output_tokens * self.get_completion_1k_cost()
         )
         return total_cost / 1000
 
@@ -134,6 +134,29 @@ class ChatGPT:
             self.usage(completion)
         except InvalidRequestError as ir:
             logger.error(ir)
+        return content
+
+    def chat_with_gpt_vision_context(self, image_url, query):
+        content = None
+        try:
+            if image_url and image_url != "" and query and query != "":
+                prompt = [
+                    {"type": "text", "text": query},
+                    {
+                        "type": "image_url",
+                        "image_url": {
+                            "url": image_url,
+                        },
+                    },
+                ]
+                self.context_messages.append({"role": "user", "content": prompt})
+            with Timer("Time to get the response"):
+                completion = openai.ChatCompletion.create(model=self.model.name, messages=self.context_messages)
+                role, content = self.get_role_and_context(completion)
+
+        except InvalidRequestError as ir:
+            logger.error(ir)
+
         return content
 
     @staticmethod
