@@ -10,6 +10,7 @@ from db.database import Database
 from db.tables import Documents, Chats, Users, Annotations, AnnotationTypesTable
 from utils.custom_exceptions import MissingQueryParameterError, UserNotFoundError, DocumentNotFoundError
 from utils.util import json_return, get_query_parameter
+from chat.model_info import OpenAIModels
 
 
 def handler(event, _):
@@ -24,7 +25,7 @@ def handler(event, _):
             logger.info(f"Connection string: {database.get_database_connection_string()}")
 
             result = (
-                session.query(Users.username, Users.id, Documents.id)
+                session.query(Users.username, Users.id, Documents.id, Documents.file_extension)
                 .join(Documents, Documents.user_id == Users.id)
                 .filter(Documents.id == str(document_id))
                 .first()
@@ -34,7 +35,7 @@ def handler(event, _):
             if not result:
                 raise DocumentNotFoundError(document_id)
 
-            db_username, db_user_id, db_document_id = result
+            db_username, db_user_id, db_document_id, db_doc_ext = result
 
             if username != db_username:
                 raise UserNotFoundError(username)
@@ -57,7 +58,8 @@ def handler(event, _):
                 )
 
             is_chat_ready = True
-            if len(docs_dict_list) == 0:
+            is_enable_gpt_vision = OpenAIModels.can_enable_gpt_4_vision(db_doc_ext)
+            if len(docs_dict_list) == 0 and not is_enable_gpt_vision:
                 # SQL Alchemy query
                 annotation_list = ['full_text', 'spans']
                 completed_count = session.query(Annotations).join(
