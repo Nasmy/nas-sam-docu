@@ -152,8 +152,8 @@ def handler(event, _):
                     selected_model = selected_model
             else:
                 """Model selection based on context length"""
-                full_word_count = ContextLoader.context_length(chat_context) + query.count(" ")
                 if gpt_4_vision_enable is False:
+                    full_word_count = ContextLoader.context_length(chat_context) + query.count(" ")
                     selected_model: ModelInfo = OpenAIModels.get_model_based_on_text_length(full_word_count)
                 else:
                     selected_model = selected_model

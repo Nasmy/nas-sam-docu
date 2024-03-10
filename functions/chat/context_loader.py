@@ -73,7 +73,7 @@ class ContextLoader:
                 else:
                     logger.error(f"invalid text: {text}")
                     return None
-                
+
             return self.full_context_chat()
         elif context_type == ContextTypes.LABEL_BRIEF.value:
             return self.label_brief_chat()
