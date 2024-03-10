@@ -9,11 +9,12 @@ from validator import validate_page_block_list
 
 
 class ContextLoader:
-    def __init__(self, user_id, doc_id, context_dict):
+    def __init__(self, user_id, doc_id, context_dict, gpt_4_vision_enable):
         self.user_id = user_id
         self.doc_id = doc_id
         self.context_dict = context_dict
         self.s3_dd = S3Wrapper()
+        self.gpt_4_vision_enable = gpt_4_vision_enable
 
         self.input_bucket = os.getenv("files_digest_bucket")
 
@@ -64,6 +65,15 @@ class ContextLoader:
                 logger.error(f"invalid headings: {headings}")
                 return None
         elif context_type == ContextTypes.FULL.value:
+            if self.gpt_4_vision_enable:
+                text = self.context_dict.get("text", None)
+                if text:
+                    logger.info(f"text: {text}")
+                    return self.text_context(text)
+                else:
+                    logger.error(f"invalid text: {text}")
+                    return None
+                
             return self.full_context_chat()
         elif context_type == ContextTypes.LABEL_BRIEF.value:
             return self.label_brief_chat()

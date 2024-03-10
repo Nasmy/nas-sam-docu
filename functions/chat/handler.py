@@ -132,7 +132,7 @@ def handler(event, _):
             doc_context_initialized = False
             context_type = None
             if chat_initialized and doc_context:
-                context_loader_obj = ContextLoader(db_user_id, document_id, doc_context)
+                context_loader_obj = ContextLoader(db_user_id, document_id, doc_context, gpt_4_vision_enable)
                 chat_context, context_type = context_loader_obj.load_context_and_type()
                 if chat_context:
                     doc_context_initialized = True
