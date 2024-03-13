@@ -19,8 +19,8 @@ from utils.custom_exceptions import RaiseCustomException
 
 # initialize s3 client
 dd_s3 = S3Wrapper()
-predict_bucket_name = os.getenv("image_predict_bucket_name")
-output_bucket = os.getenv("image_output_bucket")
+predict_bucket_name = os.getenv("predict_bucket_name")
+output_bucket = os.getenv("output_bucket")
 
 
 def prompt_image_handler(event, function, annotation_type):
