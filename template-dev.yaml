@@ -878,6 +878,37 @@ Resources:
                   name:
                     - !Ref CustomObjectBucket
 
+  PromptImageProcessQuestionsFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: ImageProcessBucket
+    Properties:
+      FunctionName: PromptQuestionsFunction
+      CodeUri: functions/prompts_process_image_questions
+      Handler: handler.handler
+      Runtime: python3.11
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref ImageProcessBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          predict_bucket_name: !Ref ImageProcessBucket
+          output_bucket: !Ref FilesDigestBucket
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref ImageProcessBucket
+
   PromptCitationsFunction:
     Type: AWS::Serverless::Function
     DependsOn: CustomObjectBucket
