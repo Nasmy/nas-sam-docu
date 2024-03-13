@@ -882,7 +882,7 @@ Resources:
     Type: AWS::Serverless::Function
     DependsOn: ImageProcessBucket
     Properties:
-      FunctionName: PromptQuestionsFunction
+      FunctionName: PromptImageProcessQuestionsFunction
       CodeUri: functions/prompts_process_image_questions
       Handler: handler.handler
       Runtime: python3.11
@@ -895,8 +895,8 @@ Resources:
             BucketName: !Ref FilesDigestBucket
       Environment:
         Variables:
-          predict_bucket_name: !Ref ImageProcessBucket
-          output_bucket: !Ref FilesDigestBucket
+          image_predict_bucket_name: !Ref ImageProcessBucket
+          image_output_bucket: !Ref FilesDigestBucket
       Events:
         S3EventBridgeRule:
           Type: EventBridgeRule
