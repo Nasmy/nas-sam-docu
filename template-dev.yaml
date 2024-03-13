@@ -103,6 +103,14 @@ Resources:
             AllowedHeaders:
               - "*"
 
+  ImageProcessBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: nas-dd-docudive-image-process
+      NotificationConfiguration:
+        EventBridgeConfiguration:
+          EventBridgeEnabled: true
+
   PDFImageBucket:
     Type: AWS::S3::Bucket
     Properties:
@@ -818,12 +826,15 @@ Resources:
             BucketName: !Ref CustomObjectBucket
         - S3CrudPolicy:
             BucketName: !Ref PDFImageBucket
+        - S3CrudPolicy:
+            BucketName: !Ref ImageProcessBucket
       Environment:
         Variables:
           input_bucket: !Ref DocumentsInputBucket
           predict_bucket_name: !Ref CustomObjectBucket
           scrape_output_bucket: !Ref FilesDigestBucket
           image_output_bucket: !Ref PDFImageBucket
+          image_process_bucket: !Ref ImageProcessBucket
       Events:
         S3EventBridgeRule:
           Type: EventBridgeRule

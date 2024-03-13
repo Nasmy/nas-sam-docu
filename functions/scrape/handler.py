@@ -14,10 +14,12 @@ from text.scrape_prediction import TextDetScrapePrediction
 from text.span import Span
 from utils.annotation_types import AnnotationTypes, AnnotationStatus
 from utils.document_types import DocumentTypes
+from chat.model_info import OpenAIModels
 
 supported_image_types = [".jpg", ".jpeg", ".png", ".bmp"]
 bucket_name = os.getenv("input_bucket")
 image_out_bucket_name = os.getenv("image_output_bucket")
+image_process_bucket_name = os.getenv("image_process_bucket")
 out_bucket_name = os.getenv("scrape_output_bucket")
 predict_bucket_name = os.getenv("predict_bucket_name")
 
@@ -61,11 +63,16 @@ def handler(event, _):
                 }
 
             document.is_uploaded = True
-
-
+            can_enable_gpt_4 = OpenAIModels.can_enable_gpt_4_vision(document_ext)
+            gpt_4_annotation_types = [
+                AnnotationTypes.QUESTIONS,
+                AnnotationTypes.HEADINGS,
+            ]
             """Update annotations"""
             for annotation_type in list(AnnotationTypes):
                 if annotation_type == AnnotationTypes.CHAT:
+                    continue
+                if can_enable_gpt_4 and annotation_type not in gpt_4_annotation_types:
                     continue
                 db_anno_type = (
                     session.query(AnnotationTypesTable)
@@ -112,7 +119,8 @@ def handler(event, _):
                     pickled_data = pickle.dumps(predict)
                     meta_data["text_prediction"] = "Scrape"
                     upload_key = f"{user_id}/{document_id}/{document_id}-scrape.pkl"
-                    dd_s3.s3_put_object(bucket=predict_bucket_name, key=upload_key, body=pickled_data, metadata=meta_data)
+                    dd_s3.s3_put_object(bucket=predict_bucket_name, key=upload_key, body=pickled_data,
+                                        metadata=meta_data)
                 else:
                     # convert to images and upload to s3
                     logger.info(f"Page count - {page_count}")
@@ -134,7 +142,7 @@ def handler(event, _):
                 meta_data["page_number"] = "0000"
                 file_key = f"{user_id}/{document_id}-image{document_ext}"
                 dd_s3.s3_put_object(
-                    body=open(tmp_file_location, "rb"), bucket=image_out_bucket_name, key=file_key, metadata=meta_data
+                    body=open(tmp_file_location, "rb"), bucket=image_process_bucket_name, key=file_key, metadata=meta_data
                 )
             elif document_type in [DocumentTypes.TXT.value]:
                 page_count = 1
@@ -181,5 +189,4 @@ def handler(event, _):
                 "statusCode": 200,
                 "body": json.dumps({"message": "Success", "key": upload_key}),
             }
-
 
