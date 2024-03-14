@@ -63,7 +63,7 @@ def prompt_image_handler(event, function, annotation_type):
                 time_taken = end_time - stat_time
                 logger.info(f"Time taken to generate response: {time_taken}")
 
-                logger.info(prompt_object.response)
+                logger.info(prompt_object)
             except Exception as e:
                 logger.exception(e)
                 raise e

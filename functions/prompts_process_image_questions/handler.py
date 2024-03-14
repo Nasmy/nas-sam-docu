@@ -21,7 +21,7 @@ def prompt_process_image_questions(image_url=None, open_api_key=None, insight_ty
     model: ModelInfo = OpenAIModels.get_model("gpt-4-vision-preview")
     gpt_model = ChatGPT(model=model, api_key=open_api_key, verbose=True)
     chat_response = gpt_model.chat_with_gpt_vision_context(image_url=image_url, query=question)
-    logger.info(f"response data: {chat_response}")
+    return json.loads(chat_response)
 
     """"
     question_word_count = len(question.split(" "))
