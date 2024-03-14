@@ -13,7 +13,7 @@ from utils.annotation_types import AnnotationTypes
 def prompt_process_image_questions(image_url=None, open_api_key=None, insight_type=None):
     # Get the model
     question = (
-        "\n\nBased on the context, suggest me 5 important possible questions and relevant answers."
+        "\n\nBased on the image, suggest me 5 important possible questions and relevant answers."
         "Form your answer in the following json inside a list "
         'format:\n[{\n "question": "question text",\n "answer": "answer text"\n}]\n'
     )
