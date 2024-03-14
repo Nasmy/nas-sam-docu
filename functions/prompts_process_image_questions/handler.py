@@ -31,7 +31,7 @@ def prompt_process_image_questions(image_url=None, open_api_key=None, insight_ty
     gpt_model = ChatGPT(model=model, api_key=open_api_key, verbose=True)
     chat_response = gpt_model.chat_with_gpt_vision_context(image_url=image_url, query=question)
     questions_output_list = []
-    question_and_answer_list = json.loads(chat_response)
+    question_and_answer_list = chat_response
     try:
         for i, qa_dict in enumerate(question_and_answer_list):
             questions_output_list.append(qa_dict)
