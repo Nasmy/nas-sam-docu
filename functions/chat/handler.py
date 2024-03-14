@@ -138,7 +138,7 @@ def handler(event, _):
                     doc_context_initialized = True
 
             query_request_timestamp = datetime.utcnow().isoformat()
-            selected_model = OpenAIModels.get_model("gpt-4-vision-preview")
+            vision_model = OpenAIModels.get_model("gpt-4-vision-preview")
 
             """If the context is questions, we dont need to invoke chatgpt since we have the answers"""
             if doc_context_initialized and context_type == ContextTypes.QUESTION.value:
@@ -149,14 +149,14 @@ def handler(event, _):
                 if gpt_4_vision_enable is False:
                     selected_model = OpenAIModels.get_model("gpt-3.5-turbo")
                 else:
-                    selected_model = selected_model
+                    selected_model = vision_model
             else:
                 """Model selection based on context length"""
                 if gpt_4_vision_enable is False:
                     full_word_count = ContextLoader.context_length(chat_context) + query.count(" ")
                     selected_model: ModelInfo = OpenAIModels.get_model_based_on_text_length(full_word_count)
                 else:
-                    selected_model = selected_model
+                    selected_model = vision_model
 
                 """
                 Need to get the API key from db and set in chatGPT class

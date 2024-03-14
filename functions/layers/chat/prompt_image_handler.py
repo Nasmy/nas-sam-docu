@@ -35,7 +35,39 @@ def prompt_image_handler(event, function, annotation_type):
             body, metadata_dict = dd_s3.s3_get_object(bucket=predict_bucket_name, key=file_key)
             user_id = metadata_dict["user_id"]
             document_id = metadata_dict["document_id"]
-            logger.info(f"File Content {body}")
+            image_url = dd_s3.s3_generate_presigned_url(bucket_name=predict_bucket_name, file_key=file_key,
+                                                        exp_seconds=3600)
+
+            db_annotations = (
+                session.query(Annotations)
+                .join(AnnotationTypesTable, AnnotationTypesTable.id == Annotations.annotation_type_id)
+                .filter(Annotations.document_id == document_id)
+                .filter(AnnotationTypesTable.name == annotation_type.value)
+                .first()
+            )
+            if db_annotations:
+                db_annotations.status = AnnotationStatus.IN_PROGRESS.value
+                session.commit()
+
+            db_api_key = session.query(APIKeys).filter(APIKeys.service_key == "openai_key1").first()
+
+            try:
+                stat_time = datetime.utcnow()
+                prompt_object: PromptResponse = function(
+                    image_url=image_url,
+                    open_api_key=db_api_key.api_key,
+                    insight_type=get_insight_type(annotation_type)
+                )
+
+                end_time = datetime.utcnow()
+                time_taken = end_time - stat_time
+                logger.info(f"Time taken to generate response: {time_taken}")
+
+                logger.info(prompt_object.response)
+            except Exception as e:
+                logger.exception(e)
+                raise e
+
             """
             input_text_prediction = metadata_dict["text_prediction"]
             logger.info(f"User id: {user_id}, document id: {document_id}")

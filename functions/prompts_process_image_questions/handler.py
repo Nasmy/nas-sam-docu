@@ -10,13 +10,20 @@ from text.scrape_prediction import TextDetScrapePrediction
 from utils.annotation_types import AnnotationTypes
 
 
-def prompt_process_image_questions(text_prediction: TextDetScrapePrediction, open_api_key=None, insight_type=None):
+def prompt_process_image_questions(image_url=None, open_api_key=None, insight_type=None):
     # Get the model
     question = (
         "\n\nBased on the context, suggest me 5 important possible questions and relevant answers."
         "Form your answer in the following json inside a list "
         'format:\n[{\n "question": "question text",\n "answer": "answer text"\n}]\n'
     )
+
+    model: ModelInfo = OpenAIModels.get_model("gpt-4-vision-preview")
+    gpt_model = ChatGPT(model=model, api_key=open_api_key, verbose=True)
+    chat_response = gpt_model.chat_with_gpt_vision_context(image_url=image_url, query=question)
+    logger.info(f"response data: {chat_response}")
+
+    """"
     question_word_count = len(question.split(" "))
     document_word_count = text_prediction.get_word_count()
     expected_response_word_count = 500
@@ -56,6 +63,7 @@ def prompt_process_image_questions(text_prediction: TextDetScrapePrediction, ope
         logger.error(e)
 
     return PromptResponse(response=questions_output_list, prompt=prompt, debug_info=information, gpt_model=gpt_model)
+    """
 
 
 def handler(event, _):
