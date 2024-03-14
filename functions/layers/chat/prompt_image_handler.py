@@ -32,10 +32,10 @@ def prompt_image_handler(event, function, annotation_type):
             file_key = event["detail"]["object"]["key"]  # replace with your object key
             logger.info(f"File Key {file_key}")
             # Fetch the file from S3
-            file_content, metadata_dict = dd_s3.s3_get_object(bucket=predict_bucket_name, key=file_key)
+            body, metadata_dict = dd_s3.s3_get_object(bucket=predict_bucket_name, key=file_key)
             user_id = metadata_dict["user_id"]
             document_id = metadata_dict["document_id"]
-            logger.info(f"File Content {file_content}")
+            logger.info(f"File Content {body}")
             """
             input_text_prediction = metadata_dict["text_prediction"]
             logger.info(f"User id: {user_id}, document id: {document_id}")
