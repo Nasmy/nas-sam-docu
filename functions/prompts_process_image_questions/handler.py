@@ -18,11 +18,27 @@ def prompt_process_image_questions(image_url=None, open_api_key=None, insight_ty
         'format:\n[{\n "question": "question text",\n "answer": "answer text"\n}]\n'
     )
 
+    prompt = f"{image_url} - {question}"
+
     model: ModelInfo = OpenAIModels.get_model("gpt-4-vision-preview")
+
+    information = {
+        "model_name": model.name,
+        "model_max_words": model.max_words,
+        "model_max_tokens": model.max_tokens,
+    }
+
     gpt_model = ChatGPT(model=model, api_key=open_api_key, verbose=True)
     chat_response = gpt_model.chat_with_gpt_vision_context(image_url=image_url, query=question)
-    logger.info(f"chat response - {chat_response}")
-    return chat_response
+    questions_output_list = []
+    question_and_answer_list = json.loads(chat_response)
+    try:
+        for i, qa_dict in enumerate(question_and_answer_list):
+            questions_output_list.append(qa_dict)
+    except Exception as e:
+        logger.error(e)
+
+    return PromptResponse(response=questions_output_list, prompt=prompt, debug_info=information, gpt_model=gpt_model)
 
     """"
     question_word_count = len(question.split(" "))
