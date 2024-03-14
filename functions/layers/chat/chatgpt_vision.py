@@ -103,11 +103,11 @@ class ChatGptVision:
         return content
 
 
-"""" Internal testing purpose
+
 if __name__ == "__main__":
     prompt = {
         "image_string": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
         "questions": "What’s in this image?"
     }
     gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
-    print(gptVision.analyse_image_string()) """
+    print(gptVision.analyse_image_string())
