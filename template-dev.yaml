@@ -878,6 +878,38 @@ Resources:
                   name:
                     - !Ref CustomObjectBucket
 
+  PromptImageProcessHeadingsFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: ImageProcessBucket
+    Properties:
+      FunctionName: PromptImageProcessHeadingsFunction
+      CodeUri: functions/prompts_process_image_headings
+      Handler: handler.handler
+      Runtime: python3.11
+      MemorySize: 256
+      Layers:
+        - !Ref CommonLambdaLayer
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref ImageProcessBucket
+        - S3CrudPolicy:
+            BucketName: !Ref FilesDigestBucket
+      Environment:
+        Variables:
+          image_predict_bucket_name: !Ref ImageProcessBucket
+          image_output_bucket: !Ref FilesDigestBucket
+      Events:
+        S3EventBridgeRule:
+          Type: EventBridgeRule
+          Properties:
+            Pattern:
+              source:
+                - aws.s3
+              detail:
+                bucket:
+                  name:
+                    - !Ref ImageProcessBucket
+
   PromptImageProcessQuestionsFunction:
     Type: AWS::Serverless::Function
     DependsOn: ImageProcessBucket

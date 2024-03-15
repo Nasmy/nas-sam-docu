@@ -65,7 +65,8 @@ def handler(event, _):
             document.is_uploaded = True
             can_enable_gpt_4 = OpenAIModels.can_enable_gpt_4_vision(document_ext)
             gpt_4_annotation_types = [
-                AnnotationTypes.QUESTIONS
+                AnnotationTypes.QUESTIONS,
+                AnnotationTypes.HEADINGS
             ]
             """Update annotations"""
             for annotation_type in list(AnnotationTypes):
