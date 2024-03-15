@@ -10,7 +10,7 @@ from chat.query_types import PromptResponse
 from utils.annotation_types import AnnotationTypes
 
 
-def prompt_image_headings(image_url=None, open_api_key=None, insight_type=None):
+def prompt_process_image_headings(image_url=None, open_api_key=None, insight_type=None):
     question = (
         "\n\nConsider the given image and generate 1 heading and the corresponding summary. Suggest the "
         "heading text except introduction and conclusion. Make sure the the summary is in bullet points. "
@@ -27,8 +27,9 @@ def prompt_image_headings(image_url=None, open_api_key=None, insight_type=None):
     }
 
     chat_response = ChatGptVision(open_api_key, "gpt-4-vision-preview", prompt)
-    response_list = chat_response.gpt_analysis_image_url()
-
+    response_list_data = chat_response.gpt_analysis_image_url()
+    response_list = json.loads(response_list_data)
+    logger.info(response_list)
     heading_summary_list = []
     loop_count = 1
     for response in response_list:
@@ -42,8 +43,7 @@ def prompt_image_headings(image_url=None, open_api_key=None, insight_type=None):
             continue
 
     information = {
-        "model_name": model.name,
-        "iteration_count": len(model.name),
+        "model_name": model.name
     }
 
     return PromptResponse(
@@ -54,4 +54,4 @@ def prompt_image_headings(image_url=None, open_api_key=None, insight_type=None):
 
 
 def handler(event, _):
-    return prompt_image_handler(event, prompt_image_headings, AnnotationTypes.HEADINGS)
+    return prompt_image_handler(event, prompt_process_image_headings, AnnotationTypes.HEADINGS)

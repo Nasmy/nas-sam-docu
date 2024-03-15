@@ -1,13 +1,9 @@
 import os
-from io import BytesIO
-import json
 import base64
 import boto3
 import requests
 from aws.aws_s3 import S3Wrapper
 from loguru import logger
-from chat.chatgpt import ChatGPT
-from chat.model_info import OpenAIModels, ModelInfo
 
 
 # TODO Can do refactor. Just Written a Mock Code for Testing Purpose
