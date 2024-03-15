@@ -1,4 +1,5 @@
 import os
+import json
 import base64
 import boto3
 import requests
@@ -101,14 +102,16 @@ class ChatGptVision:
 
         return content
 
-""""
+
 if __name__ == "__main__":
     question = (
-        "\n\nBased on the image, suggest me 5 important possible questions and relevant answers."
-        "Form your answer in the following exact json inside a list "
-        'format:\n[{\n "question": "question text",\n "answer": "answer text"\n}]\n'
+        "\n\nConsider the given image and generate 1 heading and the corresponding summary. Suggest the "
+        "heading text except introduction and conclusion. Make sure the the summary is in bullet points. "
+        "The summary should include all the data points, facts and figures in minimum of 5 lines. "
+        "The summary should contain as much information as possible. Form your answer in the following json "
+        'format:\n{\n "heading": "heading text",\n "summary": "Summary text"\n}\n\ncontext:\n'
     )
-    image_url = "https://nas-dd-input-files.s3.amazonaws.com/f1a73ad3-eedc-4a55-8cb9-dbc29414f989/0eb5e5e4-1dda-4a0e-91a5-96baa73abcf7.jpg?AWSAccessKeyId=ASIAZQ3DSS2Q63BXCKP5&Signature=POD74RGxn3n8NavYxk5nqSAokp0%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEH0aCXVzLWVhc3QtMSJHMEUCIQDKMjWeLZj2oU%2B85DQh3TwwToTNW%2FxFquYxbxaaDd7N9wIgU0i7BggVxwTXrH1e%2BasaqUQB%2FpvnnwVZz6VpXfQ%2BJokqjwMIhv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2NTQ2NTQ0Nzc5ODUiDJofKU1UJVlpSY7sqCrjAvEYaAquEYmDDvW%2FIyOvndfP8WgSvvb5aE6ekJZM1jxjb1ovxQVuU046nGNSOVE1QnV3R5YDqwWoAXZ6tjb4uoPstvSEPvQm99KtwR4h2mRfNkQwV9xI02s%2BVWF1wM1d8yC0EhitXwztQogPiIbkClOEhgcdeH3TlJeOnAzFYmHafe6LRwiVYmqokioOy6O61JOyOZh8MIYUQEWx5XHH0%2BlDkaATxK%2B49JYuBaVRe2W2Ujetf3ppct2FJiL6UH9Ki%2Ff689WSYG62uzER80szSliti0AmEBx3Ig2FnofYg3HdpZPD9RbpVweZTibSpu0d67ryztZNLqOjDOjHu5la5bDYF4Vb25TdQKYIOnFGyLTYVgjAlPKfmrLiKiE6D5va7nXMqdyMt%2F1Aj6qjjurM2CsTgPAi0nALtjG9j78I5Yt1sW81pVTF7rg0NgoVNO5N%2BELMqX2iiAPwA0Eohp%2FWloMeE9Uw26rPrwY6ngH%2FnlYGAahz4KP%2Bd%2Fym8LELjinQ6Vy0Mowgw5zAWHo0rRyeK%2FJwR%2BarLtSBp2M9BI620INTiutzecjty6StWdJcm9v6t9bZ8kh4nPVTrddG706s9X6bzjt7Y9x3NLwIQIwWSyyrORgmAKxv02RMYBPrLMocEvSI5VlvoeuNBImORBkjYImBBthevEvg%2Bu2kW%2Fa3H0rJBZFwKHipasinwA%3D%3D&Expires=1710565088"
+    image_url = "https://nas-dd-input-files.s3.amazonaws.com/40c70010-803c-48c8-939c-b38bb45d88c1/e00b6b06-fdce-4ded-9614-c7734ccbebb9.jpg?AWSAccessKeyId=ASIAZQ3DSS2QZ3A72JVO&Signature=1T0HBgjSTyiBFRZ4jZjvq0HF4Ak%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEIL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIQDIYa0qTT5JrCCXWG%2BS8JelZKCGsTWmw1uUKcmDYCzkywIgMLwpzxbyzQDCMQ0AulhtVdHbkByC%2BTZEMRKYEDZBHx4qjwMIi%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2NTQ2NTQ0Nzc5ODUiDAfSYEv0%2FygXATB01SrjAobmuyWCSW3r9Ok0aKYtHOF3s11Mqkz%2BRYp%2ByAh5mS17ZIcbxujoDLvnxcMvLAbWNIoPwcLxywX%2BRj%2BPj6gZ3quMEw%2FY7SgXkBgbbJqWlAqGnUl6rVgjMO7GUjC8DjkydvnGMG507M7mfz2BBQSnxO8eYHMhB%2FtS2M%2BRu1dRzTNCvJH4UOrB6bRWf0t34je2GqTYvp%2FUgkbim1xgdSrr3LDsb7zp21%2BSXXdx3tJ3Dj0TEi1gFspri9E2c%2B3rMECmgEuTV2neRgL0nwf8KQ3sTcFppyd1r4u2V0La%2F%2BlvpJmExsIO%2FvPHDIAui66VR4RVIKs0dy9CVFYPd9AYiWVJrmII4HpUdd1vlR70kSqjERtSvRQ1hLhNQy79iE0TsAadOd0jg9n5iEgpZtSe8lNwKarJO722nArhMzkuwTRvnAUDN5mnE9qdyfzd9T8JXj33cLbAU73QlEFqiPZDyIMqDDaRIPAw2azQrwY6ngFUx7f0iI6rhvTKhn3YoOFUQPGiIhuBINooCFnA3ZF2af4lwNVIBai0Hg0hAvg93q14bKQMDGJ5%2BI5EzY8prsNyPPuV%2B9wqg1CqD7jX0JwHPDhIWr1PheQYyHkfEl08gsqBjHT3Fcxjou%2F%2FB1x%2Fk4fCPKnsBChpkZVx9fpKgAdMzu41AmRXIQbCPd1OpDi6NM9iMufBxAp4VmFucAZiKA%3D%3D&Expires=1710583048"
     prompt = {
         "image_string": image_url,
         "questions": question
@@ -117,5 +120,4 @@ if __name__ == "__main__":
     gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
     json_data = gptVision.gpt_analysis_image_url()
     print(json.loads(json_data))
-    """""
 
