@@ -3,6 +3,7 @@ import json
 from loguru import logger
 
 from chat.chatgpt import ChatGPT
+from chat.chatgpt_vision import ChatGptVision
 from chat.model_info import OpenAIModels, ModelInfo
 from chat.prompt_image_handler import prompt_image_handler
 from chat.query_types import PromptResponse
@@ -14,13 +15,13 @@ def prompt_process_image_questions(image_url=None, open_api_key=None, insight_ty
     # Get the model
     question = (
         "\n\nBased on the image, suggest me 5 important possible questions and relevant answers."
-        "Form your answer in the following json inside a list "
+        "Form your answer in the following exact json inside a list "
         'format:\n[{\n "question": "question text",\n "answer": "answer text"\n}]\n'
     )
 
     question_word_count = len(question.split(" "))
 
-    prompt = f"{image_url} - {question}"
+    promptData = f"{image_url} - {question}"
 
     model: ModelInfo = OpenAIModels.get_model("gpt-4-vision-preview")
 
@@ -32,16 +33,22 @@ def prompt_process_image_questions(image_url=None, open_api_key=None, insight_ty
     }
 
     gpt_model = ChatGPT(model=model, api_key=open_api_key, verbose=True)
-    chat_response = gpt_model.chat_with_gpt_vision_context(image_url=image_url, query=question)
+    prompt = {
+        "image_string": image_url,
+        "questions": question
+    }
+
+    chat_response = ChatGptVision(open_api_key, "gpt-4-vision-preview", prompt)
+    json_data = chat_response.gpt_analysis_image_url()
     questions_output_list = []
-    question_and_answer_list = json.loads(chat_response)
+    question_and_answer_list = json.loads(json_data)
     try:
         for i, qa_dict in enumerate(question_and_answer_list):
             questions_output_list.append(qa_dict)
     except Exception as e:
         logger.error(e)
 
-    return PromptResponse(response=questions_output_list, prompt=prompt, debug_info=information, gpt_model=gpt_model)
+    return PromptResponse(response=questions_output_list, prompt=promptData, debug_info=information, gpt_model=gpt_model)
 
     """"
     question_word_count = len(question.split(" "))
