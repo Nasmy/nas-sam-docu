@@ -64,48 +64,7 @@ def prompt_image_handler(event, function, annotation_type):
                 logger.info(f"Time taken to generate response: {time_taken}")
 
                 logger.info(prompt_object.response)
-            except Exception as e:
-                logger.exception(e)
-                raise e
 
-            """
-            input_text_prediction = metadata_dict["text_prediction"]
-            logger.info(f"User id: {user_id}, document id: {document_id}")
-
-            # update annotations table
-            db_annotations = (
-                session.query(Annotations)
-                .join(AnnotationTypesTable, AnnotationTypesTable.id == Annotations.annotation_type_id)
-                .filter(Annotations.document_id == document_id)
-                .filter(AnnotationTypesTable.name == annotation_type.value)
-                .first()
-            )
-            if db_annotations:
-                db_annotations.status = AnnotationStatus.IN_PROGRESS.value
-                session.commit()
-
-            # Load openapi key
-            db_api_key = session.query(APIKeys).filter(APIKeys.service_key == "openai_key1").first()
-
-            # Load the pickled data
-            text_prediction: TextDetScrapePrediction = pickle.loads(file_content)
-
-            # Prompt questions
-            prompt_object = None
-            try:
-                # start and end time using datetime module
-                stat_time = datetime.utcnow()
-                prompt_object: PromptResponse = function(
-                    text_prediction,
-                    open_api_key=db_api_key.api_key,
-                    insight_type=get_insight_type(annotation_type)
-                )
-
-                end_time = datetime.utcnow()
-                time_taken = end_time - stat_time
-                logger.info(f"Time taken to generate response: {time_taken}")
-
-                logger.info(prompt_object.response)
                 if not prompt_object.response:
                     raise RaiseCustomException(204, "Annotations are empty", prompt_object.response)
 
@@ -122,8 +81,9 @@ def prompt_image_handler(event, function, annotation_type):
                         "time_taken": f"{time_taken.seconds} seconds",
                     },
                 }
-                # add more information dictionary content to debug
+
                 output_dict["debug"].update(prompt_object.debug_info)
+
             except Exception as e:
                 logger.exception(e)
                 raise e
@@ -132,7 +92,7 @@ def prompt_image_handler(event, function, annotation_type):
 
             # Add metadata
             output_dict["debug"]["input_file"] = file_key
-            output_dict["debug"]["text_prediction"] = input_text_prediction
+            output_dict["debug"]["image_url"] = image_url
 
             output_dict["details"]["query_id"] = query_id
             output_dict["details"]["annotation_type"] = annotation_type
@@ -199,13 +159,6 @@ def prompt_image_handler(event, function, annotation_type):
                 "statusCode": 200,
                 "body": json.dumps({"message": "Success", "key": upload_key}),
             }
-            """""
-        except Exception as e:
-            return {
-                "statusCode": 500,
-                "body": json.dumps({"message": "Failed", "error": str(e)}),
-            }
-
 
 def page_wise_questions(text_prediction: TextDetScrapePrediction, question, gpt_model):
     no_of_pages = len(text_prediction.pages)

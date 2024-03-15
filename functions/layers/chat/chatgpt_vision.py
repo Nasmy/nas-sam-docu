@@ -105,9 +105,14 @@ class ChatGptVision:
 
 
 if __name__ == "__main__":
+    question = (
+        "\n\nBased on the image, suggest me 5 important possible questions and relevant answers."
+        "Form your answer in the following json inside a list "
+        'format:\n[{\n "question": "question text",\n "answer": "answer text"\n}]\n'
+    )
     prompt = {
         "image_string": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
-        "questions": "What’s in this image?"
+        "questions": question
     }
-    gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
+    gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
     print(gptVision.analyse_image_string())
