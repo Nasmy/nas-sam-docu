@@ -16,7 +16,7 @@ def prompt_process_image_headings(image_url=None, open_api_key=None, insight_typ
         "heading text except introduction and conclusion. Make sure the the summary is in bullet points. "
         "The summary should include all the data points, facts and figures in minimum of 5 lines. "
         "The summary should contain as much information as possible. Form your answer in the following json "
-        'format:\n{\n "heading": "heading text",\n "summary": "Summary text"\n}\n\ncontext:\n'
+        'format:\n{\n "heading": "heading text",\n "summary": "Summary text"\n}\n\nimage:\n'
     )
 
     model: ModelInfo = OpenAIModels.get_model("gpt-4-vision-preview")

@@ -109,16 +109,18 @@ if __name__ == "__main__":
         "heading text except introduction and conclusion. Make sure the the summary is in bullet points. "
         "The summary should include all the data points, facts and figures in minimum of 5 lines. "
         "The summary should contain as much information as possible. Form your answer in the following json "
-        'format:\n{\n "heading": "heading text",\n "summary": "Summary text"\n}\n\ncontext:\n'
+        'format:\n{\n "heading": "heading text",\n "summary": "Summary text"\n}\n\nimage:\n'
     )
 
-    image_url = "https://nas-dd-input-files.s3.amazonaws.com/40c70010-803c-48c8-939c-b38bb45d88c1/e00b6b06-fdce-4ded-9614-c7734ccbebb9.jpg?AWSAccessKeyId=ASIAZQ3DSS2QZ3A72JVO&Signature=1T0HBgjSTyiBFRZ4jZjvq0HF4Ak%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEIL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIQDIYa0qTT5JrCCXWG%2BS8JelZKCGsTWmw1uUKcmDYCzkywIgMLwpzxbyzQDCMQ0AulhtVdHbkByC%2BTZEMRKYEDZBHx4qjwMIi%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2NTQ2NTQ0Nzc5ODUiDAfSYEv0%2FygXATB01SrjAobmuyWCSW3r9Ok0aKYtHOF3s11Mqkz%2BRYp%2ByAh5mS17ZIcbxujoDLvnxcMvLAbWNIoPwcLxywX%2BRj%2BPj6gZ3quMEw%2FY7SgXkBgbbJqWlAqGnUl6rVgjMO7GUjC8DjkydvnGMG507M7mfz2BBQSnxO8eYHMhB%2FtS2M%2BRu1dRzTNCvJH4UOrB6bRWf0t34je2GqTYvp%2FUgkbim1xgdSrr3LDsb7zp21%2BSXXdx3tJ3Dj0TEi1gFspri9E2c%2B3rMECmgEuTV2neRgL0nwf8KQ3sTcFppyd1r4u2V0La%2F%2BlvpJmExsIO%2FvPHDIAui66VR4RVIKs0dy9CVFYPd9AYiWVJrmII4HpUdd1vlR70kSqjERtSvRQ1hLhNQy79iE0TsAadOd0jg9n5iEgpZtSe8lNwKarJO722nArhMzkuwTRvnAUDN5mnE9qdyfzd9T8JXj33cLbAU73QlEFqiPZDyIMqDDaRIPAw2azQrwY6ngFUx7f0iI6rhvTKhn3YoOFUQPGiIhuBINooCFnA3ZF2af4lwNVIBai0Hg0hAvg93q14bKQMDGJ5%2BI5EzY8prsNyPPuV%2B9wqg1CqD7jX0JwHPDhIWr1PheQYyHkfEl08gsqBjHT3Fcxjou%2F%2FB1x%2Fk4fCPKnsBChpkZVx9fpKgAdMzu41AmRXIQbCPd1OpDi6NM9iMufBxAp4VmFucAZiKA%3D%3D&Expires=1710583048"
+    image_url = "https://nas-dd-input-files.s3.amazonaws.com/40c70010-803c-48c8-939c-b38bb45d88c1/319f6c3f-61fa-46fc-97da-653ef86aab09.jpg?AWSAccessKeyId=ASIAZQ3DSS2Q64ZSQMX6&Signature=gSEfLYLsk3G48qkV1cX%2FL0%2F9CBE%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEIT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIQCfDnWQ1K3eHNbvXFFnefnBofe0uuWZ%2Bk0IlvgAETIXVwIgCL5L6R%2BRqXY21ddgW8Z%2B6qpjEIA7HHHyJijxYThsgsMqjwMIjf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2NTQ2NTQ0Nzc5ODUiDOHHKAce3ldekwV9SyrjAhOG%2FFwnsn3qL%2BhuGfKi0tyyZFCt06nK3YZQLmCHOhtXs00fIFbQT578eqWgYrWFsoKT%2FNKXKVQPwFd%2FbioUOe%2B3RZcXNlgVoBNHC3j9GGHK5q15XAp5D27sRixv%2BqHAAmUg7eeMMaR%2FfPFmElCQ4tFhoYOqTa0zih0ifmBmrmykTZ%2B%2B1thAYjD13fE%2BAr3WbC9ApeMjs%2BPv5Olj1mWWg3kjuWDSAhr1XIkDPnIIzRVwDxChR3LN9oI926attofPa8RsxAQyPxeu60Dc69lXfwl2%2B8tVgy%2FKUD1rGY1wVdLChMtTwYAZA%2BOVq7MuaM5NrbWQxvETm8nU1YsgL%2BFzJJ%2B6LTpXxV2dhFZ1Bz7pV3mV1jSstmMP5%2FasVJBMbSJOHQTggzp8rBav7T7Twnkx%2BVPyfi1Sj7cJGLKFFgVQKkWC0KWn92BYHXvGtNuEPZXvFrbZRejC0HOR1U9RjI2a69%2BwNAcwlOvQrwY6ngERSpSRZvT3mTm7h2svTWIvEEPHIqU0EaXc3BlCXfiznz7iduD5X3inoUkrfsNl5qZVBl%2F%2BXDB6dPblakXk8cbTeS%2FOlIqQsw90jBv1ldK76%2BRyECpalon7DC%2Fu1LD8QOvs0mzu4knA17%2F3l8vq2hvCqEeorfHOKb56gqxpi3tu61WwwrhVaVPhMZYbnUxYhQkQS50P1zM8HXLj21QcpQ%3D%3D&Expires=1710589979"
     prompt = {
         "image_string": image_url,
         "questions": question
     }
 
     gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
+
     json_data = gptVision.gpt_analysis_image_url()
+    print(json_data)
     print(json.loads(json_data))
 
