@@ -112,13 +112,13 @@ if __name__ == "__main__":
         'format:\n{\n "heading": "heading text",\n "summary": "Summary text"\n}\n\nimage:\n'
     )
 
-    image_url = "https://nas-dd-input-files.s3.amazonaws.com/40c70010-803c-48c8-939c-b38bb45d88c1/79b845cf-2e9c-4f39-aa59-03f71d2bd38e.jpg?AWSAccessKeyId=ASIAZQ3DSS2QWCPW7YM3&Signature=nBsvjNJI0jvWGRiBtJNhOsQArNM%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIHQFTUjf0tvVHiO%2F0QTURcNrximhn15cA5NR0yYecCjCAiEAkQx9Orp5Qr3pg%2FcuDVg5FBORvkVDw47JM0rwA4IHVXkqjwMIs%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2NTQ2NTQ0Nzc5ODUiDEdZgsbu0rrfNRKdxirjAky95WsBT3ZQJH0G3d9cz9bcXjTRixGXluCZMCknqJTJ9kRE20VTSnhWtNhTYN2v4A%2F7HHyCafbiTiEGxnOW1fhUceyCmj1l0lcuSPLD6Tkm45dD78HXCPlFkG4tENjRcG9Rv9dvgW8aW8cMVhAAqtbDL7NycJXqwlZjt68m0fbIOc3sIkEjxYtdiSUJG2SL1Zx4HXanvAfjXjp2noUoHRPbFyuwbnOhY7%2BVpQWKXLWZpynp4oZd%2FRnaqq6JIKVsKZbYqBw5ADdJH8IWDr1jB6E5MDY45%2FJrC4yrxzIZm1av0oY45W2jvPBebg97UbH4IYIzeV9L3g0J0Fa4mCjzdnkq%2BcKU%2BGQgPlBRRLIKUre0CoAWfphTVBhziDVQYBqsUUkmJ61wjJE8mA7fWqluCFl1wkOTu9%2BDsa73s5qfPzMpkZEL7EiSY8nGxGVesRpBSwxh%2F%2FEGsJqgr13BmAGb0SBlrl4wh43ZrwY6ngHPoDTHiXSVfY0ckumElE%2BIkqI3UdgEqvlmuuA79PddWfi9DdLE%2BdWBwt57BLoduYHziQPMkagdnf%2BPTiQ6fnVVEUctT91BA0UIJsFELW2R%2BdDRtnmkSx2RHjzPFDmWYsMuI6juwNGIdrCEd2nXC9YbSURtslTxV1f8iQe4ACrYL8dEf4AWIuc2A98NfKzEOPRzAJdXw7KOP2vzTq5w5Q%3D%3D&Expires=1710725132"
+    image_url = "https://nas-dd-input-files.s3.amazonaws.com/40c70010-803c-48c8-939c-b38bb45d88c1/844824ff-fb90-4caf-b46f-9829ccd0ce31.jpg?AWSAccessKeyId=ASIAZQ3DSS2QRDPKAJHU&Signature=P3StTeijFYS15lMhp4O5ff1wsow%3D&x-amz-security-token=IQoJb3JpZ2luX2VjELD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIDrfBoskTVsqsT64B5JDfrUc%2FWdBiAf%2F%2Bdicc8FYrWChAiEAlyIjnm2M0IlaobYsYiLOrSwUTQbhALkZKO8ZEnJ%2BeE8qjwMIuf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2NTQ2NTQ0Nzc5ODUiDF0EWg1Ce298D89b0CrjAqEKkzLfMrzet8dBVWp01e9iZaj0Pj%2F92EoOZsPQ7ijTO%2BqBC%2FzOCHjlGwo28MeS69HaqxfpHCFrie125PrcqxSc3K3W9enH4w5Hg2YnUkPYI%2FLedH6U2PIiWzES2GT35s%2BwxFKTEmQLA6binOP8eX8Om9DfLy5tHmylQTWIUpwHJz%2BR6f33uAXphZLtrHcb%2BmZI86zuFZfRxRqWpz4E%2F6X8cmhfN%2BtxvBJAvk7yoyD4Gokd5g5z5fKuEYcen6hjviewI0YWlh1mYLRFWoyDpc4uRHUIEPLNfqoxjO90QqlVDoApl3j0LjwUzNtkOMiit5bB%2BpRaD4%2F9kWVmNnPxVmr7ovI1C204bjmiaaXYE4vl6sRABsHNdOGysA3JUEfKAI423sMK2jC8n%2FncQ9%2Fu0JOJBELrppjUmxGhoDiMiCSmpumJWezsrQudCggaKXeTJz8pJpbWLKyqxXurUJZLbaDPIy8wxsbarwY6ngGspXStz%2BS2kNx%2FfJOWfpWsfmhCphuLzON6AR61R1jGTKY9UPCOmI5u0QLTfwU1JWpu03ZnRalKq%2BEgviEH6wl8WdnzeOI2aCkp1di7T4%2Fcnn6PU9W6HCyu2Ric%2F4c42M24OJELAWAAgAHN5PZHIKC0JHrMD%2Ff22H5gyX8w0JRZ1N3lfrEI6FGEK5Vy0Q1qStC1F7boRQN5y7l6o2qUSA%3D%3D&Expires=1710749213"
     prompt = {
         "image_string": image_url,
         "questions": question
     }
 
-    gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
+    gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
 
     json_data = gptVision.gpt_analysis_image_url()
     heading_summary_list = []
