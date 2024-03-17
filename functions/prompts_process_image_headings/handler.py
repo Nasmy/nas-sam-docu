@@ -19,6 +19,7 @@ def prompt_process_image_headings(image_url=None, open_api_key=None, insight_typ
         'format:\n{\n "heading": "heading text",\n "summary": "Summary text"\n}\n\nimage:\n'
     )
 
+    promptData = f"{image_url} - {question}"
     model: ModelInfo = OpenAIModels.get_model("gpt-4-vision-preview")
     gpt_model = ChatGPT(model=model, api_key=open_api_key, verbose=True)
     prompt = {
@@ -48,6 +49,7 @@ def prompt_process_image_headings(image_url=None, open_api_key=None, insight_typ
 
     return PromptResponse(
         response=heading_summary_list,
+        prompt=promptData,
         debug_info=information,
         gpt_model=gpt_model
     )

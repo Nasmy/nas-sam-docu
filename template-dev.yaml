@@ -767,6 +767,7 @@ Resources:
                 bucket:
                   name:
                     - !Ref PDFImageBucket
+
     Metadata:
       Dockerfile: Dockerfile
       DockerContext: ./functions/ocr
