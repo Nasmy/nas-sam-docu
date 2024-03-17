@@ -32,16 +32,16 @@ def prompt_process_image_headings(image_url=None, open_api_key=None, insight_typ
     response_list = json.loads(response_list_data)
     logger.info(f"heading - {response_list}")
     heading_summary_list = []
-    loop_count = 1
-    for response in response_list:
-        try:
-            cleaned_response = response.replace("\n", "").replace("\r", "").replace("\t", " ")
-            heading_summary_dict = json.loads(cleaned_response)
-            heading_summary_list.append(heading_summary_dict)
-            loop_count += 1
-        except Exception as e:
-            logger.exception(e)
-            continue
+
+    cleaned_response = response_list.replace("\n", "").replace("\r", "").replace("\t", " ")
+    heading_summary_dict = json.loads(cleaned_response)
+    heading_summary_list.append(heading_summary_dict)
+
+    try:
+        for i, qa_dict in enumerate(heading_summary_dict):
+            heading_summary_list.append(qa_dict)
+    except Exception as e:
+        logger.error(e)
 
     information = {
         "model_name": model.name
