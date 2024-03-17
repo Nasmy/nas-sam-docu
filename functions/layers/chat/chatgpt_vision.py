@@ -118,7 +118,7 @@ if __name__ == "__main__":
         "questions": question
     }
 
-    gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
+    gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
 
     json_data = gptVision.gpt_analysis_image_url()
     print(json_data)

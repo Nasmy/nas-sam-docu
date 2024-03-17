@@ -29,11 +29,10 @@ def prompt_process_image_headings(image_url=None, open_api_key=None, insight_typ
 
     chat_response = ChatGptVision(open_api_key, "gpt-4-vision-preview", prompt)
     response_list_data = chat_response.gpt_analysis_image_url()
-    response_list = json.loads(response_list_data)
-    logger.info(f"heading - {response_list}")
+    logger.info(f"heading - {response_list_data}")
     heading_summary_list = []
     loop_count = 1
-    for response in response_list:
+    for response in response_list_data:
         try:
             cleaned_response = response.replace("\n", "").replace("\r", "").replace("\t", " ")
             heading_summary_dict = json.loads(cleaned_response)
