@@ -35,12 +35,12 @@ def prompt_process_image_headings(image_url=None, open_api_key=None, insight_typ
     received_string = received_string.strip('```')
     cleaned_response = received_string.replace("\n", "").replace("\r", "").replace("\t", " ")
     heading_summary_dict = json.loads(cleaned_response)
-    # heading_summary_list.append(heading_summary_dict)
-    try:
-        for i, qa_dict in enumerate(heading_summary_dict):
-            heading_summary_list.append(qa_dict)
-    except Exception as e:
-        logger.error(e)
+    heading_summary_list.append(heading_summary_dict)
+    # try:
+    #    for i, qa_dict in enumerate(heading_summary_dict):
+    #        heading_summary_list.append(qa_dict)
+    # except Exception as e:
+    #    logger.error(e)
 
     logger.info(f"heading - {heading_summary_list}")
 
