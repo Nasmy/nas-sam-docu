@@ -41,6 +41,7 @@ def prompt_process_image_questions(image_url=None, open_api_key=None, insight_ty
     received_string = chat_response.gpt_analysis_image_url()
     received_string = received_string.strip('```json')
     received_string = received_string.strip('```')
+    received_string = received_string.replace('\n', '\\n')
     questions_output_list = []
     question_and_answer_list = json.loads(received_string)
     try:
