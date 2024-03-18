@@ -28,11 +28,13 @@ def prompt_process_image_headings(image_url=None, open_api_key=None, insight_typ
     }
 
     chat_response = ChatGptVision(open_api_key, "gpt-4-vision-preview", prompt)
-    response_list_data = chat_response.gpt_analysis_image_url()
+    received_string = chat_response.gpt_analysis_image_url()
     heading_summary_list = []
-    cleaned_response = response_list_data.replace("\n", "").replace("\r", "").replace("\t", " ")
-    heading_summary_dict = json.loads(cleaned_response)
-    heading_summary_list.append(heading_summary_dict)
+    # cleaned_response = response_list_data.replace("\n", "").replace("\r", "").replace("\t", " ")
+    received_string = received_string.strip('```json')
+    received_string = received_string.strip('```')
+    heading_summary_dict = json.loads(received_string)
+    # heading_summary_list.append(heading_summary_dict)
     try:
         for i, qa_dict in enumerate(heading_summary_dict):
             heading_summary_list.append(qa_dict)

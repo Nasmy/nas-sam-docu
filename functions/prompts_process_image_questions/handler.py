@@ -38,9 +38,11 @@ def prompt_process_image_questions(image_url=None, open_api_key=None, insight_ty
     }
 
     chat_response = ChatGptVision(open_api_key, "gpt-4-vision-preview", prompt)
-    json_data = chat_response.gpt_analysis_image_url()
+    received_string = chat_response.gpt_analysis_image_url()
+    received_string = received_string.strip('```json')
+    received_string = received_string.strip('```')
     questions_output_list = []
-    question_and_answer_list = json.loads(json_data)
+    question_and_answer_list = json.loads(received_string)
     try:
         for i, qa_dict in enumerate(question_and_answer_list):
             questions_output_list.append(qa_dict)

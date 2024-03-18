@@ -112,19 +112,22 @@ if __name__ == "__main__":
         'format:\n{\n "heading": "heading text",\n "summary": "Summary text"\n}\n\nimage:\n'
     )
 
-    image_url = "https://nas-dd-input-files.s3.amazonaws.com/40c70010-803c-48c8-939c-b38bb45d88c1/844824ff-fb90-4caf-b46f-9829ccd0ce31.jpg?AWSAccessKeyId=ASIAZQ3DSS2QRDPKAJHU&Signature=P3StTeijFYS15lMhp4O5ff1wsow%3D&x-amz-security-token=IQoJb3JpZ2luX2VjELD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIDrfBoskTVsqsT64B5JDfrUc%2FWdBiAf%2F%2Bdicc8FYrWChAiEAlyIjnm2M0IlaobYsYiLOrSwUTQbhALkZKO8ZEnJ%2BeE8qjwMIuf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2NTQ2NTQ0Nzc5ODUiDF0EWg1Ce298D89b0CrjAqEKkzLfMrzet8dBVWp01e9iZaj0Pj%2F92EoOZsPQ7ijTO%2BqBC%2FzOCHjlGwo28MeS69HaqxfpHCFrie125PrcqxSc3K3W9enH4w5Hg2YnUkPYI%2FLedH6U2PIiWzES2GT35s%2BwxFKTEmQLA6binOP8eX8Om9DfLy5tHmylQTWIUpwHJz%2BR6f33uAXphZLtrHcb%2BmZI86zuFZfRxRqWpz4E%2F6X8cmhfN%2BtxvBJAvk7yoyD4Gokd5g5z5fKuEYcen6hjviewI0YWlh1mYLRFWoyDpc4uRHUIEPLNfqoxjO90QqlVDoApl3j0LjwUzNtkOMiit5bB%2BpRaD4%2F9kWVmNnPxVmr7ovI1C204bjmiaaXYE4vl6sRABsHNdOGysA3JUEfKAI423sMK2jC8n%2FncQ9%2Fu0JOJBELrppjUmxGhoDiMiCSmpumJWezsrQudCggaKXeTJz8pJpbWLKyqxXurUJZLbaDPIy8wxsbarwY6ngGspXStz%2BS2kNx%2FfJOWfpWsfmhCphuLzON6AR61R1jGTKY9UPCOmI5u0QLTfwU1JWpu03ZnRalKq%2BEgviEH6wl8WdnzeOI2aCkp1di7T4%2Fcnn6PU9W6HCyu2Ric%2F4c42M24OJELAWAAgAHN5PZHIKC0JHrMD%2Ff22H5gyX8w0JRZ1N3lfrEI6FGEK5Vy0Q1qStC1F7boRQN5y7l6o2qUSA%3D%3D&Expires=1710749213"
+    image_url = "https://nas-dd-input-files.s3.amazonaws.com/40c70010-803c-48c8-939c-b38bb45d88c1/ea128fa4-e10d-40c4-9d77-3b7003eb1e2f.jpg?AWSAccessKeyId=ASIAZQ3DSS2QRKNZQ3BK&Signature=Hl2Lokn%2FfkEZraFAKbMFZ8vxEhA%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEMb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJGMEQCIANZ9lVRv32rcCqTMHNef%2BzTf1b5imXYSomZ4GdDl9GgAiBO77SU1E%2BFZ7kiKYxkFmDXPG9rfvgbnIhHCsnoJOKmbiqPAwjP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDY1NDY1NDQ3Nzk4NSIMtdvCHvcYfOztgtCQKuMCKVpumKAo2IDgBrfTnZ%2BOSZUgXQnTALcxEo9fksA5qDeo5vjaVSiZi%2FWqdOj1MnRKprVi1976UgYaZOBRAxFLUJ2xfD5r515I%2FHy4IH8e80RSLnPEFgHd2vzTWclSkBP9UpQoXw99xUPIl%2FdG151wJiZ%2FrBFoUCxLawDy0sSiUNklunwYnfyZ7RO1i1wcvV5iLDBRhzt1w5xJuYi%2FUu3Z7OgGKQNk04qMWQ%2BxgpUVF9DDZfo2RM8CaZPMOc9RJWEEXvWtodxdvp0oj56vVPhwASht4cR%2BFsLZhvQfkiBn0A8Nx%2BS%2FtuML513Ru10CkNnqWoGDkEj5BLtPiH%2BJW%2B5dr0xVRhXiW8UheS8rtevHyoUrxiBi2AB%2BfxPPtW%2F%2FgxzJcWX1VMYxRWhTsmHa%2BxmYez7njuWCWP7yzl7lwguh%2B%2FYBhLtyOtynfd9MmAaOqqoFNUANJ35DXAeevu9aOYm8GyX0bzCxqN%2BvBjqfAV102lM1hB%2B0kYB1S2dBF8vwQ6pYre9dRzHAF%2BBG68lUYaUnVCCrTUssp9a2SiTJRHTRDXfvQOKL2yXMuOT8IaRjPi2qNjs7yWGIBa1wMwRCHKF9GgdxnlSq4n4r3igij4CTI%2BnpNfaMjbY2LOEJNMOCi%2Fp2OjXixFPzkVHzlRdViPw33BIVe31N1tmyy9U58yj14ReLQziIod79Ou0qyA%3D%3D&Expires=1710826962"
     prompt = {
         "image_string": image_url,
         "questions": question
     }
 
-    gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
+    gptVision = ChatGptVision("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", "gpt-4-vision-preview", prompt)
 
-    json_data = gptVision.gpt_analysis_image_url()
+    received_string = gptVision.gpt_analysis_image_url()
+    received_string = received_string.strip('```json')
+    received_string = received_string.strip('```')
+    # Replace '\n' with '\\n' to escape newline characters within the JSON string
     heading_summary_list = []
-    cleaned_response = json_data.replace("\n", "").replace("\r", "").replace("\t", " ")
-    heading_summary_dict = json.loads(cleaned_response)
-    heading_summary_list.append(heading_summary_dict)
+    print(received_string)
+    heading_summary_dict = json.loads(received_string)
+
     try:
         for i, qa_dict in enumerate(heading_summary_dict):
             heading_summary_list.append(qa_dict)
